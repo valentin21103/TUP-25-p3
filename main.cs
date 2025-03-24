@@ -12,7 +12,6 @@ class Alumno {
     public string telefono;
     public int orden;
 
-
     public Alumno(int orden, int legajo, string apellido, string nombre, string telefono, string comision){
         this.orden = orden;
         this.legajo = legajo;
@@ -21,11 +20,6 @@ class Alumno {
         this.telefono = telefono;
         this.comision = comision;
     }
-
-    public string toVCard(){
-        return $"BEGIN:VCARD\nVERSION:3.0\nN:{apellido};{nombre};;;\nFN:{nombre} {apellido}\nORG:TUP-P3-{comision}\nTEL;TYPE=CELL:{telefono}\nEND:VCARD";
-    }
-
 }
 
 class Clase {
@@ -70,8 +64,6 @@ class Clase {
     }
 
     public void Guardar(string destino){
-        // var comisiones = alumnos.Select(a => a.comision).Distinct().OrderBy(c => c).ToList();
-
         using (StreamWriter writer = new StreamWriter(destino)){
             writer.WriteLine("# Listado de alumnos");
             foreach(var comision in comisiones){
