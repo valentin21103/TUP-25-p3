@@ -38,7 +38,7 @@ class Clase {
     const string LineaAlumno = @"(\d+)\.\s*(\d{5,6})\s*([^,]+)\s*,\s*([^(]+)\s*(?:(\(.*))?";
     
     public List<string> comisiones => alumnos.Select(a => a.comision).Distinct().OrderBy(c => c).ToList();
-    public static Clase LeerMD(string origen){
+    public static Clase Cargar(string origen){
         string comision = "C0";
         Clase clase = new Clase();
 
@@ -72,8 +72,8 @@ class Clase {
         return clase;
     }
 
-    public void EscribirMD(string destino){
-        var comisiones = alumnos.Select(a => a.comision).Distinct().OrderBy(c => c).ToList();
+    public void Guardar(string destino){
+        // var comisiones = alumnos.Select(a => a.comision).Distinct().OrderBy(c => c).ToList();
 
         using (StreamWriter writer = new StreamWriter(destino)){
             writer.WriteLine("# Listado de alumnos");
@@ -99,7 +99,7 @@ class Clase {
     
 }
 
-Clase clase = Clase.LeerMD("./alumnos.md");
+Clase clase = Clase.Cargar("./alumnos.md");
 Console.WriteLine($"Se leyeron {clase.alumnos.Count} alumnos.");
-clase.EscribirMD("./resultado.md");
+clase.Guardar("./resultado.md");
 clase.EscribirVCards("./alumnos.vcf");
