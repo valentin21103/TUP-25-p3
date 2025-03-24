@@ -74,7 +74,7 @@
 1.  61688   García Romano, Lucas                           (381) 385-7379   
 1.  61042   Gonzalez, Luis David                           (381) 680-3204   
 1.  61652   Heredia, Juan Pablo                            (381) 414-4834   
-2.  61437   Holmquist, Ignacio Tobias *                    (381) 516-9171   
+1.  61437   Holmquist, Ignacio Tobias                      (381) 516-9171   
 1.  61041   Iosa Molina, Nicolás                           (381) 624-2939   
 1.  61322   Juarez, Thiago                                 (381) 418-2169   
 1.  61218   Liendo, Lautaro                                (381) 582-5319   
@@ -84,7 +84,7 @@
 1.  61053   Matas Molina, Agustín                          (381) 689-6591   
 1.  61848   Mazza Leon, Fabrizio Lautaro                   (381) 598-7961   
 1.  61247   Medici Assaf, Abril                            (381) 352-5720   
-2.  61566   Medina Costilla, Abigail *                    (381) 655-7818   
+2.  61566   Medina Costilla, Abigail *                     (381) 655-7818   
 1.  61048   Medina, Luciano                                (381) 576-7469   
 1.  61122   Molina Hernando, Nahuel                        (381) 619-4179   
 1.  61314   Morales, Ignacion Agustin                      (381) 545-9105
@@ -98,9 +98,9 @@
 1.  61732   Paz, Mikael                                    (381) 542-2918   
 1.  61422   Pedraza, Estaban Daniel                        (381) 449-6148
 1.  61858   Perez, Facundo Agustin                         (381) 661-8312   
-1.  61140   Perez, Fernando Alberto             
+1.  61140   Perez, Fernando Alberto                        (381) 643-2069        
 1.  61671   Quinteros, Gabriel                             (381) 664-1854   
-0.  61064   Racedo, Francisco Nicolas   
+1.  61064   Racedo, Francisco Nicolas                      (381) 301‑3850
 1.  61052   Reynoso, Braian Nicolás                        (381) 654-0412   
 0.  62104   Robledo Garcia, Juan Gerardo    
 0.  61962   Robledo, Rocio Micaela  

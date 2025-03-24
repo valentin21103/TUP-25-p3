@@ -497,8 +497,8 @@ TEL;TYPE=CELL:(381) 414-4834
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
-N:Holmquist;Ignacio Tobias *;;;
-FN:Ignacio Tobias * Holmquist
+N:Holmquist;Ignacio Tobias;;;
+FN:Ignacio Tobias Holmquist
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 516-9171   
 END:VCARD
@@ -668,7 +668,7 @@ VERSION:3.0
 N:Perez;Fernando Alberto;;;
 FN:Fernando Alberto Perez
 ORG:TUP-25-P3-C5
-TEL;TYPE=CELL:
+TEL;TYPE=CELL:(381) 643-2069        
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -682,7 +682,7 @@ VERSION:3.0
 N:Racedo;Francisco Nicolas;;;
 FN:Francisco Nicolas Racedo
 ORG:TUP-25-P3-C5
-TEL;TYPE=CELL:
+TEL;TYPE=CELL:(381) 301‑3850
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
