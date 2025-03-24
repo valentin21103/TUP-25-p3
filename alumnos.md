@@ -3,7 +3,7 @@
 ## Comisión C3 
 1.  61203   Acevedo Costello, Juan Ignacio                 (381) 388-7804 
 1.  61667   Acosta, Maira                                  (381) 562-8162 
-2.  62055   Ahumada, Aiquen                                (381) 419-9202 
+1.  62055   Ahumada, Aiquen                                (381) 419-9202 
 1.  61118   Barrios, Santiago Alexis                       (381) 526-8193 
 1.  61319   Carabajal, José Gabriel                        (381) 319-2680 
 1.  61214   Collazos Cortez, Maximo Alberto                (381) 350-5275 
@@ -12,7 +12,7 @@
 1.  61730   Diaz, Antonio                                  (381) 392-6461 
 1.  61271   Donelli, Gerardo Exequiel                      (381) 514-3223 
 1.  61221   Duclós, Marcelo Ezequiel                       (381) 551-4353 
-2.  61720   Fernandez, Luciano                             (381) 586-7891 
+2.  61720   Fernandez, Luciano *                           (381) 586-7891 
 1.  62093   Frias Silva, Juan Segundo                      (381) 415-8753 
 1.  61139   Gallo, Maria Matilde                           (381) 333-4836                          
 1.  61352   García Moya, José Ignacio                      (381) 638-9006 
@@ -74,7 +74,7 @@
 1.  61688   García Romano, Lucas                           (381) 385-7379   
 1.  61042   Gonzalez, Luis David                           (381) 680-3204   
 1.  61652   Heredia, Juan Pablo                            (381) 414-4834   
-2.  61437   Holmquist, Ignacio Tobias                      (381) 516-9171   
+2.  61437   Holmquist, Ignacio Tobias *                    (381) 516-9171   
 1.  61041   Iosa Molina, Nicolás                           (381) 624-2939   
 1.  61322   Juarez, Thiago                                 (381) 418-2169   
 1.  61218   Liendo, Lautaro                                (381) 582-5319   
@@ -84,7 +84,7 @@
 1.  61053   Matas Molina, Agustín                          (381) 689-6591   
 1.  61848   Mazza Leon, Fabrizio Lautaro                   (381) 598-7961   
 1.  61247   Medici Assaf, Abril                            (381) 352-5720   
-2.  61566   Medina Costilla, Abigail                       (381) 655-7818   
+2.  61566   Medina Costilla, Abigail *                    (381) 655-7818   
 1.  61048   Medina, Luciano                                (381) 576-7469   
 1.  61122   Molina Hernando, Nahuel                        (381) 619-4179   
 1.  61314   Morales, Ignacion Agustin                      (381) 545-9105

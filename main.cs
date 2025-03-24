@@ -26,9 +26,6 @@ class Alumno {
         return $"BEGIN:VCARD\nVERSION:3.0\nN:{apellido};{nombre};;;\nFN:{nombre} {apellido}\nORG:TUP-P3-{comision}\nTEL;TYPE=CELL:{telefono}\nEND:VCARD";
     }
 
-    public string toMD(){
-        return $"{orden:D2}. {legajo}  { $"{apellido}, {nombre}", -40} {telefono}";
-    }
 }
 
 class Clase {
@@ -80,10 +77,11 @@ class Clase {
             foreach(var comision in comisiones){
                 writer.WriteLine("");
                 var alumnosPorComision = alumnos.Where(a => a.comision == comision).OrderBy(a => a.apellido).ThenBy(a => a.nombre);
-
+                var orden = 0;
                 writer.WriteLine($"### Comisión {comision}");
                 foreach(var alumno in alumnosPorComision){
-                    writer.WriteLine(alumno.toMD());
+                    alumno.orden = ++orden;
+                    writer.WriteLine($"{alumno.orden:D2}. {alumno.legajo}  { $"{alumno.apellido}, {alumno.nombre}", -40} {alumno.telefono}");
                 }
             }
         }
@@ -92,7 +90,17 @@ class Clase {
     public void EscribirVCards(string destino){
         using (StreamWriter writer = new StreamWriter(destino)){
             foreach(var alumno in alumnos){
-                writer.WriteLine(alumno.toVCard());
+
+                var linea = $"""
+                BEGIN:VCARD
+                VERSION:3.0
+                N:{alumno.apellido};{alumno.nombre};;;
+                FN:{alumno.nombre} {alumno.apellido}
+                ORG:TUP-25-P3-{alumno.comision}
+                TEL;TYPE=CELL:{alumno.telefono}
+                END:VCARD
+                """;
+                writer.WriteLine(linea);
             }
         }
     }
