@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,7 +25,7 @@ public class Alumno {
     public static Alumno Yo => new (0, 0, "Di Battista", "Alejandro", "(381) 534-3458", "");
 }
 
-class Clase {
+class Clase : IEnumerable<Alumno> {
     public List<Alumno> alumnos = new List<Alumno>();
     const string LineaComision = @"##.*\s(C\d)";
     // Se actualiza para aceptar legajos de 5 o 6 dígitos y capturar el teléfono opcional
@@ -84,7 +85,7 @@ class Clase {
 
     public void Guardar(string destino){
         using (StreamWriter writer = new StreamWriter(destino)){
-            writer.WriteLine("# Listado de alumnos");
+            writer.WriteLine("# Listado de alumnos de TUP-2025-P3");
             foreach(var comision in comisiones){
                 writer.WriteLine("");
                 var alumnosPorComision = alumnos.Where(a => a.comision == comision).OrderBy(a => a.apellido).ThenBy(a => a.nombre);
@@ -116,6 +117,8 @@ class Clase {
         }
     }
     
+    public IEnumerator<Alumno> GetEnumerator() => alumnos.GetEnumerator();
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }
 
 Clase clase = Clase.Cargar("./alumnos.md");

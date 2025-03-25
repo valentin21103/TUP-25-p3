@@ -1,7 +1,4 @@
-# Listado de alumnos
-
-### Comisión 
-01. 0  Di Battista, Alejandro                   (381) 534-3458
+# Listado de alumnos de TUP-2025-P3
 
 ### Comisión C3
 01. 61203  Acevedo Costello, Juan Ignacio           (381) 388-7804 
