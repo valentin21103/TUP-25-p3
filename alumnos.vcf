@@ -4,6 +4,7 @@ N:Acevedo Costello;Juan Ignacio;;;
 FN:Juan Ignacio Acevedo Costello
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 388-7804 
+TEL;TYPE=Legajo:61203
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -11,6 +12,7 @@ N:Acosta;Maira;;;
 FN:Maira Acosta
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 562-8162 
+TEL;TYPE=Legajo:61667
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -18,6 +20,7 @@ N:Ahumada;Aiquen;;;
 FN:Aiquen Ahumada
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 419-9202 
+TEL;TYPE=Legajo:62055
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -25,6 +28,7 @@ N:Barrios;Santiago Alexis;;;
 FN:Santiago Alexis Barrios
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 526-8193 
+TEL;TYPE=Legajo:61118
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -32,6 +36,7 @@ N:Carabajal;José Gabriel;;;
 FN:José Gabriel Carabajal
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 319-2680 
+TEL;TYPE=Legajo:61319
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -39,6 +44,7 @@ N:Collazos Cortez;Maximo Alberto;;;
 FN:Maximo Alberto Collazos Cortez
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 350-5275 
+TEL;TYPE=Legajo:61214
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -46,6 +52,7 @@ N:Di Clemente;Maria Antonela;;;
 FN:Maria Antonela Di Clemente
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 398-3935               
+TEL;TYPE=Legajo:61141
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -53,6 +60,7 @@ N:Diaz Londero;Sergio Gonzalo;;;
 FN:Sergio Gonzalo Diaz Londero
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 604-6547 
+TEL;TYPE=Legajo:61626
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -60,6 +68,7 @@ N:Diaz;Antonio;;;
 FN:Antonio Diaz
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 392-6461 
+TEL;TYPE=Legajo:61730
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -67,6 +76,7 @@ N:Donelli;Gerardo Exequiel;;;
 FN:Gerardo Exequiel Donelli
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 514-3223 
+TEL;TYPE=Legajo:61271
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -74,6 +84,7 @@ N:Duclós;Marcelo Ezequiel;;;
 FN:Marcelo Ezequiel Duclós
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 551-4353 
+TEL;TYPE=Legajo:61221
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -81,6 +92,7 @@ N:Fernandez;Luciano *;;;
 FN:Luciano * Fernandez
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 586-7891 
+TEL;TYPE=Legajo:61720
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -88,6 +100,7 @@ N:Frias Silva;Juan Segundo;;;
 FN:Juan Segundo Frias Silva
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 415-8753 
+TEL;TYPE=Legajo:62093
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -95,6 +108,7 @@ N:Gallo;Maria Matilde;;;
 FN:Maria Matilde Gallo
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 333-4836                          
+TEL;TYPE=Legajo:61139
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -102,6 +116,7 @@ N:García Moya;José Ignacio;;;
 FN:José Ignacio García Moya
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 638-9006 
+TEL;TYPE=Legajo:61352
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -109,6 +124,7 @@ N:Gauna Serrano;Martin Javier;;;
 FN:Martin Javier Gauna Serrano
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 389-2631 
+TEL;TYPE=Legajo:61200
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -116,6 +132,7 @@ N:Godoy;Alan;;;
 FN:Alan Godoy
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 574-4877 
+TEL;TYPE=Legajo:61624
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -123,6 +140,7 @@ N:Gonzalez Patti;Valentin;;;
 FN:Valentin Gonzalez Patti
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 655-9195 
+TEL;TYPE=Legajo:61595
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -130,6 +148,7 @@ N:Helguera;Agustina Elizabeth;;;
 FN:Agustina Elizabeth Helguera
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 694-9619 
+TEL;TYPE=Legajo:61562
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -137,6 +156,7 @@ N:Herrera Palomino;Ivam Agustín;;;
 FN:Ivam Agustín Herrera Palomino
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 697-0643 
+TEL;TYPE=Legajo:62053
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -144,6 +164,7 @@ N:Herrera;Dalma Lujan;;;
 FN:Dalma Lujan Herrera
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 341‑4968                              
+TEL;TYPE=Legajo:61318
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -151,6 +172,7 @@ N:Jimenez Paz;Patricio Agustín;;;
 FN:Patricio Agustín Jimenez Paz
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 388-2674 
+TEL;TYPE=Legajo:61450
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -158,6 +180,7 @@ N:Juarez Fernandez;Lourdes Abril;;;
 FN:Lourdes Abril Juarez Fernandez
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 647-9914 
+TEL;TYPE=Legajo:61627
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -165,6 +188,7 @@ N:Lagoria Garcia;Tomás Gustavo;;;
 FN:Tomás Gustavo Lagoria Garcia
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 357-7724 
+TEL;TYPE=Legajo:61473
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -172,6 +196,7 @@ N:Leglise;Laureano;;;
 FN:Laureano Leglise
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(261) 468-9809 
+TEL;TYPE=Legajo:61956
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -179,6 +204,7 @@ N:Lobo Barrera;Mia de los Angeles;;;
 FN:Mia de los Angeles Lobo Barrera
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 677-0639 
+TEL;TYPE=Legajo:61679
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -186,6 +212,7 @@ N:Lobo Campero;Hernán Ignacio;;;
 FN:Hernán Ignacio Lobo Campero
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 590-6461 
+TEL;TYPE=Legajo:61794
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -193,6 +220,7 @@ N:Lopez Tisera;Gaston;;;
 FN:Gaston Lopez Tisera
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 523-5887 
+TEL;TYPE=Legajo:61818
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -200,6 +228,7 @@ N:Marti;Gonzalo;;;
 FN:Gonzalo Marti
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 418-6882 
+TEL;TYPE=Legajo:61579
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -207,6 +236,7 @@ N:Martínez Campero;Santiago;;;
 FN:Santiago Martínez Campero
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 646-6685 
+TEL;TYPE=Legajo:61445
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -214,6 +244,7 @@ N:Massey;Maximiliano;;;
 FN:Maximiliano Massey
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 359-9941 
+TEL;TYPE=Legajo:61676
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -221,6 +252,7 @@ N:Molina;Santiago Nicolas;;;
 FN:Santiago Nicolas Molina
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:
+TEL;TYPE=Legajo:61668
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -228,6 +260,7 @@ N:Moya;Mariano;;;
 FN:Mariano Moya
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 670-1164 
+TEL;TYPE=Legajo:61032
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -235,6 +268,7 @@ N:Orellana;José Augusto;;;
 FN:José Augusto Orellana
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(386) 534-2925 
+TEL;TYPE=Legajo:62263
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -242,6 +276,7 @@ N:Oriz Caballero;Juan José;;;
 FN:Juan José Oriz Caballero
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 631-7223 
+TEL;TYPE=Legajo:61113
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -249,6 +284,7 @@ N:Palavecino;Fabricio Gaston;;;
 FN:Fabricio Gaston Palavecino
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 666-6103 
+TEL;TYPE=Legajo:61059
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -256,6 +292,7 @@ N:Palma Collado;Nahuel;;;
 FN:Nahuel Palma Collado
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 674-7012 
+TEL;TYPE=Legajo:61248
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -263,6 +300,7 @@ N:Parrado Navarrete;Alex Daniel;;;
 FN:Alex Daniel Parrado Navarrete
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 409-5039 
+TEL;TYPE=Legajo:61572
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -270,6 +308,7 @@ N:Paz Berrondo;Lucas David;;;
 FN:Lucas David Paz Berrondo
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 341-4321 
+TEL;TYPE=Legajo:61312
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -277,6 +316,7 @@ N:Paz;Naim Federico;;;
 FN:Naim Federico Paz
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 353-0060 
+TEL;TYPE=Legajo:61581
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -284,6 +324,7 @@ N:Paz;Rodrigo Federico;;;
 FN:Rodrigo Federico Paz
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 637-6461
+TEL;TYPE=Legajo:61037
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -291,6 +332,7 @@ N:Ponce;Rodrigo Exequil;;;
 FN:Rodrigo Exequil Ponce
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 569-0318 
+TEL;TYPE=Legajo:61028
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -298,6 +340,7 @@ N:Romano;Alfredo Nicolás;;;
 FN:Alfredo Nicolás Romano
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 648-8513 
+TEL;TYPE=Legajo:61197
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -305,6 +348,7 @@ N:Salcedo;Mariana Aylen;;;
 FN:Mariana Aylen Salcedo
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:
+TEL;TYPE=Legajo:62172
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -312,6 +356,7 @@ N:Sosa;Oscar Ignacio;;;
 FN:Oscar Ignacio Sosa
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 528-9145 
+TEL;TYPE=Legajo:61136
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -319,6 +364,7 @@ N:Soto;Antonella;;;
 FN:Antonella Soto
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(387) 517-0010 
+TEL;TYPE=Legajo:61478
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -326,6 +372,7 @@ N:Suarez Vece;Leandro Andres;;;
 FN:Leandro Andres Suarez Vece
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 512-6476 
+TEL;TYPE=Legajo:61096
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -333,6 +380,7 @@ N:Tello;Abril María Agostina;;;
 FN:Abril María Agostina Tello
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 447-2483 
+TEL;TYPE=Legajo:61129
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -340,6 +388,7 @@ N:Trujillo;Facundo Nahuel;;;
 FN:Facundo Nahuel Trujillo
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 206-2084 
+TEL;TYPE=Legajo:61793
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -347,6 +396,7 @@ N:Verón;Matias Gabriel;;;
 FN:Matias Gabriel Verón
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 519-6654 
+TEL;TYPE=Legajo:62555
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -354,6 +404,7 @@ N:Zamora;Gonzalo Alejandro;;;
 FN:Gonzalo Alejandro Zamora
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 354-0535 
+TEL;TYPE=Legajo:61596
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -361,6 +412,7 @@ N:Zerda;Thomas;;;
 FN:Thomas Zerda
 ORG:TUP-25-P3-C3
 TEL;TYPE=CELL:(381) 333-0962 
+TEL;TYPE=Legajo:61862
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -368,6 +420,7 @@ N:Acuña;Alejo Gabriel;;;
 FN:Alejo Gabriel Acuña
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 636-2211   
+TEL;TYPE=Legajo:61491
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -375,6 +428,7 @@ N:Aguirre Rojas;Lourdes Valentina;;;
 FN:Lourdes Valentina Aguirre Rojas
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 500-1078   
+TEL;TYPE=Legajo:61252
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -382,6 +436,7 @@ N:Azubel;Tomas;;;
 FN:Tomas Azubel
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 680-5666   
+TEL;TYPE=Legajo:61290
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -389,6 +444,7 @@ N:Buzza;Juliana;;;
 FN:Juliana Buzza
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:
+TEL;TYPE=Legajo:61189
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -396,6 +452,7 @@ N:Campos;Julieta Antonella;;;
 FN:Julieta Antonella Campos
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 605‑0864
+TEL;TYPE=Legajo:62612
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -403,6 +460,7 @@ N:Caro;Tobias;;;
 FN:Tobias Caro
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(297) 500-3076   
+TEL;TYPE=Legajo:61345
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -410,6 +468,7 @@ N:Casavalle Castillo;Bruno;;;
 FN:Bruno Casavalle Castillo
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 353-4422
+TEL;TYPE=Legajo:61072
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -417,6 +476,7 @@ N:Coronel;Julieta Antonella;;;
 FN:Julieta Antonella Coronel
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 477-0368   
+TEL;TYPE=Legajo:61611
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -424,6 +484,7 @@ N:Costilla;Ignacio;;;
 FN:Ignacio Costilla
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 207-4525   
+TEL;TYPE=Legajo:61908
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -431,6 +492,7 @@ N:Delgado;Augusto Emanuel;;;
 FN:Augusto Emanuel Delgado
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(383) 860-2063   
+TEL;TYPE=Legajo:61673
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -438,6 +500,7 @@ N:Diaz Sánchez;Nelson Santiago;;;
 FN:Nelson Santiago Diaz Sánchez
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 579-4665   
+TEL;TYPE=Legajo:61050
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -445,6 +508,7 @@ N:Diaz;Agustin Emanuel;;;
 FN:Agustin Emanuel Diaz
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(296) 663-5548   
+TEL;TYPE=Legajo:61051
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -452,6 +516,7 @@ N:Dziewulski;Karen;;;
 FN:Karen Dziewulski
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 683-8080   
+TEL;TYPE=Legajo:61680
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -459,6 +524,7 @@ N:Figueroa;Nahuel Ramon;;;
 FN:Nahuel Ramon Figueroa
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:
+TEL;TYPE=Legajo:61641
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -466,6 +532,7 @@ N:Fioretti;Elian Enrique;;;
 FN:Elian Enrique Fioretti
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 685-6046   
+TEL;TYPE=Legajo:61060
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -473,6 +540,7 @@ N:Garcia Mc Guiness;Gonzalo;;;
 FN:Gonzalo Garcia Mc Guiness
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 606-4655   
+TEL;TYPE=Legajo:61540
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -480,6 +548,7 @@ N:García Romano;Lucas;;;
 FN:Lucas García Romano
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 385-7379   
+TEL;TYPE=Legajo:61688
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -487,6 +556,7 @@ N:Gonzalez;Luis David;;;
 FN:Luis David Gonzalez
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 680-3204   
+TEL;TYPE=Legajo:61042
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -494,6 +564,7 @@ N:Heredia;Juan Pablo;;;
 FN:Juan Pablo Heredia
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 414-4834   
+TEL;TYPE=Legajo:61652
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -501,6 +572,7 @@ N:Holmquist;Ignacio Tobias;;;
 FN:Ignacio Tobias Holmquist
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 516-9171   
+TEL;TYPE=Legajo:61437
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -508,6 +580,7 @@ N:Iosa Molina;Nicolás;;;
 FN:Nicolás Iosa Molina
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 624-2939   
+TEL;TYPE=Legajo:61041
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -515,6 +588,7 @@ N:Juarez;Thiago;;;
 FN:Thiago Juarez
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 418-2169   
+TEL;TYPE=Legajo:61322
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -522,6 +596,7 @@ N:Liendo;Lautaro;;;
 FN:Lautaro Liendo
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 582-5319   
+TEL;TYPE=Legajo:61218
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -529,6 +604,7 @@ N:Luna;Andres Maximiliano;;;
 FN:Andres Maximiliano Luna
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 412-2061
+TEL;TYPE=Legajo:61226
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -536,6 +612,7 @@ N:Mainardi;Facundo;;;
 FN:Facundo Mainardi
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 584-1265   
+TEL;TYPE=Legajo:61535
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -543,6 +620,7 @@ N:Martinez;Augusto;;;
 FN:Augusto Martinez
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 580-1228   
+TEL;TYPE=Legajo:61905
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -550,6 +628,7 @@ N:Matas Molina;Agustín;;;
 FN:Agustín Matas Molina
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 689-6591   
+TEL;TYPE=Legajo:61053
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -557,6 +636,7 @@ N:Mazza Leon;Fabrizio Lautaro;;;
 FN:Fabrizio Lautaro Mazza Leon
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 598-7961   
+TEL;TYPE=Legajo:61848
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -564,6 +644,7 @@ N:Medici Assaf;Abril;;;
 FN:Abril Medici Assaf
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 352-5720   
+TEL;TYPE=Legajo:61247
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -571,6 +652,7 @@ N:Medina Costilla;Abigail *;;;
 FN:Abigail * Medina Costilla
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 655-7818   
+TEL;TYPE=Legajo:61566
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -578,6 +660,7 @@ N:Medina;Luciano;;;
 FN:Luciano Medina
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 576-7469   
+TEL;TYPE=Legajo:61048
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -585,6 +668,7 @@ N:Molina Hernando;Nahuel;;;
 FN:Nahuel Molina Hernando
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 619-4179   
+TEL;TYPE=Legajo:61122
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -592,6 +676,7 @@ N:Morales;Ignacion Agustin;;;
 FN:Ignacion Agustin Morales
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 545-9105
+TEL;TYPE=Legajo:61314
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -599,6 +684,7 @@ N:Moussa Cancino;Mario Matias;;;
 FN:Mario Matias Moussa Cancino
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 546-0957   
+TEL;TYPE=Legajo:61328
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -606,6 +692,7 @@ N:Muse;Alejandro;;;
 FN:Alejandro Muse
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 650-4400
+TEL;TYPE=Legajo:62136
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -613,6 +700,7 @@ N:Mussa;Agustín;;;
 FN:Agustín Mussa
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 394-9538   
+TEL;TYPE=Legajo:61588
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -620,6 +708,7 @@ N:Nuñez;Arturo Valentin;;;
 FN:Arturo Valentin Nuñez
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 367-1656   
+TEL;TYPE=Legajo:61912
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -627,6 +716,7 @@ N:Orqueda;Francisco Nicolás;;;
 FN:Francisco Nicolás Orqueda
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 633-8522   
+TEL;TYPE=Legajo:61985
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -634,6 +724,7 @@ N:Ortega;Fernando Nicolas;;;
 FN:Fernando Nicolas Ortega
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 646-2643   
+TEL;TYPE=Legajo:61644
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -641,6 +732,7 @@ N:Parache;Ariana Agustina;;;
 FN:Ariana Agustina Parache
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 640-2374   
+TEL;TYPE=Legajo:61496
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -648,6 +740,7 @@ N:Paz;Mikael;;;
 FN:Mikael Paz
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 542-2918   
+TEL;TYPE=Legajo:61732
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -655,6 +748,7 @@ N:Pedraza;Estaban Daniel;;;
 FN:Estaban Daniel Pedraza
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 449-6148
+TEL;TYPE=Legajo:61422
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -662,6 +756,7 @@ N:Perez;Facundo Agustin;;;
 FN:Facundo Agustin Perez
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 661-8312   
+TEL;TYPE=Legajo:61858
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -669,6 +764,7 @@ N:Perez;Fernando Alberto;;;
 FN:Fernando Alberto Perez
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 643-2069        
+TEL;TYPE=Legajo:61140
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -676,6 +772,7 @@ N:Quinteros;Gabriel;;;
 FN:Gabriel Quinteros
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 664-1854   
+TEL;TYPE=Legajo:61671
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -683,6 +780,7 @@ N:Racedo;Francisco Nicolas;;;
 FN:Francisco Nicolas Racedo
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 301‑3850
+TEL;TYPE=Legajo:61064
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -690,6 +788,7 @@ N:Reynoso;Braian Nicolás;;;
 FN:Braian Nicolás Reynoso
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 654-0412   
+TEL;TYPE=Legajo:61052
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -697,6 +796,7 @@ N:Robledo Garcia;Juan Gerardo;;;
 FN:Juan Gerardo Robledo Garcia
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:
+TEL;TYPE=Legajo:62104
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -704,6 +804,7 @@ N:Robledo;Rocio Micaela;;;
 FN:Rocio Micaela Robledo
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:
+TEL;TYPE=Legajo:61962
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -711,6 +812,7 @@ N:Robles;Leandro Gonzalo;;;
 FN:Leandro Gonzalo Robles
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 611-5577   
+TEL;TYPE=Legajo:61914
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -718,6 +820,7 @@ N:Rocha;Luca;;;
 FN:Luca Rocha
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 386-0020   
+TEL;TYPE=Legajo:61125
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -725,6 +828,7 @@ N:Sanchez;Santiago Sebastian;;;
 FN:Santiago Sebastian Sanchez
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:
+TEL;TYPE=Legajo:62564
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -732,6 +836,7 @@ N:Satle Barreñera;Johana;;;
 FN:Johana Satle Barreñera
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 340-2187
+TEL;TYPE=Legajo:61128
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -739,6 +844,7 @@ N:Tognalli;Mateo Fabrizio;;;
 FN:Mateo Fabrizio Tognalli
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 506-6621
+TEL;TYPE=Legajo:61340
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -746,6 +852,7 @@ N:Valdiglesias Martel;Federico;;;
 FN:Federico Valdiglesias Martel
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 642-7386   
+TEL;TYPE=Legajo:61227
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -753,6 +860,7 @@ N:Velardez;Leandro Ivan;;;
 FN:Leandro Ivan Velardez
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 397-5576
+TEL;TYPE=Legajo:61061
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
@@ -760,4 +868,13 @@ N:Villada;Guillermo Nicolás;;;
 FN:Guillermo Nicolás Villada
 ORG:TUP-25-P3-C5
 TEL;TYPE=CELL:(381) 522-4910
+TEL;TYPE=Legajo:61988
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+N:Di Battista;Alejandro;;;
+FN:Alejandro Di Battista
+ORG:TUP-25-P3-
+TEL;TYPE=CELL:(381) 534-3458
+TEL;TYPE=Legajo:0
 END:VCARD

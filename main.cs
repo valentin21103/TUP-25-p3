@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-class Alumno {
+public class Alumno {
     public int legajo;
     public string nombre;
     public string apellido;
@@ -12,7 +12,7 @@ class Alumno {
     public string telefono;
     public int orden;
 
-    public Alumno(int orden, int legajo, string apellido, string nombre, string telefono, string comision){
+    public Alumno(int orden, int legajo, string apellido, string nombre, string telefono, string comision) {
         this.orden = orden;
         this.legajo = legajo;
         this.apellido = apellido.Trim();
@@ -20,6 +20,8 @@ class Alumno {
         this.telefono = telefono;
         this.comision = comision;
     }
+
+    public static Alumno Yo => new (0, 0, "Di Battista", "Alejandro", "(381) 534-3458", "");
 }
 
 class Clase {
@@ -28,7 +30,12 @@ class Clase {
     // Se actualiza para aceptar legajos de 5 o 6 dígitos y capturar el teléfono opcional
     const string LineaAlumno = @"(\d+)\.\s*(\d{5,6})\s*([^,]+)\s*,\s*([^(]+)\s*(?:(\(.*))?";
     
+    public Clase(IEnumerable<Alumno> alumnos = null){
+        this.alumnos = alumnos?.ToList() ?? new List<Alumno>();
+    }
+
     public List<string> comisiones => alumnos.Select(a => a.comision).Distinct().OrderBy(c => c).ToList();
+
     public static Clase Cargar(string origen){
         string comision = "C0";
         Clase clase = new Clase();
@@ -38,14 +45,11 @@ class Clase {
             var matchComision = Regex.Match(linea, LineaComision);
             if (matchComision.Success) {
                 comision = matchComision.Groups[1].Value;
-                Console.WriteLine($"Comisión: {comision}");
                 continue;
             } 
 
             var matchAlumno = Regex.Match(linea, LineaAlumno);
             if (matchAlumno.Success) {
-                Console.WriteLine($"Legajo: {matchAlumno.Groups[2].Value}");
-                Console.WriteLine($"Nombre: {matchAlumno.Groups[3].Value} {matchAlumno.Groups[4].Value}");
                 Alumno alumno = new Alumno(
                     int.Parse(matchAlumno.Groups[1].Value), 
                     int.Parse(matchAlumno.Groups[2].Value),
@@ -63,6 +67,21 @@ class Clase {
         return clase;
     }
 
+    public Clase Agregar(Alumno alumno){
+        if (alumno != null)  alumnos.Add(alumno);
+        return this;
+    }   
+
+    public Clase Agregar(IEnumerable<Alumno> alumnos){
+        foreach(var alumno in alumnos ?? [])
+            Agregar(alumno);
+        return this;
+    }
+
+    public Clase enComision(string comision) => new (alumnos.Where(a => a.comision == comision));
+    public Clase sinTelefono() => new (alumnos.Where(a => a.telefono == ""));
+    public Clase conTelefono() => new (alumnos.Where(a => a.telefono != ""));
+
     public void Guardar(string destino){
         using (StreamWriter writer = new StreamWriter(destino)){
             writer.WriteLine("# Listado de alumnos");
@@ -79,10 +98,9 @@ class Clase {
         }
     }
 
-    public void EscribirVCards(string destino){
+    public void ExportarVCards(string destino){
         using (StreamWriter writer = new StreamWriter(destino)){
             foreach(var alumno in alumnos){
-
                 var linea = $"""
                 BEGIN:VCARD
                 VERSION:3.0
@@ -90,6 +108,7 @@ class Clase {
                 FN:{alumno.nombre} {alumno.apellido}
                 ORG:TUP-25-P3-{alumno.comision}
                 TEL;TYPE=CELL:{alumno.telefono}
+                TEL;TYPE=Legajo:{alumno.legajo}
                 END:VCARD
                 """;
                 writer.WriteLine(linea);
@@ -100,6 +119,11 @@ class Clase {
 }
 
 Clase clase = Clase.Cargar("./alumnos.md");
-Console.WriteLine($"Se leyeron {clase.alumnos.Count} alumnos.");
-clase.Guardar("./resultado.md");
-clase.EscribirVCards("./alumnos.vcf");
+Console.WriteLine($"Generando lista de alumnos (Hay {clase.alumnos.Count} alumnos.)");
+clase.Guardar("./resultados.md");
+
+clase.Agregar(Alumno.Yo);
+clase.conTelefono().enComision("C3").ExportarVCards("./alumnos-c3.vcf");
+clase.conTelefono().enComision("C5").ExportarVCards("./alumnos-c5.vcf");
+clase.ExportarVCards("./alumnos.vcf");
+
