@@ -22,6 +22,9 @@ public class Alumno {
         this.comision = comision;
     }
 
+    public bool TieneTelefono => telefono != "";
+    public string NombreCompleto => $"{apellido}, {nombre}".Replace("*", "").Trim();
+
     public static Alumno Yo => new (0, 0, "Di Battista", "Alejandro", "(381) 534-3458", "");
 }
 
@@ -35,7 +38,8 @@ class Clase : IEnumerable<Alumno> {
         this.alumnos = alumnos?.ToList() ?? new List<Alumno>();
     }
 
-    public List<string> comisiones => alumnos.Select(a => a.comision).Distinct().OrderBy(c => c).ToList();
+    public List<string> Comisiones => alumnos.Select(a => a.comision).Distinct().OrderBy(c => c).ToList();
+    public IEnumerable<Alumno> Alumnos => alumnos.OrderBy(a => a.apellido).ThenBy(a => a.nombre);
 
     public static Clase Cargar(string origen){
         string comision = "C0";
@@ -79,27 +83,27 @@ class Clase : IEnumerable<Alumno> {
         return this;
     }
 
-    public Clase enComision(string comision) => new (alumnos.Where(a => a.comision == comision));
-    public Clase sinTelefono() => new (alumnos.Where(a => a.telefono == ""));
-    public Clase conTelefono() => new (alumnos.Where(a => a.telefono != ""));
+    public Clase EnComision(string comision) => new (alumnos.Where(a => a.comision == comision));
+    public Clase ConTelefono(bool incluirTelefono=true) => new (alumnos.Where(a => incluirTelefono == a.TieneTelefono ));
 
     public void Guardar(string destino){
         using (StreamWriter writer = new StreamWriter(destino)){
             writer.WriteLine("# Listado de alumnos de TUP-2025-P3");
-            foreach(var comision in comisiones){
+            foreach(var comision in Comisiones){
                 writer.WriteLine("");
                 var alumnosPorComision = alumnos.Where(a => a.comision == comision).OrderBy(a => a.apellido).ThenBy(a => a.nombre);
                 var orden = 0;
                 writer.WriteLine($"### Comisión {comision}");
                 foreach(var alumno in alumnosPorComision){
                     alumno.orden = ++orden;
-                    writer.WriteLine($"{alumno.orden:D2}. {alumno.legajo}  { $"{alumno.apellido}, {alumno.nombre}", -40} {alumno.telefono}");
+                    writer.WriteLine($"{alumno.orden:D2}. {alumno.legajo}  {alumno.NombreCompleto, -40}  {alumno.telefono}");
                 }
             }
         }
     }
 
     public void ExportarVCards(string destino){
+        Console.WriteLine($"- Exportando vCards a {destino}");
         using (StreamWriter writer = new StreamWriter(destino)){
             foreach(var alumno in alumnos){
                 var linea = $"""
@@ -117,16 +121,80 @@ class Clase : IEnumerable<Alumno> {
         }
     }
     
+    public void CrearCarpetas(){
+        Directory.CreateDirectory("TP");
+        Console.WriteLine($"▶︎ Creando carpetas en {Path.GetFullPath("TP")}");
+        foreach (var alumno in Alumnos.OrderBy(a => a.legajo))
+        {
+            string carpetaDeseada = $"{alumno.legajo} - {alumno.NombreCompleto}";
+            string rutaCompleta = Path.Combine("TP", carpetaDeseada);
+
+            // Si ya existe la carpeta con el nombre correcto, continuamos
+            if (Directory.Exists(rutaCompleta))
+                continue;
+
+            // Buscar carpetas que empiecen con el legajo actual
+            string patron = $"{alumno.legajo} -*";
+            var carpetasExistentes = Directory.GetDirectories("TP", patron);
+
+            if (carpetasExistentes.Length > 0)
+            {
+                // Usamos la primera carpeta encontrada y, si el nombre es distinto, la renombramos
+                string carpetaEncontrada = carpetasExistentes[0];
+                if (Path.GetFileName(carpetaEncontrada) != carpetaDeseada)
+                {
+                    Console.WriteLine($"  - Renombrando carpeta {Path.GetFileName(carpetaEncontrada)} a {carpetaDeseada}");
+                    Directory.Move(carpetaEncontrada, rutaCompleta);
+                }
+            }
+            else
+            {
+                Console.WriteLine($"  - Creando carpeta {carpetaDeseada}");
+                // No existe ninguna carpeta con ese legajo, la creamos
+                Directory.CreateDirectory(rutaCompleta);
+            }
+        }
+        Console.WriteLine($"● Carpetas creadas");
+    }
+
+    public void CopiarTrabajoPractico(string origen){
+        Console.WriteLine($"▶︎ Copiando trabajo práctico de {origen}");
+        var carpetaOrigen = Path.Combine("Enunciados", origen);
+        foreach (var alumno in Alumnos.OrderBy(a => a.legajo))
+        {
+            var carpetaDestino = Path.Combine("TP", $"{alumno.legajo} - {alumno.NombreCompleto}", origen);
+            Directory.CreateDirectory(carpetaDestino);
+
+            Console.WriteLine($" - Copiando a {carpetaDestino}");
+            foreach (var archivo in Directory.GetFiles(carpetaOrigen))
+            {
+                var nombreArchivo = Path.GetFileName(archivo);
+                var destinoArchivo = Path.Combine(carpetaDestino, nombreArchivo);
+                if (!File.Exists(destinoArchivo))
+                {
+                    File.Copy(archivo, destinoArchivo);
+                }
+            }
+        }
+        Console.WriteLine($"● Copia de trabajo práctico completa");
+    }
+    
+    public void ExportarDatos(){
+        Console.WriteLine($"▶︎ Generando listado de alumnos (Hay {alumnos.Count()} alumnos.)");
+        Guardar("./resultados.md");
+
+        ConTelefono(true).EnComision("C3").ExportarVCards("./alumnos-c3.vcf");
+        ConTelefono(true).EnComision("C5").ExportarVCards("./alumnos-c5.vcf");
+        ExportarVCards("./alumnos.vcf");
+        Console.WriteLine($"● Exportacion completa");
+    }
+
     public IEnumerator<Alumno> GetEnumerator() => alumnos.GetEnumerator();
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }
 
 Clase clase = Clase.Cargar("./alumnos.md");
-Console.WriteLine($"Generando lista de alumnos (Hay {clase.alumnos.Count} alumnos.)");
-clase.Guardar("./resultados.md");
+clase.CrearCarpetas();
+clase.ExportarDatos();
 
-clase.Agregar(Alumno.Yo);
-clase.conTelefono().enComision("C3").ExportarVCards("./alumnos-c3.vcf");
-clase.conTelefono().enComision("C5").ExportarVCards("./alumnos-c5.vcf");
-clase.ExportarVCards("./alumnos.vcf");
-
+clase.CopiarTrabajoPractico("tp1")

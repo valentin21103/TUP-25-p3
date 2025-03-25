@@ -3,29 +3,29 @@
 ## Comisión C3 
 1.  61203   Acevedo Costello, Juan Ignacio                 (381) 388-7804 
 1.  61667   Acosta, Maira                                  (381) 562-8162 
-1.  62055   Ahumada, Aiquen                                (381) 419-9202 
+1.  62055   Ahumada, Aiquén                                (381) 419-9202 
 1.  61118   Barrios, Santiago Alexis                       (381) 526-8193 
 1.  61319   Carabajal, José Gabriel                        (381) 319-2680 
-1.  61214   Collazos Cortez, Maximo Alberto                (381) 350-5275 
-1.  61141   Di Clemente, Maria Antonela                    (381) 398-3935               
+1.  61214   Collazos Cortez, Máximo Alberto                (381) 350-5275 
+1.  61141   Di Clemente, María Antonela                    (381) 398-3935               
 1.  61626   Diaz Londero, Sergio Gonzalo                   (381) 604-6547 
 1.  61730   Diaz, Antonio                                  (381) 392-6461 
 1.  61271   Donelli, Gerardo Exequiel                      (381) 514-3223 
 1.  61221   Duclós, Marcelo Ezequiel                       (381) 551-4353 
-2.  61720   Fernandez, Luciano *                           (381) 586-7891 
-1.  62093   Frias Silva, Juan Segundo                      (381) 415-8753 
-1.  61139   Gallo, Maria Matilde                           (381) 333-4836                          
+2.  61720   Fernández, Luciano *                           (381) 586-7891 
+1.  62093   Frías Silva, Juan Segundo                      (381) 415-8753 
+1.  61139   Gallo, María Matilde                           (381) 333-4836                          
 1.  61352   García Moya, José Ignacio                      (381) 638-9006 
-1.  61200   Gauna Serrano, Martin Javier                   (381) 389-2631 
+1.  61200   Gauna Serrano, Martín Javier                   (381) 389-2631 
 1.  61624   Godoy, Alan                                    (381) 574-4877 
-1.  61595   Gonzalez Patti, Valentin                       (381) 655-9195 
+1.  61595   González Patti, Valentín                       (381) 655-9195 
 1.  61562   Helguera, Agustina Elizabeth                   (381) 694-9619 
 1.  62053   Herrera Palomino, Ivam Agustín                 (381) 697-0643 
-1.  61318   Herrera, Dalma Lujan                           (381) 341‑4968                              
-1.  61450   Jimenez Paz, Patricio Agustín                  (381) 388-2674 
-1.  61627   Juarez Fernandez, Lourdes Abril                (381) 647-9914 
-1.  61473   Lagoria Garcia, Tomás Gustavo                  (381) 357-7724 
-1.  61956   Leglise, Laureano                              (261) 468-9809 
+1.  61318   Herrera, Dalma Luján                           (381) 341‑4968                              
+1.  61450   Jiménez Paz, Patricio Agustín                  (381) 388-2674 
+1.  61627   Juárez Fernández, Lourdes Abril                (381) 647-9914 
+1.  61473   Lagoria García, Tomás Gustavo                  (381) 357-7724 
+1.  61956   Leglisé, Laureano                              (261) 468-9809 
 1.  61679   Lobo Barrera, Mia de los Angeles               (381) 677-0639 
 1.  61794   Lobo Campero, Hernán Ignacio                   (381) 590-6461 
 1.  61818   Lopez Tisera, Gaston                           (381) 523-5887 
@@ -42,7 +42,7 @@
 1.  61312   Paz Berrondo, Lucas David                      (381) 341-4321 
 1.  61581   Paz, Naim Federico                             (381) 353-0060 
 1.  61037   Paz, Rodrigo Federico                          (381) 637-6461
-1.  61028   Ponce, Rodrigo Exequil                         (381) 569-0318 
+1.  61028   Ponce, Rodrigo Exequiel                        (381) 569-0318 
 1.  61197   Romano, Alfredo Nicolás                        (381) 648-8513 
 0.  62172   Salcedo, Mariana Aylen                                       
 1.  61136   Sosa, Oscar Ignacio                            (381) 528-9145 
