@@ -1,5 +1,5 @@
-using System;       // Para consola       (Console)
-using System.IO;    // Para leer archivos (File)
+using System;       // Para usar la consola  (Console)
+using System.IO;    // Para leer archivos    (File)
 
 // Ayuda: 
 //   Console.Clear() : Borra la pantalla
