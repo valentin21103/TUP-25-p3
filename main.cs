@@ -157,17 +157,21 @@ class Clase : IEnumerable<Alumno> {
         Console.WriteLine($"● Carpetas creadas");
     }
 
-    public void CopiarTrabajoPractico(string origen){
+    public void CopiarTrabajoPractico(string origen, bool forzar=false){
         Console.WriteLine($"▶︎ Copiando trabajo práctico de {origen}");
         var carpetaOrigen = Path.Combine("Enunciados", origen);
         foreach (var alumno in Alumnos.OrderBy(a => a.legajo))
         {
             var carpetaDestino = Path.Combine("TP", $"{alumno.legajo} - {alumno.NombreCompleto}", origen);
+            if(forzar && Directory.Exists(carpetaDestino)){
+                Directory.Delete(carpetaDestino, true);
+            }
             Directory.CreateDirectory(carpetaDestino);
 
             Console.WriteLine($" - Copiando a {carpetaDestino}");
             foreach (var archivo in Directory.GetFiles(carpetaOrigen))
             {
+                if(archivo == "enunciado.md") continue;
                 var nombreArchivo = Path.GetFileName(archivo);
                 var destinoArchivo = Path.Combine(carpetaDestino, nombreArchivo);
                 if (!File.Exists(destinoArchivo))
@@ -194,7 +198,6 @@ class Clase : IEnumerable<Alumno> {
 }
 
 Clase clase = Clase.Cargar("./alumnos.md");
-clase.CrearCarpetas();
 clase.ExportarDatos();
-
-clase.CopiarTrabajoPractico("tp1")
+clase.CrearCarpetas();
+clase.CopiarTrabajoPractico("tp1", true);
