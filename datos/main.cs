@@ -122,12 +122,14 @@ class Clase : IEnumerable<Alumno> {
     }
     
     public void CrearCarpetas(){
-        Directory.CreateDirectory("TP");
-        Console.WriteLine($"▶︎ Creando carpetas en {Path.GetFullPath("TP")}");
+        const string Base = "../TP";
+        const string Enunciados = "../Enunciados";
+        Directory.CreateDirectory(Base);
+        Console.WriteLine($"▶︎ Creando carpetas en {Path.GetFullPath(Base)}");
         foreach (var alumno in Alumnos.OrderBy(a => a.legajo))
         {
             string carpetaDeseada = $"{alumno.legajo} - {alumno.NombreCompleto}";
-            string rutaCompleta = Path.Combine("TP", carpetaDeseada);
+            string rutaCompleta = Path.Combine(Base, carpetaDeseada);
 
             // Si ya existe la carpeta con el nombre correcto, continuamos
             if (Directory.Exists(rutaCompleta))
@@ -135,7 +137,7 @@ class Clase : IEnumerable<Alumno> {
 
             // Buscar carpetas que empiecen con el legajo actual
             string patron = $"{alumno.legajo} -*";
-            var carpetasExistentes = Directory.GetDirectories("TP", patron);
+            var carpetasExistentes = Directory.GetDirectories(Base, patron);
 
             if (carpetasExistentes.Length > 0)
             {
@@ -158,11 +160,13 @@ class Clase : IEnumerable<Alumno> {
     }
 
     public void CopiarTrabajoPractico(string origen, bool forzar=false){
+        const string Base = "../TP";
+        const string Enunciados = "../Enunciados";
         Console.WriteLine($"▶︎ Copiando trabajo práctico de {origen}");
-        var carpetaOrigen = Path.Combine("Enunciados", origen);
+        var carpetaOrigen = Path.Combine(Enunciados, origen);
         foreach (var alumno in Alumnos.OrderBy(a => a.legajo))
         {
-            var carpetaDestino = Path.Combine("TP", $"{alumno.legajo} - {alumno.NombreCompleto}", origen);
+            var carpetaDestino = Path.Combine(Base, $"{alumno.legajo} - {alumno.NombreCompleto}", origen);
             if(forzar && Directory.Exists(carpetaDestino)){
                 Directory.Delete(carpetaDestino, true);
             }
