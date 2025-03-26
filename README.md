@@ -1,10 +1,10 @@
 # TUP - Programación 3
 
-## Enunciado Ejercicio Practico 1
+## Enunciado Ejercicio Práctico 1
 
 > Debe ser entregado antes de las 23:59 del Sabado siguente 
 
-Las instrucciones de como se hace se encuentra en `como-presentar-practicos.md`
+Las instrucciones de como se hace se encuentra en `como-presentar-practicos.md`[como-presentar-practicos.md]
 
 ----
 
@@ -207,3 +207,11 @@ Seleccione una opción: 6
 
 Saliendo de la aplicación...
 ```
+
+## Ejecución sin proyecto
+
+Si deseas ejecutar el archivo sin un proyecto, puedes utilizar dotnet-script:
+1. Instala dotnet-script globalmente:
+> dotnet tool install -g dotnet-script
+2. Ejecuta el archivo con:
+> dotnet script ./clases/04-array.cs
