@@ -15,3 +15,9 @@ using System.IO;    // Para leer archivos    (File)
 Console.WriteLine("Hola, soy el ejercicio 1 del TP1 de la materia Programación 3");
 Console.Write("Presionar una tecla para continuar...");
 Console.ReadKey();
+
+struct datos{
+    string nombre;
+    string apellido;
+    int dni;
+}
