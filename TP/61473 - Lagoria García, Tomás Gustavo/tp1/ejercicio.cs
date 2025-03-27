@@ -13,12 +13,12 @@ using System.IO;    // Para leer archivos    (File)
 
 // Escribir la solucion al TP1 en este archivo. (Borre el ejemplo de abajo)
 struct Contacto{
-    public string ID;
+    public int ID;
     public string Nombre;
     public string Telefono;
     public string Email;
 
-    public Contacto(string id, string nombre, string telefono, string email){
+    public Contacto(int id, string nombre, string telefono, string email){
         ID = id;
         Nombre = nombre;
         Telefono = telefono;
@@ -28,26 +28,35 @@ struct Contacto{
 struct Agenda{
     static public int CantidadTotal=10;
     public Contacto[] Contactos;
+
     public Agenda(){
         Contactos = new Contacto[CantidadTotal];
-        var CantidadContactos = 0;
+        int CantidadContactos = 0;
     }
-    public void AgregarContacto(Contacto contac){
+    public void AgregarContacto(){
         if(CantidadContactos < CantidadTotal){
-            Contactos[CantidadContactos] = contac;
+            Console.WriteLine("=== Agregar Contacto ===");
+            Console.WriteLine("Ingrese el nombre del contacto: ");
+            string nombre = Console.ReadLine();
+            Console.WriteLine("Ingrese el telefono del contacto: ");
+            string telefono = Console.ReadLine();
+            Console.WriteLine("Ingrese el email del contacto: ");
+            string email = Console.ReadLine();
+            int id=CantidadContactos+1;
+            Contactos[CantidadContactos] = new Contacto(id, nombre, telefono, email);
             CantidadContactos++;
-            if(CantidadContactos == CantidadTotal-1){
+        }
+         else if(CantidadContactos == CantidadTotal-1){
                 Console.WriteLine("La agenda le queda un lugar disponible de memoria");
             }
-        }
           Console.WriteLine("La agenda está llena");
     }
     public void MostrarContactos(){
         for(int i = 0; i < CantidadContactos; i++){
-            Console.WriteLine("ID: " + Contactos[i].ID);
-            Console.WriteLine("Nombre: " + Contactos[i].Nombre);
-            Console.WriteLine("Telefono: " + Contactos[i].Telefono);
-            Console.WriteLine("Email: " + Contactos[i].Email);
+            Console.WriteLine($"ID:{Contactos[i].ID}");
+            Console.WriteLine($"Nombre: {Contactos[i].Nombre}" );
+            Console.WriteLine($"Telefono: { Contactos[i].Telefono}");
+            Console.WriteLine($"Email: { Contactos[i].Email} ");
             Console.WriteLine();
         }
     }
