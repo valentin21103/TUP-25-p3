@@ -263,76 +263,111 @@ void demoPila(){
     }
 }
 
-// Ejemplos de operaciones frecuentes con arrays
-void Operaciones()
+void demoFuncionesDeArrays()
 {
-    int Maximo(int[] numeros) // No se copia el array, solo la referencia
-    {
-        int maximo = 0;
-        for(int i = 0; i < numeros.Length; i++)
-        {
-            if(numeros[i] > maximo)
-                maximo = numeros[i];
-        }
-        return maximo;
-    }
+    Clear();
+    int[] numeros = { 5, 2, 8, 1, 9 };
+    WriteLine($"- Array original: {string.Join(", ", numeros)}");
 
-    int Minimo(int[] numeros)
-    {
-        int minimo = numeros[0];
-        for(int i = 1; i < numeros.Length; i++)
-        {
-            if(numeros[i] < minimo)
-                minimo = numeros[i];
-        }
-        return minimo;
-    }
+    // Ordenar el array de forma ascendente
+    Array.Sort(numeros);
+    WriteLine($"- Después de Sort (ascendente): {string.Join(", ", numeros)}");
 
-    int Sumar(int[] numeros)
-    {
-        int suma = 0;
-        for(int i = 0; i < numeros.Length; i++)
-        {
-            suma += numeros[i];
-        }
-        return suma;
-    }
+    // Invertir el array
+    Array.Reverse(numeros);
+    WriteLine($"- Después de Reverse: {string.Join(", ", numeros)}");
 
-    double Promedio(int[] numeros) // Retorna un valor de tipo double
-    {
-        double suma = Sumar(numeros);
-        return suma / numeros.Length;
-    }
+    // Buscar el índice de un elemento
+    int indice = Array.IndexOf(numeros, 2);
+    WriteLine($"- Índice del número 2: {indice}");
 
-    void Duplicar(int[] numeros) // Modifica el array original
-    {
-        for(int i = 0; i < numeros.Length; i++)
-        {
+    // Encontrar el primer número par
+    int primerPar = Array.Find(numeros, n => n % 2 == 0); // (expresión lambda)
+    WriteLine($"- Primer número par: {primerPar}");
+
+    // Obtener todos los números impares
+    int[] impares = Array.FindAll(numeros, n => n % 2 != 0);
+    WriteLine($"- Números impares: {string.Join(", ", impares)}");
+
+    // Verificar si existe algún número mayor a 10
+    bool existeMayor10 = Array.Exists(numeros, n => n > 10);
+    WriteLine($"- Existe un número mayor a 10: {existeMayor10}");
+
+    // Limpiar los dos primeros elementos (ponerlos a 0)
+    Array.Clear(numeros, 0, 2);
+    WriteLine($"- Después de Clear en dos primeros elementos: {string.Join(", ", numeros)}");
+}
+
+void demoIndicesYRangos()
+{
+    Clear();
+
+    int[] numeros = { 10, 20, 30, 40, 50 };
+    WriteLine($"- Elemento al final con índice inverso (^1): {numeros[^1]}"); // 50
+    WriteLine($"- Elemento antes del último con índice inverso (^2): {numeros[^2]}"); // 40
+
+    // Extraer subarrays usando rangos: seleccionar elementos desde el índice 1 hasta el 3
+    int[] subarray = numeros[1..4];
+    WriteLine($"- Subarray usando rango [1..4]: {string.Join(", ", subarray)}"); // 20, 30, 40
+
+    // Usar rango con índices inversos: extraer elementos desde el tercer elemento hasta el penúltimo
+    int[] subarray2 = numeros[^4..^1];
+    WriteLine($"- Subarray usando rango [^4..^1]: {string.Join(", ", subarray2)}"); // 20, 30, 40
+}
+
+void demoPasarPorReferencia()
+{
+    void Duplicar(ref int[] numeros){
+        for(int i = 0; i < numeros.Length; i++){
             numeros[i] *= 2;
         }
     }
 
-    int[] Copiar(int[] numeros)
-    {
-        int[] copia = new int[numeros.Length];  // Crea una copia del array
-        for(int i = 0; i < numeros.Length; i++)
-        {
-            copia[i] = numeros[i];              // Copia el contenido
+    int[] numeros = new int[]{1, 2, 3, 4, 5};
+    Clear();
+    WriteLine($"- Array original : {string.Join(", ", numeros)}");
+    Duplicar(ref numeros);
+    WriteLine($"- Array duplicado: {string.Join(", ", numeros)}");
+}
+
+
+void demoCopiarArray()
+{
+    int[] Copiar(int[] numeros) {
+        int[] copia = new int[numeros.Length];
+        for(int i = 0; i < numeros.Length; i++){
+            copia[i] = numeros[i];
         }
         return copia;
     }
 
-    int[] numeros = new int[]{100, 50, 200, 150, 300};
+    int[] CopiaConCopyTo(int[] numeros){
+        int[] copia = new int[numeros.Length];
+        numeros.CopyTo(copia, 0);
+        return copia;
+    }
+
+    int[] CopiarConRango(int[] numeros) {
+        return numeros[0..^1]; // Crea un nuevo array con los elementos desde el índice 0 hasta el penúltimo (Magic!!)
+    }
 
     Clear();
-    WriteLine($"- El máximo es   {Maximo(numeros)}");
-    WriteLine($"- El mínimo es   {Minimo(numeros)}");
-    WriteLine($"- La suma es     {Sumar(numeros)}");
-    WriteLine($"- El promedio es {Promedio(numeros)}");
+    int[] numeros = { 1, 2, 3, 4, 5 };
+    WriteLine($"- Array original : {string.Join(", ", numeros)}");
     
-    int[] copia = Copiar(numeros);
-    WriteLine($"- La copia es    {string.Join(", ", copia)}");
-    Duplicar(numeros);
-    WriteLine($"- El original es {string.Join(", ", numeros)}");
-    WriteLine($"- La copia es    {string.Join(", ", copia)}");
+    int[] copia1 = Copiar(numeros);
+    WriteLine($"- Array copiado  : {string.Join(", ", copia1)}");
+    
+    numeros[0] = 99;
+    WriteLine("Modifico el original pero la copia no se ve afectada");
+    WriteLine($"- Array original : {string.Join(", ", numeros)}");
+    WriteLine($"- Array copiado  : {string.Join(", ", copia1)}");
+    
+    int[] copia2 = CopiaConCopyTo(numeros);
+    WriteLine($"- Array clonado  : {string.Join(", ", copia2)}");
+    
+    int[] copia3 = CopiarConRango(numeros); // 
+    copia3[^1] = 99;
+    WriteLine($"- Array original : {string.Join(", ", numeros)}");
+    WriteLine($"- Array copiado  : {string.Join(", ", copia3)}");
 }
