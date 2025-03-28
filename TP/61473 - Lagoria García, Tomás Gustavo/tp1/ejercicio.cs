@@ -63,20 +63,26 @@ struct Agenda{
     public void BuscarContacto(){
         Console.WriteLine("Ingrese un termino de busqueda de contacto(telefono, nombre, id, ,Email): ");
         string termino = Console.ReadLine().ToLower();
+        int comparador=0;
         Console.WriteLine("=== Resultados de la búsqueda ===");
             Console.WriteLine("\nID  Nombre              Teléfono       Email");
         for(int i = 0; i < CantidadContactos; i++){
             if(int.TryParse(termino, out int id) && Contactos[i].ID == id){
                Console.WriteLine($"{Contactos[i].ID,-3}  {Contactos[i].Nombre,-18}  { Contactos[i].Telefono,-12}  { Contactos[i].Email}");
                Console.WriteLine();
+                comparador=1;
             break;
             }
-            if(Contactos[i].Nombre.ToLower().Contains(termino.ToLower()) || Contactos[i].Telefono.Contains(termino) || Contactos[i].Email.ToLower().Contains(termino.ToLower())){
+           else if(Contactos[i].Nombre.ToLower().Contains(termino.ToLower()) || Contactos[i].Telefono.Contains(termino) || Contactos[i].Email.ToLower().Contains(termino.ToLower())){
                 Console.WriteLine($"{Contactos[i].ID}  {Contactos[i].Nombre}  { Contactos[i].Telefono}  { Contactos[i].Email}");
-                Console.WriteLine();    
+                Console.WriteLine();
+                comparador=1;    
             }
         }
-        Console.WriteLine("No se encontró el contacto");
+        if(comparador==0){
+            Console.WriteLine("No se encontraron resultados");
+        }
+
     }
 
     public void GuardarContactos(string archivo){
