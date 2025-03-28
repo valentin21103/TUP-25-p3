@@ -76,6 +76,7 @@ struct Agenda{
         }
         Console.WriteLine("No se encontró el contacto");
     }
+
     public void GuardarContactos(string archivo){
         string[] lineas = new string[CantidadContactos];
         for(int i = 0; i < CantidadContactos; i++){
@@ -91,7 +92,40 @@ struct Agenda{
             AgregarContacto(contacto);
         }
     }
+    public void BorrarContacto(){
+    Console.WriteLine("Ingrese el ID del contacto a borrar: ");
+    int id = int.Parse(Console.ReadLine());
+    for(int i = 0; i < CantidadContactos; i++){
+        if(Contactos[i].ID == id){
+            for(int j = i; j < CantidadContactos - 1; j++){
+                Contactos[j] = Contactos[j + 1];
+            }
+            CantidadContactos--;
+            Console.WriteLine("Contacto eliminado");
+            return;
+        }
+    }
+    Console.WriteLine("No se encontró el contacto");
 }
+public void ModificarContacto(){
+    Console.WriteLine("Ingrese el ID del contacto a modificar: ");
+    int id = int.Parse(Console.ReadLine());
+    for(int i = 0; i < CantidadContactos; i++){
+        if(Contactos[i].ID == id){
+            Console.WriteLine("Ingrese el nuevo nombre del contacto: ");
+            Contactos[i].Nombre = Console.ReadLine();
+            Console.WriteLine("Ingrese el nuevo telefono del contacto: ");
+            Contactos[i].Telefono = Console.ReadLine();
+            Console.WriteLine("Ingrese el nuevo email del contacto: ");
+            Contactos[i].Email = Console.ReadLine();
+            Console.WriteLine("Contacto modificado");
+            return;
+        }
+    }
+    Console.WriteLine("No se encontró el contacto");
+}
+}
+
 Console.WriteLine("Hola, soy el ejercicio 1 del TP1 de la materia Programación 3");
 Console.Write("Presionar una tecla para continuar...");
 Console.ReadKey();
