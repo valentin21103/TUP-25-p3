@@ -92,22 +92,7 @@ struct Agenda{
             AgregarContacto(contacto);
         }
     }
-    public void BorrarContacto(){
-    Console.WriteLine("Ingrese el ID del contacto a borrar: ");
-    int id = int.Parse(Console.ReadLine());
-    for(int i = 0; i < CantidadContactos; i++){
-        if(Contactos[i].ID == id){
-            for(int j = i; j < CantidadContactos - 1; j++){
-                Contactos[j] = Contactos[j + 1];
-            }
-            CantidadContactos--;
-            Console.WriteLine("Contacto eliminado");
-            return;
-        }
-    }
-    Console.WriteLine("No se encontró el contacto");
-}
-public void ModificarContacto(){
+    public void ModificarContacto(){
     Console.WriteLine("Ingrese el ID del contacto a modificar: ");
     int id = int.Parse(Console.ReadLine());
     for(int i = 0; i < CantidadContactos; i++){
@@ -122,8 +107,23 @@ public void ModificarContacto(){
             return;
         }
     }
+    Console.WriteLine("No se encontró el contacto");   
+    }
+    public void BorrarContacto(){
+    Console.WriteLine("Ingrese el ID del contacto a borrar: ");
+    int id = int.Parse(Console.ReadLine());
+    for(int i = 0; i < CantidadContactos; i++){
+        if(Contactos[i].ID == id){
+            for(int j = i; j < CantidadContactos - 1; j++){
+                Contactos[j] = Contactos[j + 1];
+            }
+            CantidadContactos--;
+            Console.WriteLine("Contacto eliminado");
+            return;
+        }
+    }
     Console.WriteLine("No se encontró el contacto");
-}
+    }
 }
 
 Console.WriteLine("Hola, soy el ejercicio 1 del TP1 de la materia Programación 3");
