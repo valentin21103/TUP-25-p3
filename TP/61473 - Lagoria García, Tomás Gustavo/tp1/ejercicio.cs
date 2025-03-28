@@ -80,16 +80,22 @@ struct Agenda{
     public void GuardarContactos(string archivo){
         string[] lineas = new string[CantidadContactos];
         for(int i = 0; i < CantidadContactos; i++){
-            lineas[i] = Contactos[i].ID + ";" + Contactos[i].Nombre + ";" + Contactos[i].Telefono + ";" + Contactos[i].Email;
+            lineas[i] = Contactos[i].Nombre + "," + Contactos[i].Telefono + "," + Contactos[i].Email;
         }
         File.WriteAllLines(archivo, lineas);
     }
     public void CargarContactos(string archivo){
         string[] lineas = File.ReadAllLines(archivo);
+        int controlMemoria=lineas.Length+CantidadContactos;
+        if( controlMemoria> CantidadTotal){
+            Console.WriteLine("No hay suficiente espacio en la agenda para cargar todos los contactos, si desea cargarlos, primero borre algunos contactos");
+            return;
+        }
         for(int i = 0; i < lineas.Length; i++){
-            string[] campos = lineas[i].Split(';');
-            Contacto contacto = new Contacto(campos[0], campos[1], campos[2], campos[3]);
-            AgregarContacto(contacto);
+            string[] campos = lineas[i].Split(',');
+            int id=CantidadContactos+1;
+            Contacto contacto = new Contacto(id, campos[0], campos[1], campos[2]);
+            CantidadContactos++;
         }
     }
     public void ModificarContacto(){
@@ -126,7 +132,7 @@ struct Agenda{
     }
 }
 Agenda agenda = new Agenda();
-string archivo = "contactos.txt";
+string archivo = agenda.csv;
 if(File.Exists(archivo)){
     agenda.CargarContactos(archivo);
 }
