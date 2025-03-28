@@ -64,7 +64,7 @@ struct Agenda{
         Console.WriteLine("Ingrese un termino de busqueda de contacto(telefono, nombre, id, ,Email): ");
         string termino = Console.ReadLine().ToLower();
         Console.WriteLine("=== Resultados de la búsqueda ===");
-         Console.WriteLine("ID  Nombre              Teléfono       Email");
+            Console.WriteLine("\nID  Nombre              Teléfono       Email");
         for(int i = 0; i < CantidadContactos; i++){
             if(int.TryParse(termino, out int id) && Contactos[i].ID == id){
                Console.WriteLine($"{Contactos[i].ID,-3}  {Contactos[i].Nombre,-18}  { Contactos[i].Telefono,-12}  { Contactos[i].Email}");
