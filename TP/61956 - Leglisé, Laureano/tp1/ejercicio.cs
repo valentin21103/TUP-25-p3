@@ -1,12 +1,22 @@
-using System;
-using System.IO;
+using System; // Para usar la consola (Console)
+using System.IO; // Para leer y escribir archivos
 
 struct Contacto
 {
     public int Id;
     public string Nombre;
+    public string Apellido;
     public string Telefono;
     public string Email;
+
+    public Contacto(int id, string nombre, string apellido, string telefono, string email)
+    {
+        Id = id;
+        Nombre = nombre ?? "";
+        Apellido = apellido ?? "";
+        Telefono = telefono ?? "";
+        Email = email ?? "";
+    }
 }
 
 class Program
@@ -30,33 +40,19 @@ class Program
             Console.WriteLine("5. Buscar contacto");
             Console.WriteLine("6. Salir");
             Console.Write("Seleccione una opción: ");
-            
-            string opcion = Console.ReadLine();
+
+            string opcion = Console.ReadLine()?.Trim() ?? "";
             Console.Clear();
 
             switch (opcion)
             {
-                case "1":
-                    AgregarContacto();
-                    break;
-                case "2":
-                    ModificarContacto();
-                    break;
-                case "3":
-                    BorrarContacto();
-                    break;
-                case "4":
-                    ListarContactos();
-                    break;
-                case "5":
-                    BuscarContacto();
-                    break;
-                case "6":
-                    GuardarContactos();
-                    return;
-                default:
-                    Console.WriteLine("Opción no válida.");
-                    break;
+                case "1": AgregarContacto(); break;
+                case "2": ModificarContacto(); break;
+                case "3": BorrarContacto(); break;
+                case "4": ListarContactos(); break;
+                case "5": BuscarContacto(); break;
+                case "6": GuardarContactos(); return;
+                default: Console.WriteLine("Opción no válida."); break;
             }
         }
     }
@@ -69,40 +65,58 @@ class Program
             return;
         }
 
-        Contacto nuevo;
-        nuevo.Id = (contadorContactos == 0) ? 1 : agenda[contadorContactos - 1].Id + 1;
-
         Console.Write("Nombre: ");
-        nuevo.Nombre = Console.ReadLine();
-        Console.Write("Teléfono: ");
-        nuevo.Telefono = Console.ReadLine();
-        Console.Write("Email: ");
-        nuevo.Email = Console.ReadLine();
+        string nombre = Console.ReadLine()?.Trim() ?? "";
+        if (string.IsNullOrEmpty(nombre)) { Console.WriteLine("Nombre no puede estar vacío."); return; }
 
-        agenda[contadorContactos] = nuevo;
-        contadorContactos++;
+        Console.Write("Apellido: ");
+        string apellido = Console.ReadLine()?.Trim() ?? "";
+        if (string.IsNullOrEmpty(apellido)) { Console.WriteLine("Apellido no puede estar vacío."); return; }
+
+        Console.Write("Teléfono: ");
+        string telefono = Console.ReadLine()?.Trim() ?? "";
+        if (string.IsNullOrEmpty(telefono)) { Console.WriteLine("Teléfono no puede estar vacío."); return; }
+
+        Console.Write("Email: ");
+        string email = Console.ReadLine()?.Trim() ?? "";
+        if (string.IsNullOrEmpty(email)) { Console.WriteLine("Email no puede estar vacío."); return; }
+
+        Contacto nuevo = new Contacto(
+            (contadorContactos == 0) ? 1 : agenda[contadorContactos - 1].Id + 1,
+            nombre, apellido, telefono, email
+        );
+
+        agenda[contadorContactos++] = nuevo;
         Console.WriteLine("Contacto agregado.");
     }
 
     static void ModificarContacto()
     {
         Console.Write("Ingrese el ID del contacto a modificar: ");
-        int id = int.Parse(Console.ReadLine());
+        if (!int.TryParse(Console.ReadLine(), out int id))
+        {
+            Console.WriteLine("ID inválido.");
+            return;
+        }
 
         for (int i = 0; i < contadorContactos; i++)
         {
             if (agenda[i].Id == id)
             {
                 Console.Write($"Nuevo nombre ({agenda[i].Nombre}): ");
-                string nombre = Console.ReadLine();
+                string? nombre = Console.ReadLine()?.Trim();
                 if (!string.IsNullOrEmpty(nombre)) agenda[i].Nombre = nombre;
 
+                Console.Write($"Nuevo apellido ({agenda[i].Apellido}): ");
+                string? apellido = Console.ReadLine()?.Trim();
+                if (!string.IsNullOrEmpty(apellido)) agenda[i].Apellido = apellido;
+
                 Console.Write($"Nuevo teléfono ({agenda[i].Telefono}): ");
-                string telefono = Console.ReadLine();
+                string? telefono = Console.ReadLine()?.Trim();
                 if (!string.IsNullOrEmpty(telefono)) agenda[i].Telefono = telefono;
 
                 Console.Write($"Nuevo email ({agenda[i].Email}): ");
-                string email = Console.ReadLine();
+                string? email = Console.ReadLine()?.Trim();
                 if (!string.IsNullOrEmpty(email)) agenda[i].Email = email;
 
                 Console.WriteLine("Contacto modificado.");
@@ -115,7 +129,11 @@ class Program
     static void BorrarContacto()
     {
         Console.Write("Ingrese el ID del contacto a borrar: ");
-        int id = int.Parse(Console.ReadLine());
+        if (!int.TryParse(Console.ReadLine(), out int id))
+        {
+            Console.WriteLine("ID inválido.");
+            return;
+        }
 
         for (int i = 0; i < contadorContactos; i++)
         {
@@ -126,6 +144,7 @@ class Program
                     agenda[j] = agenda[j + 1];
                 }
                 contadorContactos--;
+                agenda[contadorContactos] = default;
                 Console.WriteLine("Contacto eliminado.");
                 return;
             }
@@ -141,28 +160,29 @@ class Program
             return;
         }
 
-        Console.WriteLine("ID  | Nombre            | Teléfono       | Email");
-        Console.WriteLine("-----------------------------------------------");
+        Console.WriteLine("ID  | Nombre       | Apellido       | Teléfono       | Email");
+        Console.WriteLine("------------------------------------------------------------");
 
         for (int i = 0; i < contadorContactos; i++)
         {
-            Console.WriteLine($"{agenda[i].Id,-3} | {agenda[i].Nombre,-16} | {agenda[i].Telefono,-14} | {agenda[i].Email}");
+            Console.WriteLine($"{agenda[i].Id,-3} | {agenda[i].Nombre,-12} | {agenda[i].Apellido,-12} | {agenda[i].Telefono,-14} | {agenda[i].Email}");
         }
     }
 
     static void BuscarContacto()
     {
         Console.Write("Ingrese término de búsqueda: ");
-        string termino = Console.ReadLine().ToLower();
+        string termino = Console.ReadLine()?.ToLower().Trim() ?? "";
         bool encontrado = false;
 
         for (int i = 0; i < contadorContactos; i++)
         {
             if (agenda[i].Nombre.ToLower().Contains(termino) ||
+                agenda[i].Apellido.ToLower().Contains(termino) ||
                 agenda[i].Telefono.ToLower().Contains(termino) ||
                 agenda[i].Email.ToLower().Contains(termino))
             {
-                Console.WriteLine($"{agenda[i].Id} | {agenda[i].Nombre} | {agenda[i].Telefono} | {agenda[i].Email}");
+                Console.WriteLine($"{agenda[i].Id} | {agenda[i].Nombre} {agenda[i].Apellido} | {agenda[i].Telefono} | {agenda[i].Email}");
                 encontrado = true;
             }
         }
@@ -176,7 +196,7 @@ class Program
         {
             for (int i = 0; i < contadorContactos; i++)
             {
-                sw.WriteLine($"{agenda[i].Id},{agenda[i].Nombre},{agenda[i].Telefono},{agenda[i].Email}");
+                sw.WriteLine($"{agenda[i].Id},{agenda[i].Nombre},{agenda[i].Apellido},{agenda[i].Telefono},{agenda[i].Email}");
             }
         }
         Console.WriteLine("Datos guardados.");
@@ -189,19 +209,18 @@ class Program
         using (StreamReader sr = new StreamReader(archivoCSV))
         {
             string linea;
-            while ((linea = sr.ReadLine()) != null)
+            while ((linea = sr.ReadLine()!) != null)
             {
                 string[] datos = linea.Split(',');
-                if (contadorContactos < MAX_CONTACTOS)
+                if (datos.Length == 5 && contadorContactos < MAX_CONTACTOS)
                 {
-                    agenda[contadorContactos].Id = int.Parse(datos[0]);
-                    agenda[contadorContactos].Nombre = datos[1];
-                    agenda[contadorContactos].Telefono = datos[2];
-                    agenda[contadorContactos].Email = datos[3];
-                    contadorContactos++;
+                    if (int.TryParse(datos[0], out int id))
+                    {
+                        agenda[contadorContactos] = new Contacto(id, datos[1], datos[2], datos[3], datos[4]);
+                        contadorContactos++;
+                    }
                 }
             }
         }
     }
 }
-
