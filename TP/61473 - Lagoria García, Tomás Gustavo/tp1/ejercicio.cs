@@ -125,8 +125,70 @@ struct Agenda{
     Console.WriteLine("No se encontró el contacto");
     }
 }
+Agenda agenda = new Agenda();
+string archivo = "contactos.txt";
+if(File.Exists(archivo)){
+    agenda.CargarContactos(archivo);
+}
 
 Console.WriteLine("Hola, soy el ejercicio 1 del TP1 de la materia Programación 3");
 Console.Write("Presionar una tecla para continuar...");
 Console.ReadKey();
 Console.Clear();
+while(true){
+     Console.Clear();
+    Console.WriteLine("=== Agenda de Contactos ===");
+    Console.WriteLine("1. Agregar contacto");
+    Console.WriteLine("2. Mostrar contactos");
+    Console.WriteLine("3. Buscar contacto");
+    Console.WriteLine("4. Modificar contacto");
+    Console.WriteLine("5. Borrar contacto");
+    Console.WriteLine("6. Salir");
+    Console.WriteLine("Ingrese una opción: ");
+    string opcion = Console.ReadLine();
+    switch(opcion){
+        case "1":
+            agenda.AgregarContacto();
+            while(true){
+                Console.WriteLine("Desea agregar otro contacto? (s/n)");
+                string respuesta = Console.ReadLine();
+                if(respuesta == "n"){
+                    break;
+                }
+                else if(respuesta != "s"){
+                    Console.WriteLine("Respuesta inválida");
+                }
+                else{
+                    agenda.AgregarContacto();
+                }
+            }        
+            break;
+        case "2":
+            agenda.MostrarContactos();
+                Console.WriteLine("Presione una tecla para continuar...");
+                Console.ReadKey();
+                break;
+        case "3":
+            agenda.BuscarContacto();
+            Console.WriteLine("Presione una tecla para continuar...");
+                Console.ReadKey();
+                break;
+        case "4":
+            agenda.ModificarContacto();
+            Console.WriteLine("Presione una tecla para continuar...");
+                Console.ReadKey();
+                break;
+        case "5":
+            agenda.BorrarContacto();
+            Console.WriteLine("Presione una tecla para continuar...");
+                Console.ReadKey();
+                break;
+        case "6":
+          console.WriteLine("Saliendo de la agenda");
+            agenda.GuardarContactos(archivo);
+            return;
+        default:
+            Console.WriteLine("Opción inválida");
+            break;
+    }
+}
