@@ -28,7 +28,7 @@ struct Contacto{
 struct Agenda{
     static public int CantidadTotal=10;
     public Contacto[] Contactos;
-
+    int CantidadContactos;
     public Agenda(){
         Contactos = new Contacto[CantidadTotal];
         int CantidadContactos = 0;
@@ -37,9 +37,9 @@ struct Agenda{
         if(CantidadContactos < CantidadTotal){
             Console.WriteLine("=== Agregar Contacto ===");
             Console.WriteLine("Ingrese el nombre del contacto: ");
-            string nombre = Console.ReadLine();
+            string nombre = Console.ReadLine().ToLower();
             Console.WriteLine("Ingrese el telefono del contacto: ");
-            string telefono = Console.ReadLine();
+            string telefono = Console.ReadLine().ToLower();
             Console.WriteLine("Ingrese el email del contacto: ");
             string email = Console.ReadLine();
             int id=CantidadContactos+1;
@@ -49,23 +49,25 @@ struct Agenda{
          else if(CantidadContactos == CantidadTotal-1){
                 Console.WriteLine("La agenda le queda un lugar disponible de memoria");
             }
-          Console.WriteLine("La agenda está llena");
+            else{
+                Console.WriteLine("La agenda está llena, no se pueden agregar más contactos");
+            }
     }
     public void MostrarContactos(){
-        Console.WriteLine("ID  Nombre  Telefono  Email ");
+        Console.WriteLine("\nID  Nombre              Teléfono       Email");
         for(int i = 0; i < CantidadContactos; i++){
-            Console.WriteLine($"{Contactos[i].ID}  {Contactos[i].Nombre}  { Contactos[i].Telefono}  { Contactos[i].Email}");
+            Console.WriteLine($"{Contactos[i].ID,-3}  {Contactos[i].Nombre,-18}  { Contactos[i].Telefono,-12}  { Contactos[i].Email}");
             Console.WriteLine();
         }
     }
     public void BuscarContacto(){
-        Console.WriteLine("Ingrese un termino de busqueda(telefono, nombre, id, ,Email) de contacto a buscar: ");
-        string termino = Console.ReadLine();
+        Console.WriteLine("Ingrese un termino de busqueda de contacto(telefono, nombre, id, ,Email): ");
+        string termino = Console.ReadLine().ToLower();
         Console.WriteLine("=== Resultados de la búsqueda ===");
-         Console.WriteLine("ID  Nombre  Telefono  Email ");
+         Console.WriteLine("ID  Nombre              Teléfono       Email");
         for(int i = 0; i < CantidadContactos; i++){
             if(int.TryParse(termino, out int id) && Contactos[i].ID == id){
-               Console.WriteLine($"{Contactos[i].ID}  {Contactos[i].Nombre}  { Contactos[i].Telefono}  { Contactos[i].Email}");
+               Console.WriteLine($"{Contactos[i].ID,-3}  {Contactos[i].Nombre,-18}  { Contactos[i].Telefono,-12}  { Contactos[i].Email}");
                Console.WriteLine();
             break;
             }
@@ -104,11 +106,14 @@ struct Agenda{
     for(int i = 0; i < CantidadContactos; i++){
         if(Contactos[i].ID == id){
             Console.WriteLine("Ingrese el nuevo nombre del contacto: ");
-            Contactos[i].Nombre = Console.ReadLine();
+            string nombre = Console.ReadLine();
             Console.WriteLine("Ingrese el nuevo telefono del contacto: ");
-            Contactos[i].Telefono = Console.ReadLine();
+            string telefono = Console.ReadLine();
             Console.WriteLine("Ingrese el nuevo email del contacto: ");
-            Contactos[i].Email = Console.ReadLine();
+            string email = Console.ReadLine();
+            if(nombre != "") Contactos[i].Nombre = nombre;
+            if(telefono != "") Contactos[i].Telefono = telefono;
+            if(email != "") Contactos[i].Email = email;
             Console.WriteLine("Contacto modificado");
             return;
         }
@@ -132,10 +137,10 @@ struct Agenda{
     }
 }
 Agenda agenda = new Agenda();
-string archivo = agenda.csv;
-if(File.Exists(archivo)){
-    agenda.CargarContactos(archivo);
-}
+//string archivo = agenda.csv;
+//if(File.Exists(archivo)){
+//    agenda.CargarContactos(archivo);
+//}
 
 Console.WriteLine("Hola, soy el ejercicio 1 del TP1 de la materia Programación 3");
 Console.Write("Presionar una tecla para continuar...");
@@ -190,8 +195,8 @@ while(true){
                 Console.ReadKey();
                 break;
         case "6":
-          console.WriteLine("Saliendo de la agenda");
-            agenda.GuardarContactos(archivo);
+          Console.WriteLine("Saliendo de la agenda");
+           // agenda.GuardarContactos(archivo);
             return;
         default:
             Console.WriteLine("Opción inválida");
