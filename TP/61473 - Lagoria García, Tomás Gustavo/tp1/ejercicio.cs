@@ -76,6 +76,7 @@ struct Agenda{
                 break; 
             }
         }
+        
      }
      if(encontrado==false){
         for(int i = 0; i < CantidadContactos; i++){
