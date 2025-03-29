@@ -12,12 +12,14 @@ using System.IO;    // Para leer archivos    (File)
 // File.WriteLines(destino, lineas) : Escribe una lista de líneas en un archivo
 
 // Escribir la solucion al TP1 en este archivo. (Borre el ejemplo de abajo)
-Console.WriteLine("Hola, soy el ejercicio 1 del TP1 de la materia Programación 3");
-Console.Write("Presionar una tecla para continuar...");
-Console.ReadKey();
 
-struct datos{
-    string nombre;
-    string apellido;
-    int dni;
-}
+Console.WriteLine("---AGENDA DE CONTACTOS---");
+Console.WriteLine("1. Agregar Contacto");
+Console.WriteLine("2. Borrar Contacto");
+Console.WriteLine("3. Modificar Contacto");
+Console.WriteLine("4. Listar Contactos");
+Console.WriteLine("5. Buscar Contacto");
+Console.WriteLine("0. Salir");
+Console.Write("Seleccione una opcion: ");
+Console.ReadKey();
+Console.Clear();
