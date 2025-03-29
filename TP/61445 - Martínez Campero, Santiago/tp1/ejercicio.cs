@@ -23,7 +23,7 @@ public class Program
     static Contacto[] contactos = new Contacto[LimiteDeContactos];
     static int cantidadContactos = 0;
 
-    public static void Main(string[] args)
+    public static void AplicaionDeContactos()
     {
         CargarContactosDesdeArchivo();
         MostrarMenuDeInicio();
