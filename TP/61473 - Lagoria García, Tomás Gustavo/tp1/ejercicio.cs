@@ -67,13 +67,13 @@ struct Agenda{
         Console.WriteLine("=== Resultados de la búsqueda ===");
             Console.WriteLine("\nID  Nombre              Teléfono       Email");
         for(int i = 0; i < CantidadContactos; i++){
-            if(int.TryParse(termino, out int id) && Contactos[i].ID == id){
-               Console.WriteLine($"{Contactos[i].ID,-3}  {Contactos[i].Nombre,-18}  { Contactos[i].Telefono,-12}  { Contactos[i].Email}");
-               Console.WriteLine();
-                comparador=1;
-            break;
-            }
-           else if(Contactos[i].Nombre.ToLower().Contains(termino.ToLower()) || Contactos[i].Telefono.Contains(termino) || Contactos[i].Email.ToLower().Contains(termino.ToLower())){
+            // if(int.TryParse(termino, out int id) && Contactos[i].ID == id){
+            //    Console.WriteLine($"{Contactos[i].ID,-3}  {Contactos[i].Nombre,-18}  { Contactos[i].Telefono,-12}  { Contactos[i].Email}");
+            //    Console.WriteLine();
+            //     comparador=1;
+            // break;
+            // }
+              if(Contactos[i].ID.ToString() == termino || Contactos[i].Nombre.ToLower().Contains(termino.ToLower()) || Contactos[i].Telefono.Contains(termino) || Contactos[i].Email.ToLower().Contains(termino.ToLower())){
                 Console.WriteLine($"{Contactos[i].ID}  {Contactos[i].Nombre}  { Contactos[i].Telefono}  { Contactos[i].Email}");
                 Console.WriteLine();
                 comparador=1;    
@@ -146,10 +146,10 @@ struct Agenda{
     Console.WriteLine("No se encontró el contacto");
     }
 }
+string archivo = "agenda.csv";
 Agenda Agenda1 = new Agenda();
-string archivo = agenda.csv;
 if(File.Exists(archivo)){
-    Agenda1.CargarContactos(agenda.csv);
+    Agenda1.CargarContactos(archivo);
 }
 
 Console.WriteLine("Hola, soy el ejercicio 1 del TP1 de la materia Programación 3");
