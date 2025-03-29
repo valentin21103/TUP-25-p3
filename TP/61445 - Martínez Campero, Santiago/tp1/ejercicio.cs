@@ -6,20 +6,20 @@ public struct Contacto
     public int Id;
     public string Nombre;
     public string Telefono;
-    public string Email;
+    public string Gmail;
 
-    public struct Contacto(int id, string nombre, string telefono, string email)
+    public Contacto(int id, string nombre, string telefono, string gmail)
     {
         Id = id;
         Nombre = nombre;
         Telefono = telefono;
-        Email = email;
+        Gmail = gmail;
     }
 }
 
 public class Program
 {
-    int LimiteDeContactos = 100; 
+    const int LimiteDeContactos = 100; 
     static Contacto[] contactos = new Contacto[LimiteDeContactos];
     static int cantidadContactos = 0;
 
@@ -90,8 +90,8 @@ public class Program
         nuevoContacto.Nombre = Console.ReadLine();
         Console.Write("Ingrese el teléfono: ");
         nuevoContacto.Telefono = Console.ReadLine();
-        Console.Write("Ingrese el email: ");
-        nuevoContacto.Email = Console.ReadLine();
+        Console.Write("Ingrese el Gmail: ");
+        nuevoContacto.Gmail = Console.ReadLine();
 
         contactos[cantidadContactos] = nuevoContacto;
         cantidadContactos++;
@@ -119,7 +119,7 @@ public class Program
                     contactos[i].Nombre = nombre;
                 }
 
-                Console.Write("Nuevo celular: ");
+                Console.Write("Nuevo teléfono: ");
                 string telefono = Console.ReadLine();
                 if (!string.IsNullOrEmpty(telefono))
                 {
@@ -127,8 +127,8 @@ public class Program
                 }
 
                 Console.Write("Nuevo Gmail: ");
-                string Gmail = Console.ReadLine();
-                if (!string.IsNullOrEmpty(Gmail))
+                string gmail = Console.ReadLine();
+                if (!string.IsNullOrEmpty(gmail))
                 {
                     contactos[i].Gmail = gmail;
                 }
@@ -145,7 +145,7 @@ public class Program
 
     static void BorrarContacto()
     {
-        Console.Write("Ingrese el ID del contacto que queres borrar o eliminar: ");
+        Console.Write("Ingrese el ID del contacto que desea borrar: ");
         int id = int.Parse(Console.ReadLine());
 
         for (int i = 0; i < cantidadContactos; i++)
@@ -197,8 +197,10 @@ public class Program
                 Console.WriteLine($"{contactos[i].Id,-5} {contactos[i].Nombre,-20} {contactos[i].Telefono,-15} {contactos[i].Gmail}");
             }
         }
+
         Console.ReadKey();
     }
+
     static void CargarContactosDesdeArchivo()
     {
         if (File.Exists("agenda.csv"))
@@ -212,20 +214,21 @@ public class Program
                     Id = cantidadContactos + 1,
                     Nombre = datos[0],
                     Telefono = datos[1],
-                    Email = datos[2]
+                    Gmail = datos[2]
                 };
                 contactos[cantidadContactos] = contacto;
                 cantidadContactos++;
             }
         }
     }
+
     static void GuardarContactosEnArchivo()
     {
         using (StreamWriter sw = new StreamWriter("agenda.csv"))
         {
             for (int i = 0; i < cantidadContactos; i++)
             {
-                sw.WriteLine($"{contactos[i].Nombre},{contactos[i].Telefono},{contactos[i].Email}");
+                sw.WriteLine($"{contactos[i].Nombre},{contactos[i].Telefono},{contactos[i].Gmail}");
             }
         }
     }
