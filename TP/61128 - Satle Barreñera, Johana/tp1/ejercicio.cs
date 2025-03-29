@@ -138,7 +138,7 @@ static class AgendaScript
 
     static void Borrar()  
     {  
-        Console.Write("ID a borrar: ");  
+        Console.Write("ID  borrar: ");  
         if (int.TryParse(Console.ReadLine(), out int id))  
         {  
             for (int i = 0; i < cantidad; i++)  
