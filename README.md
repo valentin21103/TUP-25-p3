@@ -2,7 +2,7 @@
 
 ## Enunciado Ejercicio Práctico 1
 
-> Debe ser entregado antes de las 23:59 del Sabado siguente 
+> Debe ser entregado antes de las *23:59 del próximo Sabado 29 de Marzo* 
 
 Las instrucciones de como se hace se encuentra en `como-presentar-practicos.md`[como-presentar-practicos.md]
 
