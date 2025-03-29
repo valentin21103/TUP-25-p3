@@ -13,6 +13,7 @@ using System.IO;    // Para leer archivos    (File)
 
 // Escribir la solucion al TP1 en este archivo. (Borre el ejemplo de abajo)
 
+//tp1
     struct Contacto
     {
        public int Id;
