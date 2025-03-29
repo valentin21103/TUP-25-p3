@@ -115,7 +115,7 @@ static class AgendaScript
             {  
                 if (contactos[i].Id == id)  
                 {  
-                    Console.Write("Nuevo nombre: ");  
+                    Console.Write("NUEVO nombre: ");  
                     string n = Console.ReadLine();  
                     if (!string.IsNullOrWhiteSpace(n)) contactos[i].Nombre = n;  
                     Console.Write("Nuevo teléfono: ");  
