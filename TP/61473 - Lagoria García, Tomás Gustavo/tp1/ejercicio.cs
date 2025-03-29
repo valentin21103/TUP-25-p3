@@ -86,25 +86,29 @@ struct Agenda{
     }
 
     public void GuardarContactos(string archivo){
-        string[] lineas = new string[CantidadContactos];
+        string[] lineas = new string[CantidadContactos+1];
+        lineas[0] = "nombre,telefono,email";
         for(int i = 0; i < CantidadContactos; i++){
-            lineas[i] = Contactos[i].Nombre + "," + Contactos[i].Telefono + "," + Contactos[i].Email;
+            lineas[i+1] = Contactos[i].Nombre + "," + Contactos[i].Telefono + "," + Contactos[i].Email;
         }
         File.WriteAllLines(archivo, lineas);
     }
     public void CargarContactos(string archivo){
         string[] lineas = File.ReadAllLines(archivo);
-        int controlMemoria=lineas.Length+CantidadContactos;
+        int controlMemoria=lineas.Length-1+CantidadContactos;
         if( controlMemoria> CantidadTotal){
             Console.WriteLine("No hay suficiente espacio en la agenda para cargar todos los contactos, si desea cargarlos, primero borre algunos contactos");
             return;
         }
-        for(int i = 0; i < lineas.Length; i++){
+        else{
+            for(int i = 1; i < lineas.Length; i++){
             string[] campos = lineas[i].Split(',');
             int id=CantidadContactos+1;
             Contacto contacto = new Contacto(id, campos[0], campos[1], campos[2]);
             CantidadContactos++;
         }
+        }
+        
     }
     public void ModificarContacto(){
     Console.WriteLine("Ingrese el ID del contacto a modificar: ");
@@ -142,11 +146,11 @@ struct Agenda{
     Console.WriteLine("No se encontró el contacto");
     }
 }
-Agenda agenda = new Agenda();
-//string archivo = agenda.csv;
-//if(File.Exists(archivo)){
-//    agenda.CargarContactos(archivo);
-//}
+Agenda Agenda1 = new Agenda();
+string archivo = agenda.csv;
+if(File.Exists(archivo)){
+    Agenda1.CargarContactos(agenda.csv);
+}
 
 Console.WriteLine("Hola, soy el ejercicio 1 del TP1 de la materia Programación 3");
 Console.Write("Presionar una tecla para continuar...");
@@ -165,7 +169,7 @@ while(true){
     string opcion = Console.ReadLine();
     switch(opcion){
         case "1":
-            agenda.AgregarContacto();
+            Agenda1.AgregarContacto();
             while(true){
                 Console.WriteLine("Desea agregar otro contacto? (s/n)");
                 string respuesta = Console.ReadLine();
@@ -176,27 +180,27 @@ while(true){
                     Console.WriteLine("Respuesta inválida");
                 }
                 else{
-                    agenda.AgregarContacto();
+                    Agenda1.AgregarContacto();
                 }
             }        
             break;
         case "2":
-            agenda.MostrarContactos();
+            Agenda1.MostrarContactos();
                 Console.WriteLine("Presione una tecla para continuar...");
                 Console.ReadKey();
                 break;
         case "3":
-            agenda.BuscarContacto();
+            Agenda1.BuscarContacto();
             Console.WriteLine("Presione una tecla para continuar...");
                 Console.ReadKey();
                 break;
         case "4":
-            agenda.ModificarContacto();
+            Agenda1.ModificarContacto();
             Console.WriteLine("Presione una tecla para continuar...");
                 Console.ReadKey();
                 break;
         case "5":
-            agenda.BorrarContacto();
+            Agenda1.BorrarContacto();
             Console.WriteLine("Presione una tecla para continuar...");
                 Console.ReadKey();
                 break;
