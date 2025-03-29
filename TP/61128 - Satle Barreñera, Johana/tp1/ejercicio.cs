@@ -102,7 +102,7 @@ static class AgendaScript
         }  
         else  
         {  
-            Console.WriteLine("Agenda llena. No se puede agregar más contactos.");  
+            Console.WriteLine("Agenda completa. No se puede agregar más contactos.");  
         }  
     }  
 
