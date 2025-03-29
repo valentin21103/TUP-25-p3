@@ -104,7 +104,8 @@ struct Agenda{
             for(int i = 1; i < lineas.Length; i++){
             string[] campos = lineas[i].Split(',');
             int id=CantidadContactos+1;
-            Contacto contacto = new Contacto(id, campos[0], campos[1], campos[2]);
+            //Contacto contacto = new Contacto(id, campos[0], campos[1], campos[2]);
+            Contactos[CantidadContactos] = new Contacto(id, campos[0], campos[1], campos[2]);
             CantidadContactos++;
         }
         }
@@ -148,9 +149,10 @@ struct Agenda{
 }
 string archivo = "agenda.csv";
 Agenda Agenda1 = new Agenda();
-if(File.Exists(archivo)){
-    Agenda1.CargarContactos(archivo);
-}
+Agenda1.CargarContactos(archivo);
+// if(File.Exists(archivo)){
+    
+// }
 
 Console.WriteLine("Hola, soy el ejercicio 1 del TP1 de la materia Programación 3");
 Console.Write("Presionar una tecla para continuar...");
