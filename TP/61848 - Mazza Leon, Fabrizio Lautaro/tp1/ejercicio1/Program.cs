@@ -1,4 +1,4 @@
-using System;       // Para usar la consola  (Console)
+﻿using System;       // Para usar la consola  (Console)
 using System.IO;    // Para leer archivos    (File)
 
 // Ayuda: 
@@ -12,6 +12,8 @@ using System.IO;    // Para leer archivos    (File)
 // File.WriteLines(destino, lineas) : Escribe una lista de líneas en un archivo
 
 // Escribir la solucion al TP1 en este archivo. (Borre el ejemplo de abajo)
+
+//IMPORTANTE!!! SINO SE EJECUTA POR 2DA VEZ FINALIZAR TAREA ejercicio1.exe EN ADMINISTRADOR DE TAREAS
 struct Contacto
 {
     public int Id;
@@ -107,6 +109,7 @@ class agenda_de_contactos
 
                 if (email != "") agenda[i].Email = email;
 
+                Console.WriteLine();
                 Console.WriteLine("CONTACTO ACTUALIZADO.");
                 return;
             }
@@ -204,3 +207,4 @@ class agenda_de_contactos
         }
     }
 }
+
