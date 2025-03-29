@@ -209,12 +209,13 @@ public class Program
     }
     static void GuardarContactosEnArchivo()
     {
-        using (StreamWriter sw = new StreamWriter("agenda.csv"))
-        {
+        string[] lineas = new string[cantidadContactos];
+
             for (int i = 0; i < cantidadContactos; i++)
             {
-                sw.WriteLine($"{contactos[i].Nombre},{contactos[i].Telefono},{contactos[i].Gmail}");
+                lineas[i] = $"{contactos[i].Nombre},{contactos[i].Telefono},{contactos[i].Gmail}";
             }
-        }
+
+        File.WriteAllLines("agenda.csv", lineas);
     }
 }
