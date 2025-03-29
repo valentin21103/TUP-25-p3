@@ -2,9 +2,10 @@
 #### Cómo presentar los trabajos prácticos
 
 ---
-#### 1) Crear el ambiente
+#### 1. Crear el ambiente
 
 Descargar e instalar GitHub Desktop:  
+
 https://github.com/apps/desktop  
 
 Esta herramienta te permite gestionar los proyectos desde una interfaz gráfica.
@@ -12,9 +13,10 @@ Esta herramienta te permite gestionar los proyectos desde una interfaz gráfica.
 También instala los archivos necesarios para que se puedan usar desde Visual Studio Code.
 
 ---
-#### 2) Clonar (descargar el repositorio a la PC)  
+#### 2. Clonar (descargar el repositorio a la PC)  
 
 Ir a la página:  
+
 https://github.com/AlejandroDiBattista/TUP-25-p3  
 
 Pulsar el botón verde y elegir `Open with GitHub Desktop`.  
@@ -24,6 +26,7 @@ automáticamente abrirá y copiará el repositorio a tu disco (pedirá una autor
 
 Alternativamente, se puede hacer al revés:  
 Abrir GitHub Desktop, elegir del menú `File` la opción `Clone Repository` e ingresar la siguiente URL:  
+
 https://github.com/AlejandroDiBattista/TUP-25-p3.git  
 
 En ambos casos, fíjate detenidamente dónde guarda los archivos. (Normalmente sugiere \Documents\GitHub).  
@@ -32,7 +35,7 @@ A todos los fines prácticos, tendrás un directorio con todo el material: las c
 
 
 ---
-#### 3) Crear una rama para trabajar  
+#### 3. Crear una rama para trabajar  
 
 Las ramas son como una copia temporal de todos los archivos (en realidad solo copia los archivos que se modifican, así que no ocupan casi nada de espacio).  
 
@@ -45,18 +48,18 @@ la opción `Current Branch` en la pantalla. Si la despliegas, podrás cambiar de
 
 
 ---
-#### 4) Abrir el repositorio para trabajar  
+#### 4. Abrir el repositorio para trabajar  
 
 Si vas al menú `Repository`, puedes elegir `Open in Visual Studio Code`.  
 Alternativamente, puedes abrir VS Code y dentro de él ir a `Archivo` y luego a `Abrir Carpeta...` para seleccionar el repositorio.
 
 
 ---
-#### 5) Programar el trabajo práctico  
+#### 5. Programar el trabajo práctico  
 
 Ahora sí puedes trabajar en resolver el trabajo práctico.  
 Asegúrate de modificar solo los archivos de tu carpeta del trabajo práctico en cuestión.  
-La encontrarás dentro de la carpeta `TP`, luego tu `Número de legajo - Nombre Completo` y dentro de esta, en la carpeta `TP1`.  
+La encontrarás dentro de la carpeta `TP`, luego tu `<legajo> - <nombre>` y dentro de esta, en la carpeta `TP1`.  
 
 Si después de hacer un cambio quieres volver a la rama principal (`Branch Main`), te pedirá que elijas entre:  
 - `Leave my Changes` (Dejar los cambios en tu rama)  
@@ -74,7 +77,7 @@ Si vuelves a tu rama eligiéndola en `Current Branch`, puede que no veas los cam
 Elige `Stashed Changes` y luego `Restore` para recuperarlos.
 
 ---
-#### 6) Presentar el trabajo  
+#### 6. Presentar el trabajo  
 
 Una vez que hayas realizado el trabajo (fíjate en las instrucciones y modifica solo los archivos necesarios), te aparecerá una lista con todos los archivos modificados marcados. 
 
@@ -133,22 +136,22 @@ Para ello, debemos seguir estos pasos:
 
 1. Instalar una utilidad para poder ejecutar "scripts" (pequeños programas para automatizar tareas):  
 
-    ```bash
-    dotnet tool install -g dotnet-script
-    ```  
+```bash
+dotnet tool install -g dotnet-script
+```  
 
 2. Luego podrás correr el programa `ejercicio.cs` con:  
 
-    ```bash
-    dotnet script ./ejercicio.cs
-    ```  
+```bash
+dotnet script ./ejercicio.cs
+```  
 
-    estando dentro de la carpeta del ejercicio.  
+estando dentro de la carpeta del ejercicio.  
 
 Siempre se puede ejecutar poniendo la ruta completa, pero en este caso considera que cuando los nombres incluyen espacios en blanco deben estar entre comillas:  
 
-    ```bash
-    dotnet script ".\65000 - Di Battista, Alejandro\tp1\ejercicio.cs"
-    ```
-aaa
+```bash
+dotnet script ".\65000 - Di Battista, Alejandro\tp1\ejercicio.cs"
+```
+
 
