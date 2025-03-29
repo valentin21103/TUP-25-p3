@@ -208,7 +208,7 @@ while(true){
                 break;
         case "6":
           Console.WriteLine("Saliendo de la agenda");
-           // agenda.GuardarContactos(archivo);
+            Agenda1.GuardarContactos(archivo);
             return;
         default:
             Console.WriteLine("Opción inválida");
