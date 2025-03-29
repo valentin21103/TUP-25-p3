@@ -7,7 +7,6 @@ public struct Contacto
     public string Nombre;
     public string Telefono;
     public string Gmail;
-
     public Contacto(int id, string nombre, string telefono, string gmail)
     {
         Id = id;
@@ -16,7 +15,6 @@ public struct Contacto
         Gmail = gmail;
     }
 }
-
 public class Program
 {
     const int LimiteDeContactos = 100; 
@@ -28,7 +26,6 @@ public class Program
         CargarContactosDesdeArchivo();
         MostrarMenuDeInicio();
     }
-
     static void MostrarMenuDeInicio()
     {
         int opcion;
@@ -73,7 +70,6 @@ public class Program
             }
         } while (opcion != 0);
     }
-
     static void AgregarContacto()
     {
         if (cantidadContactos >= LimiteDeContactos)
@@ -82,7 +78,6 @@ public class Program
             Console.ReadKey();
             return;
         }
-
         Contacto nuevoContacto = new Contacto();
         nuevoContacto.Id = cantidadContactos + 1;
 
@@ -99,7 +94,6 @@ public class Program
         Console.WriteLine($"Contacto agregado con ID = {nuevoContacto.Id}");
         Console.ReadKey();
     }
-
     static void ModificarContacto()
     {
         Console.Write("Ingrese el ID del contacto a modificar: ");
@@ -138,11 +132,9 @@ public class Program
                 return;
             }
         }
-
         Console.WriteLine("Contacto no encontrado.");
         Console.ReadKey();
     }
-
     static void BorrarContacto()
     {
         Console.Write("Ingrese el ID del contacto que desea borrar: ");
@@ -166,7 +158,6 @@ public class Program
         Console.WriteLine("Contacto no encontrado.");
         Console.ReadKey();
     }
-
     static void ListarContactos()
     {
         Console.WriteLine("=== Lista de Contactos ===");
@@ -176,7 +167,6 @@ public class Program
         {
             Console.WriteLine($"{contactos[i].Id,-5} {contactos[i].Nombre,-20} {contactos[i].Telefono,-15} {contactos[i].Gmail}");
         }
-
         Console.ReadKey();
     }
 
@@ -184,10 +174,8 @@ public class Program
     {
         Console.Write("Ingrese un término de búsqueda (nombre, teléfono o Gmail): ");
         string termino = Console.ReadLine().ToLower();
-
         Console.WriteLine("Resultados de la búsqueda:");
         Console.WriteLine("ID    NOMBRE               TELÉFONO       GMAIL");
-
         for (int i = 0; i < cantidadContactos; i++)
         {
             if (contactos[i].Nombre.ToLower().Contains(termino) ||
@@ -197,10 +185,8 @@ public class Program
                 Console.WriteLine($"{contactos[i].Id,-5} {contactos[i].Nombre,-20} {contactos[i].Telefono,-15} {contactos[i].Gmail}");
             }
         }
-
         Console.ReadKey();
     }
-
     static void CargarContactosDesdeArchivo()
     {
         if (File.Exists("agenda.csv"))
@@ -221,7 +207,6 @@ public class Program
             }
         }
     }
-
     static void GuardarContactosEnArchivo()
     {
         using (StreamWriter sw = new StreamWriter("agenda.csv"))
