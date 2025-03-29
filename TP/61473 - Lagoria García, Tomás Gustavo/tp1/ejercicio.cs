@@ -64,21 +64,28 @@ struct Agenda{
         Console.WriteLine("Ingrese un termino de busqueda de contacto(telefono, nombre, id, ,Email): ");
         string termino = Console.ReadLine().ToLower();
         int comparador=0;
+        bool encontrado=false;
         Console.WriteLine("=== Resultados de la búsqueda ===");
             Console.WriteLine("\nID  Nombre              Teléfono       Email");
+         if (int.TryParse(termino, out int id)){
+        for (int i = 0; i < CantidadContactos; i++){
+            if (Contactos[i].ID == id){
+                Console.WriteLine($"{Contactos[i].ID,-3}  {Contactos[i].Nombre,-18}  {Contactos[i].Telefono,-12}  {Contactos[i].Email}");
+                encontrado=true;
+                comparador=1;
+                break; 
+            }
+        }
+     }
+     if(encontrado==false){
         for(int i = 0; i < CantidadContactos; i++){
-            // if(int.TryParse(termino, out int id) && Contactos[i].ID == id){
-            //    Console.WriteLine($"{Contactos[i].ID,-3}  {Contactos[i].Nombre,-18}  { Contactos[i].Telefono,-12}  { Contactos[i].Email}");
-            //    Console.WriteLine();
-            //     comparador=1;
-            // break;
-            // }
-              if(Contactos[i].ID.ToString() == termino || Contactos[i].Nombre.ToLower().Contains(termino.ToLower()) || Contactos[i].Telefono.Contains(termino) || Contactos[i].Email.ToLower().Contains(termino.ToLower())){
+             if(Contactos[i].Nombre.ToLower().Contains(termino.ToLower()) || Contactos[i].Telefono.Contains(termino) || Contactos[i].Email.ToLower().Contains(termino.ToLower())){
                 Console.WriteLine($"{Contactos[i].ID}  {Contactos[i].Nombre}  { Contactos[i].Telefono}  { Contactos[i].Email}");
                 Console.WriteLine();
                 comparador=1;    
             }
         }
+     }
         if(comparador==0){
             Console.WriteLine("No se encontraron resultados");
         }
