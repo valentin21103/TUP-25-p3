@@ -12,7 +12,8 @@ using System.IO;    // Para leer archivos    (File)
 // File.WriteLines(destino, lineas) : Escribe una lista de líneas en un archivo
 
 // Escribir la solucion al TP1 en este archivo. (Borre el ejemplo de abajo)
-console.WriteLine("Estoy probando")
+console.WriteLine("Estoy probando");
+
 Console.WriteLine("Hola, soy el ejercicio 1 del TP1 de la materia Programación 3");
 Console.Write("Presionar una tecla para continuar...");
 Console.ReadKey();
