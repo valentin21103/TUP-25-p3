@@ -13,7 +13,11 @@ using System.IO;    // Para leer archivos    (File)
 
 // Escribir la solucion al TP1 en este archivo. (Borre el ejemplo de abajo)
 
+<<<<<<< Updated upstream
 //IMPORTANTE!!! SINO SE EJECUTA POR 2DA VEZ FINALIZAR TAREA ejercicio1.exe EN ADMINISTRADOR DE TAREAS
+=======
+//IMPORTANTE SI NO SE COMPILA POR 2DA VEZ FINALIZAR EL PROCESO ejercicio1.exe Y VOLVER A COMPILAR
+>>>>>>> Stashed changes
 struct Contacto
 {
     public int Id;
@@ -35,7 +39,11 @@ class agenda_de_contactos
 
         while (true)
         {
+<<<<<<< Updated upstream
             Console.WriteLine("\nAGENDA DE CONTACTOS");
+=======
+            Console.WriteLine("\n====AGENDA DE CONTACTOS====");
+>>>>>>> Stashed changes
             Console.WriteLine();
             Console.WriteLine("1. Agregar contacto");
             Console.WriteLine("2. Modificar contacto");
@@ -80,6 +88,11 @@ class agenda_de_contactos
 
         total_contactos++;
 
+<<<<<<< Updated upstream
+=======
+        GuardarContactos();
+
+>>>>>>> Stashed changes
         Console.WriteLine();
         Console.WriteLine("CONTACTO AGREGADO EXITOSAMENTE.");
     }
@@ -109,13 +122,21 @@ class agenda_de_contactos
 
                 if (email != "") agenda[i].Email = email;
 
+<<<<<<< Updated upstream
                 Console.WriteLine();
+=======
+                Console.WriteLine("");
+>>>>>>> Stashed changes
                 Console.WriteLine("CONTACTO ACTUALIZADO.");
                 return;
             }
         }
 
+<<<<<<< Updated upstream
         Console.WriteLine();
+=======
+        Console.WriteLine("");
+>>>>>>> Stashed changes
         Console.WriteLine("ID NO ENCONTRADO.");
 
     }
@@ -136,14 +157,24 @@ class agenda_de_contactos
                 }
 
                 total_contactos--;
+<<<<<<< Updated upstream
 
                 Console.WriteLine();
+=======
+                
+                Console.WriteLine("");
+>>>>>>> Stashed changes
                 Console.WriteLine("CONTACTO ELIMINADO.");
                 return;
             }
         }
+<<<<<<< Updated upstream
 
         Console.WriteLine();
+=======
+        
+        Console.WriteLine("");
+>>>>>>> Stashed changes
         Console.WriteLine("ID NO ENCONTRADO.");
 
     }
@@ -207,4 +238,7 @@ class agenda_de_contactos
         }
     }
 }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
