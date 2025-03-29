@@ -1,6 +1,7 @@
----
+# Preguntas para el 1er Parcial
 
 ### 1
+
 ¿Cuál es el rango de valores que puede almacenar una variable de tipo `byte` en C#?
 
 a) -128 a 127  
@@ -19,6 +20,7 @@ c) `long`
 ---
 
 ### 3
+
 ¿Qué resultado se obtiene al ejecutar la expresión `5 + 2 * 3`?
 
 a) 21  
@@ -28,6 +30,7 @@ c) 17
 ---
 
 ### 4
+
 ¿Cuál de los siguientes tipos ocupa **menos espacio en memoria**?
 
 a) `long`  
@@ -37,6 +40,7 @@ c) `int`
 ---
 
 ### 5
+
 ¿Cuál es el valor final de `x` después de esta operación?
 
 ```csharp
@@ -78,6 +82,7 @@ c) 64 bits
 ---
 
 ### 9
+
 Dado el siguiente código, ¿cuál es el valor final de `a`?
 
 ```csharp
@@ -951,6 +956,7 @@ C) `valores[25] = 2;`
 ---
 
 ### 98
+
 Si se tiene `string[] nombres = {"Ana", "Luis", "Juan"}`, ¿qué valor tiene `nombres[1]`?  
 A) `"Ana"`  
 B) `"Luis"`  
@@ -967,6 +973,7 @@ C) Se lanza una excepción en tiempo de ejecución.
 ---
 
 ### 100
+
 Dado `int[] datos = {1, 2, 3, 4}`, ¿cómo se puede acceder al último elemento usando índices normales?  
 A) `datos[4]`  
 B) `datos[3]`  
@@ -1023,6 +1030,7 @@ C) `switch`
 ---
 
 ### 107
+
 Dado `int[] numeros = {1, 2, 3, 4}`, ¿cuál es el resultado de este código?  
 ```csharp  
 int suma = 0;  
@@ -1869,6 +1877,7 @@ C) null
 ---
 
 ### 174
+
 ¿Qué permite la herencia en la programación orientada a objetos?
 
 A) Aumentar el número de constructores  
@@ -1878,6 +1887,7 @@ C) Usar operadores sobrecargados
 ---
 
 ### 175
+
 Dada la siguiente jerarquía:
 
 ```csharp
@@ -1894,6 +1904,7 @@ C) `Auto a = (Auto)new Vehiculo();`
 ---
 
 ### 176
+
 ¿Qué palabra clave se usa para permitir que un método pueda ser sobrescrito en una subclase?
 
 A) `override`  
@@ -1903,6 +1914,7 @@ C) `sealed`
 ---
 
 ### 177
+
 ¿Qué salida produce este código?
 
 ```csharp
