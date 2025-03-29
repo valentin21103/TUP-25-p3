@@ -7,6 +7,7 @@
 
 // File.ReadLines(origen) : Lee todas las líneas de un archivo y devuelve una lista de strings
 // File.WriteLines(destino, lineas) : Escribe una lista de líneas en un archivo
+//.
 
 // Escribir la solucion al TP1 en este archivo. (Borre el ejemplo de abajo)
 using System;       // Para usar la consola  (Console)
