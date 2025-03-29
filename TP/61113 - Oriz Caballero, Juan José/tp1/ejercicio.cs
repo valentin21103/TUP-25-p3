@@ -36,8 +36,8 @@ namespace Trabajo_Practico_1_Prog3
     public class Constructores
         Datos[] dat = new Datos[100];           
         int opc;                                
-        int cantCont = 0;                       
-        int contID = 1;                        
+        int ContCant = 0;                       
+        int IDCont = 1;                        
         string archivo = "agenda.csv";
 
         public Constructores()
