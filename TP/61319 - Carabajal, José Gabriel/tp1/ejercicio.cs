@@ -20,7 +20,7 @@ struct Contacto
     public string Email;
 }
 
-class Program
+class Program //clase
 {
     const int MAX_CONTACTOS = 100;
     static Contacto[] agenda = new Contacto[MAX_CONTACTOS];
