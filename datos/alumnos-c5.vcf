@@ -360,6 +360,14 @@ TEL;TYPE=Legajo:61052
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
+N:Robledo;Rocio Micaela;;;
+FN:Rocio Micaela Robledo
+ORG:TUP-25-P3-C5
+TEL;TYPE=CELL:(381) 475-8990
+TEL;TYPE=Legajo:61962
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
 N:Robles;Leandro Gonzalo;;;
 FN:Leandro Gonzalo Robles
 ORG:TUP-25-P3-C5
