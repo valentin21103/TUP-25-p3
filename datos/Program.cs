@@ -86,6 +86,7 @@ class Clase : IEnumerable<Alumno> {
     public Clase EnComision(string comision) => new (alumnos.Where(a => a.comision == comision));
     public Clase ConTelefono(bool incluirTelefono=true) => new (alumnos.Where(a => incluirTelefono == a.TieneTelefono ));
 
+
     public void Guardar(string destino){
         using (StreamWriter writer = new StreamWriter(destino)){
             writer.WriteLine("# Listado de alumnos de TUP-2025-P3");
@@ -157,6 +158,63 @@ class Clase : IEnumerable<Alumno> {
         }
         Console.WriteLine($"● Carpetas creadas");
     }
+
+    public static int ContarLineasEfectivas(string archivo)
+    {
+        if (!File.Exists(archivo))
+        {
+            Console.WriteLine($"El archivo {archivo} no existe.");
+            return 0;
+        }
+
+        var lineas = File.ReadAllLines(archivo);
+
+        return lineas.Count(linea =>
+            !string.IsNullOrWhiteSpace(linea) && // No está vacía ni es solo espacios
+            !linea.TrimStart().StartsWith("//") && // No es un comentario
+            !linea.Trim().Equals("{") && // No es solo una llave de apertura
+            !linea.Trim().Equals("}") // No es solo una llave de cierre
+        );
+    }
+
+    public static void ContarLineasEnTP(string origen)
+    {
+        const string Base = "../TP";
+        string NombreCarpetaTP1 = origen;
+        string NombreArchivo = "ejercicio.cs";
+
+        if (!Directory.Exists(Base))
+        {
+            Console.WriteLine($"La carpeta base {Base} no existe.");
+            return;
+        }
+
+        Console.WriteLine("=== Líneas efectivas de código en cada archivo ===");
+
+        foreach (var carpetaAlumno in Directory.GetDirectories(Base))
+        {
+            var carpetaTP1 = Path.Combine(carpetaAlumno, NombreCarpetaTP1);
+            var archivoEjercicio = Path.Combine(carpetaTP1, NombreArchivo);
+    
+            if (File.Exists(archivoEjercicio))
+            {
+                int lineasEfectivas = ContarLineasEfectivas(archivoEjercicio);
+                
+                if(lineasEfectivas < 40){
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                }
+                Console.WriteLine($"{Path.GetFileName(carpetaAlumno),-40} -> {lineasEfectivas,3} líneas efectivas");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"{Path.GetFileName(carpetaAlumno)} -> Archivo {NombreArchivo} no encontrado");
+                Console.ResetColor();
+            }
+        }
+    }
+
 
     public void CopiarTrabajoPractico(string origen, bool forzar=false){
         const string Base = "../TP";
@@ -258,9 +316,10 @@ Console.WriteLine();
         Console.WriteLine("1. Exportar datos de alumnos");
         Console.WriteLine("2. Crear carpetas");
         Console.WriteLine("3. Copiar trabajo práctico");
+        Console.WriteLine("4. Contar líneas efectivas del TP1");
         Console.WriteLine("0. Salir");
         
-        return LeerCadena("\nElija una opción (0-3): ", ["0", "1", "2", "3"]);
+        return LeerCadena("\nElija una opción (0-4): ", new[] { "0", "1", "2", "3", "4" });
     }
 
     static void Main(string[] args) {
@@ -268,7 +327,7 @@ Console.WriteLine();
 
         while (true) {
             string opcion = MostrarMenu();
-            if(opcion == "0") return;
+            if (opcion == "0") return;
 
             switch (opcion) {
                 case "1":
@@ -281,15 +340,20 @@ Console.WriteLine();
                     break;
                 case "3":
                     Console.WriteLine("=== Copiar trabajo práctico ===");
-                    string tp = LeerCadena("Ingrese el nombre del trabajo práctico a copiar (ej: tp1): ", ["tp1", "tp2", "tp3"]);
+                    string tp = LeerCadena("Ingrese el nombre del trabajo práctico a copiar (ej: tp1): ", new[] { "tp1", "tp2", "tp3" });
                     
-                    string respuesta = LeerCadena("¿Forzar copia incluso si ya existe? (s/n): ", [ "s", "n" ]);
+                    string respuesta = LeerCadena("¿Forzar copia incluso si ya existe? (s/n): ", new[] { "s", "n" });
                     bool forzar = respuesta.ToLower() == "s";
                     
                     clase.CopiarTrabajoPractico(tp, forzar);
                     break;
+                case "4":
+                    Console.WriteLine("=== Contar líneas efectivas del TP1 ===");
+                    Clase.ContarLineasEnTP("TP1");
+                    break;
             }
-            
+
+            EsperarTecla();
         }
     }
 }
