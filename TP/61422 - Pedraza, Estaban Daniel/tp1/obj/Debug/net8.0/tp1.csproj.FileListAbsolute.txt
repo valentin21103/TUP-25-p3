@@ -1,0 +1,15 @@
+C:\Users\User\Desktop\TUP-25-p3\TP\61422 - Pedraza, Estaban Daniel\tp1\obj\Debug\net8.0\tp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\TUP-25-p3\TP\61422 - Pedraza, Estaban Daniel\tp1\obj\Debug\net8.0\tp1.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\TUP-25-p3\TP\61422 - Pedraza, Estaban Daniel\tp1\obj\Debug\net8.0\tp1.AssemblyInfo.cs
+C:\Users\User\Desktop\TUP-25-p3\TP\61422 - Pedraza, Estaban Daniel\tp1\obj\Debug\net8.0\tp1.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\TUP-25-p3\TP\61422 - Pedraza, Estaban Daniel\tp1\obj\Debug\net8.0\tp1.sourcelink.json
+C:\Users\User\Desktop\TUP-25-p3\TP\61422 - Pedraza, Estaban Daniel\tp1\bin\Debug\net8.0\tp1.exe
+C:\Users\User\Desktop\TUP-25-p3\TP\61422 - Pedraza, Estaban Daniel\tp1\bin\Debug\net8.0\tp1.deps.json
+C:\Users\User\Desktop\TUP-25-p3\TP\61422 - Pedraza, Estaban Daniel\tp1\bin\Debug\net8.0\tp1.runtimeconfig.json
+C:\Users\User\Desktop\TUP-25-p3\TP\61422 - Pedraza, Estaban Daniel\tp1\bin\Debug\net8.0\tp1.dll
+C:\Users\User\Desktop\TUP-25-p3\TP\61422 - Pedraza, Estaban Daniel\tp1\bin\Debug\net8.0\tp1.pdb
+C:\Users\User\Desktop\TUP-25-p3\TP\61422 - Pedraza, Estaban Daniel\tp1\obj\Debug\net8.0\tp1.dll
+C:\Users\User\Desktop\TUP-25-p3\TP\61422 - Pedraza, Estaban Daniel\tp1\obj\Debug\net8.0\refint\tp1.dll
+C:\Users\User\Desktop\TUP-25-p3\TP\61422 - Pedraza, Estaban Daniel\tp1\obj\Debug\net8.0\tp1.pdb
+C:\Users\User\Desktop\TUP-25-p3\TP\61422 - Pedraza, Estaban Daniel\tp1\obj\Debug\net8.0\tp1.genruntimeconfig.cache
+C:\Users\User\Desktop\TUP-25-p3\TP\61422 - Pedraza, Estaban Daniel\tp1\obj\Debug\net8.0\ref\tp1.dll
