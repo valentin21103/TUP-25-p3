@@ -102,8 +102,8 @@
 1.  61671   Quinteros, Gabriel                             (381) 664-1854   
 1.  61064   Racedo, Francisco Nicolas                      (381) 301‑3850
 1.  61052   Reynoso, Braian Nicolás                        (381) 654-0412   
-0.  62104   Robledo Garcia, Juan Gerardo    
-0.  61962   Robledo, Rocio Micaela                         (381) 475-8990
+0.  62104   Robledo, Juan Gerardo                          
+1.  61962   Robledo, Rocio Micaela                         (381) 475-8990
 1.  61914   Robles, Leandro Gonzalo                        (381) 611-5577   
 1.  61125   Rocha, Luca                                    (381) 386-0020   
 0.  62564   Sanchez, Santiago Sebastian 
