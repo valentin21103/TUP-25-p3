@@ -1,5 +1,41 @@
 
-19/3 - 11:33
+18/3 - 23:09
+  23:09 De: unknown - Mensaje: 
+  23:09 De: 3815343458 - Mensaje: P3-C5 👨🏻‍💻👩🏻‍💻
+  23:09 De: unknown - Mensaje: set
+  23:10 De: 3816270762 - Mensaje: 
+
+19/3 - 11:30
+  11:30 De: 3815459105 - Mensaje: 
+  11:30 De: 3815224910 - Mensaje: 
+  11:30 De: 3816540412 - Mensaje: 
+  11:30 De: 3815460957 - Mensaje: 
+  11:30 De: 3816194179 - Mensaje: 
+  11:30 De: 3814122061 - Mensaje: 
+  11:30 De: 3815987961 - Mensaje: 
+  11:30 De: 2966635548 - Mensaje: 
+  11:30 De: 3816064655 - Mensaje: 
+  11:30 De: 3816242939 - Mensaje: 
+  11:30 De: 3838602063 - Mensaje: 
+  11:30 De: 3813975576 - Mensaje: 
+  11:30 De: 3814186882 - Mensaje: 
+  11:31 De: 3815794665 - Mensaje: 
+  11:31 De: 3812074525 - Mensaje: 
+  11:31 De: 3813013850 - Mensaje: 
+  11:31 De: 3816896591 - Mensaje: 
+  11:31 De: 3816115577 - Mensaje: 
+  11:31 De: 3813525720 - Mensaje: 
+  11:31 De: 3816462643 - Mensaje: 
+  11:31 De: 3814182169 - Mensaje: 
+  11:31 De: 3815987961 - Mensaje: 
+  11:31 De: 3816803204 - Mensaje: 
+  11:31 De: 3813860020 - Mensaje: 
+  11:32 De: 3838602063 - Mensaje: 
+  11:32 De: 3815801228 - Mensaje: 
+  11:32 De: 3813949538 - Mensaje: 
+  11:32 De: 3816362211 - Mensaje: 
+  11:33 De: 3816050864 - Mensaje: 
+  11:33 De: 3816338522 - Mensaje: 
   11:33 De: 3815767469 - Mensaje: 
   11:34 De: 3816641854 - Mensaje: 
   11:34 De: 3816504400 - Mensaje: 
@@ -26,25 +62,25 @@
 21/3 - 10:25
   10:25 De: 3814122061 - Mensaje: 61226 Luna, Maximiliano
   10:25 De: 3816050864 - Mensaje: 62612 Campos, Julieta Antonella
-  10:25 De: 3814496148 - Mensaje: 61422 Pedraza, Esteban Daniel
   10:25 De: 3815459105 - Mensaje: 61314 Morales ,Agustin
+  10:25 De: 3814496148 - Mensaje: 61422 Pedraza, Esteban Daniel
   10:25 De: 3813013850 - Mensaje: 61064 Racedo, Francisco Nicolás
   10:25 De: 3815066621 - Mensaje: 61340 Tognalli, Mateo
   10:25 De: 3816362211 - Mensaje: 61491 Acuña, Alejo Gabriel
   10:25 De: 3816242939 - Mensaje: 61041 Iosa Molina, Nicolás
   10:25 De: 2975003076 - Mensaje: 61345 Caro, Tobias
-  10:25 De: 3813857379 - Mensaje: 
   10:25 De: 3816338522 - Mensaje: 61985 Orqueda, Francisco Nicolás
+  10:25 De: 3813857379 - Mensaje: 
   10:25 De: 3815767469 - Mensaje: 61048 Medina, Luciano
   10:26 De: 3813949538 - Mensaje: 61588 Mussa, Agustín
-  10:26 De: 3813525720 - Mensaje: 61247 Medici Assaf, Abril
-  10:26 De: 3815841265 - Mensaje: 61535 Mainardi Facundo
   10:26 De: 3814770368 - Mensaje: 61611 Coronel , Julieta Antonella
+  10:26 De: 3815841265 - Mensaje: 61535 Mainardi Facundo
+  10:26 De: 3813525720 - Mensaje: 61247 Medici Assaf, Abril
   10:26 De: 3816838080 - Mensaje: 61680 Dziewulski, Karen
   10:26 De: 2966635548 - Mensaje: 61051 Diaz, Agustin Emanuel
-  10:26 De: 3813671656 - Mensaje: 
-  10:26 De: 3816641854 - Mensaje: 61671, Quinteros, gabriel
   10:26 De: 3815794665 - Mensaje: 61050 Diaz Sánchez, Nelson Santiago
+  10:26 De: 3816641854 - Mensaje: 61671, Quinteros, gabriel
+  10:26 De: 3813671656 - Mensaje: 
   10:26 De: 3812074525 - Mensaje: 61908 Costilla, Ignacio
   10:26 De: 3816504400 - Mensaje: 62136 Muse, Alejandro
   10:26 De: 3813975576 - Mensaje: 61061 velardez , Leandro Ivan
@@ -69,8 +105,8 @@
   10:45 De: 3815422918 - Mensaje: 61732 Paz, Mikael
   10:52 De: 3816427386 - Mensaje: 61227 Valdiglesias, Federico
   10:53 De: 3814182169 - Mensaje: 61322 Juarez, Thiago
-  11:01 De: 3815987961 - Mensaje: 61848 Mazza Leon, Fabrizio Lautaro
   11:01 De: 3816064655 - Mensaje: 61540 Garcia Mc Guiness, Gonzalo
+  11:01 De: 3815987961 - Mensaje: 61848 Mazza Leon, Fabrizio Lautaro
   12:43 De: 3816618312 - Mensaje: 61858 Perez, Facundo Agustin
   13:01 De: 3815224910 - Mensaje: 61988 Villada, Guillermo Nicolás
   13:09 De: 3815001078 - Mensaje: 61252 Aguirre Rojas, Lourdes Valentina
@@ -95,45 +131,44 @@
   10:17 De: 3815459105 - Mensaje: 👍🏼
   10:17 De: 3816338522 - Mensaje: 👍
   10:17 De: 3813402187 - Mensaje: 👍🏻
-  10:17 De: 3813857379 - Mensaje: 👍🏼
-  10:17 De: 3816362211 - Mensaje: 👍🏻
   10:17 De: 3816838080 - Mensaje: 👍🏻
+  10:17 De: 3816362211 - Mensaje: 👍🏻
+  10:17 De: 3813857379 - Mensaje: 👍🏼
   10:17 De: 3816803204 - Mensaje: 👍🏻
   10:17 De: 3816462643 - Mensaje: 👍🏼
-  10:17 De: 3815066621 - Mensaje: 👍
   10:17 De: 3816540412 - Mensaje: 👍🏼
-  10:17 De: 3816194179 - Mensaje: 👍🏽
-  10:17 De: 3815224910 - Mensaje: 👍
+  10:17 De: 3815066621 - Mensaje: 👍
   10:17 De: 3814496148 - Mensaje: 👍🏻
+  10:17 De: 3815224910 - Mensaje: 👍
+  10:17 De: 3816194179 - Mensaje: 👍🏽
   10:17 De: 3813525720 - Mensaje: 👍🏻
-  10:17 De: 3814182169 - Mensaje: 👍🏻
   10:17 De: 3815987961 - Mensaje: 👍
+  10:17 De: 3814182169 - Mensaje: 👍🏻
   10:17 De: 3816432069 - Mensaje: 👍🏼
-  10:17 De: 3813860020 - Mensaje: 👍🏻
-  10:17 De: 3814122061 - Mensaje: 👍
   10:17 De: 3816427386 - Mensaje: 👍🏼
+  10:17 De: 3814122061 - Mensaje: 👍
+  10:17 De: 3813860020 - Mensaje: 👍🏻
   10:18 De: 3813949538 - Mensaje: 👍
-  10:18 De: 3815794665 - Mensaje: 👍🏼
-  10:18 De: 3815841265 - Mensaje: 👍🏻
   10:18 De: 3816896591 - Mensaje: 👍🏻
-  10:18 De: 3816115577 - Mensaje: 👍🏽
+  10:18 De: 3815841265 - Mensaje: 👍🏻
+  10:18 De: 3815794665 - Mensaje: 👍🏼
   10:18 De: 3813975576 - Mensaje: 👍🏻
+  10:18 De: 3816115577 - Mensaje: 👍🏽
   10:18 De: 3816402374 - Mensaje: 👍🏻
-  10:18 De: 3816064655 - Mensaje: 👍
   10:18 De: 3813013850 - Mensaje: 👍🏻
+  10:18 De: 3816064655 - Mensaje: 👍
   10:18 De: 3815825319 - Mensaje: 👍🏽
-  10:18 De: 3814684269 - Mensaje: 
-  10:18 De: 3815169171 - Mensaje: 👍🏻
   10:18 De: 3816242939 - Mensaje: 👍🏻
+  10:18 De: 3815169171 - Mensaje: 👍🏻
   10:18 De: 3816805666 - Mensaje: 👍
   10:18 De: 3812074525 - Mensaje: 👍
   10:18 De: 3815767469 - Mensaje: 👍🏻
   10:18 De: 3815460957 - Mensaje: 👍🏻
   10:18 De: 2966635548 - Mensaje: 👍🏻
   10:18 De: 3815001078 - Mensaje: 👍🏻
-  10:18 De: 3814758990 - Mensaje: 
-  10:18 De: 3838602063 - Mensaje: 👍🏻
+  10:18 De: 3814684269 - Mensaje: 
   10:18 De: 3814684269 - Mensaje: 👍🏻
+  10:18 De: 3838602063 - Mensaje: 👍🏻
   10:18 De: 3815422918 - Mensaje: 👍🏼
   10:18 De: 3814758990 - Mensaje: 👍🏻
   10:19 De: 3813534422 - Mensaje: 👍🏽
@@ -141,6 +176,7 @@
   10:19 De: 3816504400 - Mensaje: 👍🏻
   10:19 De: 3816641854 - Mensaje: 👍🏼
   10:19 De: 2975003076 - Mensaje: 👍
+  10:18 De: 3814758990 - Mensaje: 
   10:20 De: 3815801228 - Mensaje: 👍🏻
   10:20 De: 3814758990 - Mensaje: 61962 Robledo Rocío Micaela
   10:26 De: 3816618312 - Mensaje: 👍🏻
@@ -150,8 +186,8 @@
   20:34 De: 3816856046 - Mensaje: genial entonces, gracias profe
   20:38 De: 3813402187 - Mensaje: Hola profe, Buenas noches, mil disculpas el horario... una pregunta. ¿Cuándo subira el contenido de la clase de hoy? ☺️
 
-26/3 - 19:39
-  19:39 De: 3815247391 - Mensaje: 
+28/3 - 01:13
+  01:13 De: unknown - Mensaje: 198938757976159@lid
 
 27/3 - 11:33
   11:33 De: 3815987961 - Mensaje: 👍
@@ -159,33 +195,38 @@
   11:33 De: 3813975576 - Mensaje: 👍🏻
   11:33 De: 3816504400 - Mensaje: 👍🏻
   11:33 De: 3815422918 - Mensaje: 👍🏼
-  11:33 De: 3816242939 - Mensaje: 👍🏻
-  11:33 De: 3815460957 - Mensaje: 👍🏻
   11:33 De: 3816427386 - Mensaje: 👍🏼
-  11:33 De: 3816402374 - Mensaje: 👍🏻
-  11:33 De: 3813671656 - Mensaje: 👍
+  11:33 De: 3815460957 - Mensaje: 👍🏻
+  11:33 De: 3816242939 - Mensaje: 👍🏻
   11:33 De: 3813860020 - Mensaje: 👍🏻
+  11:33 De: 3813671656 - Mensaje: 👍
+  11:33 De: 3816402374 - Mensaje: 👍🏻
   11:33 De: 3816462643 - Mensaje: 👍🏼
-  11:33 De: 3816432069 - Mensaje: 👍🏼
-  11:33 De: 3813949538 - Mensaje: 👍
-  11:33 De: 3816805666 - Mensaje: 👍
   11:33 De: 2975003076 - Mensaje: 👍
+  11:33 De: 3816805666 - Mensaje: 👍
+  11:33 De: 3813949538 - Mensaje: 👍
+  11:33 De: 3816432069 - Mensaje: 👍🏼
   11:33 De: 3838602063 - Mensaje: 👍🏻
   11:33 De: 3815794665 - Mensaje: 👍🏼
-  11:33 De: 3813534422 - Mensaje: 👍🏽
   11:33 De: 3813013850 - Mensaje: 👍🏻
-  11:33 De: 3813525720 - Mensaje: 👍🏻
+  11:33 De: 3813534422 - Mensaje: 👍🏽
   11:33 De: 3815224910 - Mensaje: 👍
+
+26/3 - 19:39
+  19:39 De: 3815247391 - Mensaje: 
+
+27/3 - 11:33
+  11:33 De: 3813525720 - Mensaje: 👍🏻
   11:33 De: 3816540412 - Mensaje: 👍🏼
-  11:33 De: 3816338522 - Mensaje: 👍
   11:33 De: 3816896591 - Mensaje: 👍🏻
+  11:33 De: 3816338522 - Mensaje: 👍
   11:33 De: 3812074525 - Mensaje: 👍🏻
-  11:33 De: 3816115577 - Mensaje: 👍🏽
-  11:33 De: 3816064655 - Mensaje: 👍🏻
   11:33 De: 3816362211 - Mensaje: 👍🏻
+  11:33 De: 3816064655 - Mensaje: 👍🏻
+  11:33 De: 3816115577 - Mensaje: 👍🏽
   11:33 De: 3815801228 - Mensaje: 👍🏻
-  11:33 De: 3815841265 - Mensaje: 👍🏻
   11:33 De: 3816803204 - Mensaje: 👍🏻
+  11:33 De: 3815841265 - Mensaje: 👍🏻
   11:33 De: 2966635548 - Mensaje: 👍🏻
   11:33 De: 3814496148 - Mensaje: 👍
   11:33 De: 3815767469 - Mensaje: 👍🏻
@@ -203,6 +244,62 @@
   12:13 De: 3815001078 - Mensaje: 👍🏻
   12:31 De: 3816856046 - Mensaje: 👍🏻
 
-28/3 - 01:13
-  01:13 De: unknown - Mensaje: 198938757976159@lid
+28/3 - 01:42
   01:42 De: 3813671656 - Mensaje: 
+  11:51 De: 3814496148 - Mensaje: 👍🏻
+  11:51 De: 3813402187 - Mensaje: 👍🏻
+  11:51 De: 3816641854 - Mensaje: 👍🏻
+  11:51 De: 3814182169 - Mensaje: 👍🏻
+  11:51 De: 3815459105 - Mensaje: 👍🏼
+  11:51 De: 3813860020 - Mensaje: 👍🏻
+  11:51 De: 3814122061 - Mensaje: 👍
+  11:51 De: 2975003076 - Mensaje: 👍
+  11:51 De: 3816838080 - Mensaje: 👍🏻
+  11:51 De: 3813671656 - Mensaje: 👍
+  11:51 De: 3814684269 - Mensaje: 👍🏻
+  11:51 De: 3816803204 - Mensaje: 👍🏻
+  11:51 De: 3816242939 - Mensaje: 👍🏻
+  11:51 De: 3815767469 - Mensaje: 👍🏻
+  11:51 De: 3813975576 - Mensaje: 👍🏻
+  11:51 De: 3813857379 - Mensaje: 👍🏼
+  11:51 De: 3816427386 - Mensaje: 👍🏼
+  11:51 De: 3816362211 - Mensaje: 👍🏻
+  11:51 De: 3815066621 - Mensaje: 👍
+  11:51 De: 3815422918 - Mensaje: 👍🏼
+  11:51 De: 3813525720 - Mensaje: 👍🏻
+  11:51 De: 3816896591 - Mensaje: 👍🏻
+  11:51 De: 3815825319 - Mensaje: 👍🏽
+  11:51 De: 3815794665 - Mensaje: 👍🏼
+  11:51 De: 3813013850 - Mensaje: 👍🏻
+  11:51 De: 3816540412 - Mensaje: 👍🏼
+  11:51 De: 3816338522 - Mensaje: 👍
+  11:51 De: 2966635548 - Mensaje: 👍🏻
+  11:51 De: 3815224910 - Mensaje: 👍🏿
+  11:51 De: 3816064655 - Mensaje: 👍🏻
+  11:51 De: 3816194179 - Mensaje: 👍🏽
+  11:51 De: 3812074525 - Mensaje: 👍🏻
+  11:51 De: 3815987961 - Mensaje: 👍
+  11:51 De: 3815169171 - Mensaje: 👍🏻
+  11:51 De: 3815460957 - Mensaje: 👍🏻
+  11:51 De: 3816504400 - Mensaje: 👍🏻
+  11:51 De: 3816462643 - Mensaje: 👍🏼
+  11:51 De: 3816050864 - Mensaje: 👍🏻
+  11:51 De: 3815841265 - Mensaje: 👍🏻
+  11:51 De: 3816805666 - Mensaje: 👍
+  11:52 De: 3813949538 - Mensaje: 👍🏻
+  11:52 De: 3815001078 - Mensaje: 👍🏻
+  11:52 De: 3813534422 - Mensaje: 👍🏽
+  11:52 De: 3815169171 - Mensaje: 
+  11:53 De: 3816402374 - Mensaje: 👍🏿
+  11:58 De: 3814144834 - Mensaje: 👍🏻
+  12:13 De: 3816856046 - Mensaje: 👍🏻
+  12:16 De: 3816856046 - Mensaje: profe, enseñeme como hacer para enviar de forma programada el icono de la manito, asi lo hace solo mientras estoy en clase 😅
+  12:27 De: 3815801228 - Mensaje: 👍🏻
+  12:52 De: 3814770368 - Mensaje: 👍🏻
+  12:52 De: 3816618312 - Mensaje: 👍🏻
+  13:00 De: 3838602063 - Mensaje: 👍🏻
+  21:29 De: unknown - Mensaje: 5493816194179@c.us
+
+29/3 - 24:25
+  24:25 De: 3813013850 - Mensaje: Muchísimas gracias Profe..
+  24:25 De: 3813013850 - Mensaje: 
