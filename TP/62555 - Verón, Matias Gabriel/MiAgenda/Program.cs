@@ -1,4 +1,4 @@
-using System;       // Para usar la consola  (Console)
+﻿using System;       // Para usar la consola  (Console)
 using System.IO;    // Para leer archivos    (File)
 
 
@@ -189,5 +189,4 @@ class Program
         Console.ReadKey();
     }
 }
-
 
