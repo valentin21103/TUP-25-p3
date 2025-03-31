@@ -1,5 +1,0 @@
-c:\Users\exequ\OneDrive\Escritorio\TP\TUP-25-p3\TP\obj\Debug\net8.0\TP.GeneratedMSBuildEditorConfig.editorconfig
-c:\Users\exequ\OneDrive\Escritorio\TP\TUP-25-p3\TP\obj\Debug\net8.0\TP.AssemblyInfoInputs.cache
-c:\Users\exequ\OneDrive\Escritorio\TP\TUP-25-p3\TP\obj\Debug\net8.0\TP.AssemblyInfo.cs
-c:\Users\exequ\OneDrive\Escritorio\TP\TUP-25-p3\TP\obj\Debug\net8.0\TP.csproj.CoreCompileInputs.cache
-c:\Users\exequ\OneDrive\Escritorio\TP\TUP-25-p3\TP\obj\Debug\net8.0\TP.sourcelink.json
