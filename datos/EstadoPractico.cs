@@ -2,17 +2,17 @@ namespace TUP;
 
 public class EstadoPractico {
     public const char NoPresentado = '.';
-    public const char Aprobado = '+';
-    public const char Desaprobado = '-';
-    public const char Error = '*';
-    public const char EnProgreso = '~';
+    public const char Aprobado     = '+';
+    public const char Desaprobado  = '-';
+    public const char Error        = '*';
+    public const char EnProgreso   = '~';
     
     public static char ToChar(EstadoPractico estado) => estado switch {
         EstadoPractico e when e == NoPresentado => '.',
-        EstadoPractico e when e == Aprobado => '+',
-        EstadoPractico e when e == Desaprobado => '-',
-        EstadoPractico e when e == Error => '*',
-        EstadoPractico e when e == EnProgreso => '~',
+        EstadoPractico e when e == Aprobado     => '+',
+        EstadoPractico e when e == Desaprobado  => '-',
+        EstadoPractico e when e == Error        => '*',
+        EstadoPractico e when e == EnProgreso   => '~',
         _ => ' '
     };
     
@@ -36,12 +36,12 @@ public class EstadoPractico {
 
     public String emoji(){
         return _value switch {
-            '.' or ' ' => "❓",
+            '.' => "❓",
             '+' => "✅",
             '-' => "❌",
             '*' => "⚠️",
             '~' => "⏳",
-            _ => "❓"
+            _  => "❓"
         };
     }
 

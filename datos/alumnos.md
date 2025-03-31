@@ -36,7 +36,7 @@
 33.  61032  Moya, Mariano                             (381) 670-1164            +                   
 34.  62263  Orellana, José Augusto                    (386) 534-2925            +                   
 35.  61113  Oriz Caballero, Juan José                 (381) 631-7223            +                   
-36.  61059  Palavecino, Fabricio Gaston               (381) 666-6103            .                   
+36.  61059  Palavecino, Fabricio Gaston               (381) 666-6103            +                   
 37.  61248  Palma Collado, Nahuel                     (381) 674-7012            +                   
 38.  61572  Parrado Navarrete, Alex Daniel            (381) 409-5039            +                   
 39.  61581  Paz, Naim Federico                        (381) 353-0060            .                   
@@ -50,8 +50,8 @@
 47.  61096  Suarez Vece, Leandro Andres               (381) 512-6476            +                   
 48.  61129  Tello, Abril María Agostina               (381) 447-2483            +                   
 49.  61793  Trujillo, Facundo Nahuel                  (381) 206-2084            +                   
-50.  62555  Verón, Matias Gabriel                     (381) 519-6654            .                   
-51.  61596  Zamora, Gonzalo Alejandro                 (381) 354-0535            .                   
+50.  62555  Verón, Matias Gabriel                     (381) 519-6654            +                   
+51.  61596  Zamora, Gonzalo Alejandro                 (381) 354-0535            +                   
 52.  61862  Zerda, Thomas                             (381) 333-0962            .                   
 
 ## Comisión C5

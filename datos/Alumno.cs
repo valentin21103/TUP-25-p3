@@ -11,7 +11,7 @@ public class Alumno {
     public int orden;
     public string practicos; // Almacena el estado de los trabajos prácticos
 
-    public Alumno(int orden, int legajo, string apellido, string nombre, string telefono, string comision, string practicos = "") {
+    public Alumno(int orden, int legajo, string apellido, string nombre, string telefono, string comision, string practicos) {
         this.orden = orden;
         this.legajo = legajo;
         this.apellido = apellido.Trim();
@@ -23,21 +23,20 @@ public class Alumno {
 
     public bool TieneTelefono => telefono != "";
     public string NombreCompleto => $"{apellido}, {nombre}".Replace("-", "").Replace("*", "").Trim();
-    
-    // Métodos para trabajar con los prácticos
-    
-    public void PonerPractico(int numeroTP, EstadoPractico estado) {
-        if (numeroTP <= 0 || numeroTP > MaxPracticos) return;
-        char[] practicosArray = practicos.PadRight(20).ToCharArray();
-        practicosArray[numeroTP - 1] = estado;
-        practicos = new string(practicosArray);
+    public string Carpeta => $"{legajo} - {NombreCompleto}";
+
+    public EstadoPractico ObtenerPractico(int practico) {
+        if (practico <= 0 || practico > MaxPracticos) return EstadoPractico.Error;
+        char estado = practicos.PadRight(MaxPracticos)[practico - 1];
+        return (EstadoPractico)estado;
     }
 
-    public EstadoPractico ObtenerPractico(int numeroTP) {
-        if (numeroTP <= 0 || numeroTP > MaxPracticos) return EstadoPractico.Error;
-        char estado = practicos.PadRight(MaxPracticos)[numeroTP - 1];
-        return estado;
-    }
+    public void PonerPractico(int practico, EstadoPractico estado) {
+        if (practico <= 0 || practico > MaxPracticos) return;
+        char[] practicosArray = practicos.PadRight(MaxPracticos).ToCharArray();
+        practicosArray[practico - 1] = (char)estado;
+        practicos = new string(practicosArray);
+    } 
 
     public static Alumno Yo => new (0, 0, "Di Battista", "Alejandro", "(381) 534-3458", "", "++");
 }

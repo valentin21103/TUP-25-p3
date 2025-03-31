@@ -1,28 +1,23 @@
 using System;
 
-namespace TUP
-{
-    public static class Consola
-    {
+namespace TUP {
+    public static class Consola {
         // Helper method to print colored text and reset color afterwards
-        public static void Escribir(string text, ConsoleColor color = ConsoleColor.White)
-        {
+        public static void Escribir(string text, ConsoleColor color = ConsoleColor.White) {
             Console.ForegroundColor = color;
             Console.WriteLine(text);
             Console.ResetColor();
         }
         
         // Helper method to wait for a key press
-        public static void EsperarTecla(string mensaje = "\nPresione cualquier tecla para continuar...") 
-        {
+        public static void EsperarTecla(string mensaje = "\nPresione cualquier tecla para continuar...") {
             Console.Write(mensaje);
             Console.ReadKey(true);
             Console.WriteLine();
         }
         
         // Helper method to read a string input with optional validation
-        public static string LeerCadena(string mensaje = "", string[]? valoresPosibles = null)
-        {
+        public static string LeerCadena(string mensaje = "", string[]? valoresPosibles = null) {
             string entrada;
             bool entradaValida;
             
@@ -31,15 +26,11 @@ namespace TUP
                 entrada = Console.ReadLine() ?? "";
                 
                 // Si no hay valores posibles específicos, cualquier entrada es válida
-                if (valoresPosibles == null || valoresPosibles.Length == 0)
-                {
+                if (valoresPosibles == null || valoresPosibles.Length == 0) {
                     entradaValida = true;
-                }
-                else
-                {
+                } else {
                     entradaValida = valoresPosibles.Contains(entrada);
-                    if (!entradaValida)
-                    {
+                    if (!entradaValida) {
                         Console.WriteLine($"Entrada no válida. \nOpciones permitidas: {string.Join(", ", valoresPosibles)}");
                     }
                 }
@@ -49,8 +40,7 @@ namespace TUP
         }
         
         // Helper method to get a valid option from a range
-        public static string ElegirOpcion(string mensaje, string opcionesValidas)
-        {
+        public static string ElegirOpcion(string mensaje, string opcionesValidas) {
             string opcion;
             bool opcionValida;
             
