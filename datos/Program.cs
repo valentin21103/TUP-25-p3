@@ -5,15 +5,14 @@ using TUP;
 class Program {
     static string MostrarMenu() {
         Console.Clear();
-        Consola.Escribir("=== MENU DE OPCIONES ===", ConsoleColor.Cyan);
+        Consola.Escribir("=== MENÚ DE OPCIONES ===", ConsoleColor.Cyan);
         Consola.Escribir("1. Listar alumnos");
         Consola.Escribir("2. Exportar datos");
-        Consola.Escribir("3. Normalizar Carpetas");
+        Consola.Escribir("3. Normalizar carpetas");
         Consola.Escribir("4. Copiar trabajo práctico");
-        Consola.Escribir("5. Verificar Presentacion Trabajo Practico");
-        Consola.Escribir("6. Listar Trabajo practicos no Presentados");
+        Consola.Escribir("5. Verificar presentación de trabajo práctico");
+        Consola.Escribir("6. Listar trabajos prácticos no presentados");
         Consola.Escribir("0. Salir");
-
         return Consola.ElegirOpcion("\nElija una opción (0-6): ", "0123456");
     }
 
@@ -22,15 +21,13 @@ class Program {
         var practico = 1;
 
         Consola.Escribir("=== Bienvenido al sistema de gestión de alumnos ===", ConsoleColor.Cyan);
-        Consola.Escribir($" Aprobados: {clase.ConPractico(1,EstadoPractico.Aprobado).Count()}\n - Desaprobados: {clase.ConPractico(1,EstadoPractico.Desaprobado).Count()}\n - No Presentados: {clase.ConPractico(1,EstadoPractico.NoPresentado).Count()}", ConsoleColor.Cyan);
-        Consola.EsperarTecla();
         while (true) {
             string opcion = MostrarMenu();
             if (opcion == "0") return;
+            Console.Clear();
 
             switch (opcion) {
                 case "1":
-                    Console.Clear();
                     Consola.Escribir("=== Listar alumnos ===", ConsoleColor.Cyan);
                     clase.ListarAlumnos();
                     break;
@@ -39,25 +36,25 @@ class Program {
                     clase.ExportarDatos();
                     break;
                 case "3":
-                    Consola.Escribir("=== Normalizar Carpetas ===", ConsoleColor.Cyan);
+                    Consola.Escribir("=== Normalizar carpetas ===", ConsoleColor.Cyan);
                     clase.CrearCarpetas();
                     break;
                 case "4":
                     Consola.Escribir("=== Copiar trabajo práctico ===", ConsoleColor.Cyan);
-                    string tp = Consola.LeerCadena("Ingrese el nombre del trabajo práctico a copiar (ej: tp1): ", new[] { "1", "2", "3" });
+                    string tp = Consola.LeerCadena("Ingrese el número del trabajo práctico a copiar (ej: 1): ", new[] { "1", "2", "3" });
                     bool forzar = Consola.Confirmar("¿Forzar copia incluso si ya existe?");
 
                     clase.CopiarPractico(int.Parse(tp), forzar);
                     break;
                 case "5":
-                    Consola.Escribir($"=== Verificar Presentacion Trabajo Practico ===", ConsoleColor.Cyan);
+                    Consola.Escribir($"=== Verificar presentación de trabajo práctico ===", ConsoleColor.Cyan);
                     clase.CrearCarpetas(); // Normaliza el nombre de las carpetas 
                     clase.VerificaPresentacionPractico(practico);
                     clase = Clase.Cargar(); // Recarga la lista de alumnos
                     break;
                 case "6":
-
-                    Consola.Escribir("=== Listar Trabajo practicos no Presentados ===", ConsoleColor.Cyan);
+                    Consola.Escribir("=== Listar trabajos prácticos no presentados ===", ConsoleColor.Cyan);
+                    Consola.Escribir($"Resumen:\n  - Aprobados: {clase.ConPractico(1,EstadoPractico.Aprobado).Count()}\n  - Desaprobados: {clase.ConPractico(1,EstadoPractico.Desaprobado).Count()}\n  - No presentados: {clase.ConPractico(1,EstadoPractico.NoPresentado).Count()}", ConsoleColor.Cyan);
                     clase.ListarAusentes(practico);
                     break;
             }

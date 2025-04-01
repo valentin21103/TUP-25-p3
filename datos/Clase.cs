@@ -200,14 +200,14 @@ class Clase : IEnumerable<Alumno> {
     }
     
     public void ExportarDatos() {
-        Consola.Escribir($" ▶︎ Generando listado de alumnos (Hay {alumnos.Count()} alumnos.)", ConsoleColor.Cyan);
+        Consola.Escribir($" ▶︎ Generando listado de alumnos (hay {alumnos.Count()} alumnos.)", ConsoleColor.Cyan);
         foreach(var comision in Comisiones) {
             var alumnosComision = ConTelefono(true).EnComision(comision);
             alumnosComision.GuardarVCards( $"./alumnos-{comision}.vcf");
         }
         ConTelefono(true).GuardarVCards("./alumnos.vcf");
         Guardar("./resultados.md");
-        Consola.Escribir($" ● Exportacion completa", ConsoleColor.Green);
+        Consola.Escribir($" ● Exportación completa", ConsoleColor.Green);
     }
 
     public void ListarAlumnos(){
