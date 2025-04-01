@@ -1,217 +1,54 @@
 # TUP - Programación 3
 
-## Enunciado Ejercicio Práctico 1
+## Ejercicio Práctico 2 - Sistema Bancario
 
-> Debe ser entregado antes de las *23:59 del próximo Sabado 29 de Marzo* 
+> *Entrega: Antes de las 23:59 del próximo sábado 5 de abril*
 
-Las instrucciones de como se hace se encuentra en `como-presentar-practicos.md`[como-presentar-practicos.md]
+### Objetivo
+Implementar un sistema bancario en C# utilizando programación orientada a objetos. El sistema gestionará clientes, cuentas y operaciones bancarias, registrando cada transacción (depósito, extracción, pago y transferencia) en clases separadas, y manteniendo un historial global en el banco, así como un historial individual para cada cliente.
 
-----
+### Requerimientos
 
-## Diseña un programa de consola que administre una **agenda de contactos** 
+#### 1. Banco
+- Gestionar múltiples clientes.
+- Registrar las operaciones utilizando el número de cuenta.
+- Permitir listar el detalle de todas las operaciones.
 
-Debe cumplir con los siguientes requisitos:
+#### 2. Clientes y Cuentas
+- Cada cliente tiene un nombre y puede poseer varias cuentas.
+- Cada cuenta se identifica con un número (formato `XXXXX`) y tiene un saldo.
+- Se deben definir tres tipos de cuentas:
+  - **Oro:** Acumula un 5% de crédito sobre los pagos realizados.
+  - **Plata:** Acumula un 3% de crédito.
+  - **Bronce:** Acumula un 1% de crédito.
 
-1. **Identificación por ID**  
-   - Cada contacto tendrá un **ID único** (entero).  
-   - El programa debe asignar automáticamente el ID de forma incremental a cada contacto nuevo.
+#### 3. Operaciones Bancarias
+El sistema debe soportar las siguientes operaciones:
+- **Depositar:** Incrementa el saldo de la cuenta.
+- **Extraer:** Disminuye el saldo de la cuenta si hay fondos suficientes.
+- **Transferir:** Mover fondos de una cuenta a otra.
+- **Pagar:** Disminuir el saldo de la cuenta y acumular crédito según el porcentaje del tipo de cuenta.
 
-2. **Estructura de Almacenamiento**  
-   - Debes utilizar un **`struct`** (por ejemplo, `struct Contacto`) con los campos `Id`, `Nombre`, `Telefono` y `Email`.  
-   - Se recomienda usar un **array** para guardar los contactos.  
-   - No se permite el uso de clases personalizadas, LINQ, `foreach` ni enumeradores. Solo **struct**, **arrays**, `if` y `for`.
+Cada operación se debe implementar en su propia clase derivada de una clase abstracta base (por ejemplo, `Operacion`), la cual registrará la fecha, el monto y las cuentas involucradas (en el caso de transferencias, tanto la cuenta de origen como la de destino).
 
-3. **Funciones Principales**  
-   - **Agregar contacto**: Se pide al usuario el nombre, teléfono y email. El programa asigna un nuevo ID y registra el contacto en el array.  
-   - **Modificar contacto**: Se solicita el **ID** del contacto a cambiar. Luego, se permiten actualizar individualmente (o dejar sin cambios) el nombre, teléfono y email.  
-   - **Borrar contacto**: El usuario ingresa el ID del contacto para eliminarlo de la agenda (ajusta el array según sea necesario).  
-   - **Listar contactos**: Muestra todos los contactos en **formato tabular**, con columnas alineadas para ID, nombre, teléfono y email.  
-   - **Buscar contacto**: Pide un **término de búsqueda** y debe mostrar solo aquellos contactos cuyo nombre, teléfono o email contengan dicho término (ignorando mayúsculas/minúsculas).  
+#### 4. Registro y Reportes
+- Mantener un registro global de todas las operaciones realizadas.
+- Cada cliente debe tener un historial (lista) de las operaciones realizadas en sus cuentas.
+- Al finalizar, el sistema generará un informe que incluya:
+  - Detalle global de las operaciones (tipo, monto, fecha y cuentas involucradas).
+  - Estado final de cada cuenta (saldo y crédito acumulado).
+  - Historial individual de operaciones para cada cliente.
 
-4. **Interfaz de Usuario**  
-   - El programa deberá funcionar mediante un menú textual en la consola:  
-     1. Agregar contacto  
-     2. Modificar contacto  
-     3. Borrar contacto  
-     4. Listar contactos  
-     5. Buscar contacto  
-     0. Salir  
+#### 5. Ejemplo de Uso
+Se debe crear un escenario de prueba que incluya:
+- 2 clientes, cada uno con 2 cuentas (utilizando distintos tipos: Oro, Plata y Bronce).
+- Al menos 10 operaciones por cliente, asegurándose de que se ejecute al menos una operación de cada tipo.
+- Al finalizar, imprimir el informe global y el reporte detallado por cliente.
 
-5. **Manejo de Archivos**  
-   - Al iniciar la aplicación, se deben leer los contactos almacenados en el archivo **`agenda.csv`** (si existe) y cargarlos en el array.  
-   - Antes de que finalice la ejecución (opción “Salir”), el programa debe guardar todos los contactos de vuelta en **`agenda.csv`** para que los cambios persistan.  
+### Consideraciones Adicionales
+- Utilizar principios de programación orientada a objetos (herencia, encapsulamiento y polimorfismo).
+- Manejar adecuadamente los posibles errores (por ejemplo, fondos insuficientes para extracción o pago).
 
-6. **Consideraciones Especiales**  
-   - El listado de contactos debe mostrarse usando un **formato de columnas alineadas** para mejorar la lectura (por ejemplo, especificadores de formato en `Console.WriteLine`).  
-   - Para recorrer el array y acceder a cada contacto, utiliza únicamente bucles `for`.  
-   - El programa debe validar que no se agreguen contactos más allá del límite de tu array.  
-   - Al finalizar, se debe poder **agregar, modificar, borrar, listar y buscar** contactos de manera adecuada.  
-   - El programa continúa ofreciendo el menú en un bucle hasta que el usuario elija la opción “Salir”.
-
-
-**Objetivo**  
-Consolidar el uso de:  
-- `struct` en C#  
-- Manejo de datos utilizando solamente `if`, `for` y asignaciones en arrays  
-- Generación de un menú en consola  
-- Formateo de salida para mostrar tablas  
-- Lectura y escritura de datos mediante un archivo CSV  
-
-**Entrega**  
-- Proporcionar el archivo .cs con todo el código de la aplicación.  
-- El programa debe poder compilarse y ejecutarse correctamente en la consola de C#.
-
-**Ejemplo de Ejecución**  
-
-```bash
-===== AGENDA DE CONTACTOS =====
-1) Agregar contacto
-2) Modificar contacto
-3) Borrar contacto
-4) Listar contactos
-5) Buscar contacto
-0) Salir
-Seleccione una opción: 1
-
-=== Agregar Contacto ===
-Nombre   : Juan Pérez
-Teléfono : 123456
-Email    : juan@example.com
-Contacto agregado con ID = 1
-Presione cualquier tecla para continuar...
-
-===== AGENDA DE CONTACTOS =====
-1) Agregar contacto
-2) Modificar contacto
-3) Borrar contacto
-4) Listar contactos
-5) Buscar contacto
-0) Salir
-Seleccione una opción: 1
-
-=== Agregar Contacto ===
-Nombre   : María López
-Teléfono : 654321
-Email    : mlopez@mail.com
-Contacto agregado con ID = 2
-Presione cualquier tecla para continuar...
-
-===== AGENDA DE CONTACTOS =====
-1) Agregar contacto
-2) Modificar contacto
-3) Borrar contacto
-4) Listar contactos
-5) Buscar contacto
-0) Salir
-Seleccione una opción: 4
-
-=== Lista de Contactos ===
-ID    NOMBRE               TELÉFONO       EMAIL                    
-1     Juan Pérez           123456         juan@example.com         
-2     María López          654321         mlopez@mail.com          
-
-Presione cualquier tecla para continuar...
-
-===== AGENDA DE CONTACTOS =====
-1) Agregar contacto
-2) Modificar contacto
-3) Borrar contacto
-4) Listar contactos
-5) Buscar contacto
-0) Salir
-Seleccione una opción: 5
-
-=== Buscar Contacto ===
-Ingrese un término de búsqueda (nombre, teléfono o email): juan
-
-Resultados de la búsqueda:
-ID    NOMBRE               TELÉFONO       EMAIL                    
-1     Juan Pérez           123456         juan@example.com         
-
-Presione cualquier tecla para continuar...
-
-===== AGENDA DE CONTACTOS =====
-1) Agregar contacto
-2) Modificar contacto
-3) Borrar contacto
-4) Listar contactos
-5) Buscar contacto
-0) Salir
-Seleccione una opción: 2
-
-=== Modificar Contacto ===
-Ingrese el ID del contacto a modificar: 1
-Datos actuales => Nombre: Juan Pérez, Teléfono : 123456, Email: juan@example.com
-(Deje el campo en blanco para no modificar)
-
-Nombre    : Juan P. Domínguez
-Teléfono  : 
-Email     : 
-
-Contacto modificado con éxito. 
-Presione cualquier tecla para continuar...
-
-===== AGENDA DE CONTACTOS =====
-1) Agregar contacto
-2) Modificar contacto
-3) Borrar contacto
-4) Listar contactos
-5) Buscar contacto
-0) Salir
-Seleccione una opción: 4
-
-=== Lista de Contactos ===
-ID    NOMBRE               TELÉFONO       EMAIL                    
-1     Juan P. Domínguez    123456         juan@example.com         
-2     María López          654321         mlopez@mail.com          
-
-Presione cualquier tecla para continuar...
-
-===== AGENDA DE CONTACTOS =====
-1) Agregar contacto
-2) Modificar contacto
-3) Borrar contacto
-4) Listar contactos
-5) Buscar contacto
-0) Salir
-Seleccione una opción: 3
-
-=== Borrar Contacto ===
-Ingrese el ID del contacto a borrar: 2
-Contacto con ID=2 eliminado con éxito.
-Presione cualquier tecla para continuar...
-
-===== AGENDA DE CONTACTOS =====
-1) Agregar contacto
-2) Modificar contacto
-3) Borrar contacto
-4) Listar contactos
-5) Buscar contacto
-0) Salir
-Seleccione una opción: 4
-
-=== Lista de Contactos ===
-ID    NOMBRE               TELÉFONO       EMAIL                    
-1     Juan P. Domínguez    123456         juan@example.com         
-
-Presione cualquier tecla para continuar...
-
-===== AGENDA DE CONTACTOS =====
-1) Agregar contacto
-2) Modificar contacto
-3) Borrar contacto
-4) Listar contactos
-5) Buscar contacto
-0) Salir
-Seleccione una opción: 6
-
-Saliendo de la aplicación...
-```
-
-## Ejecución sin proyecto
-
-Si deseas ejecutar el archivo sin un proyecto, puedes utilizar dotnet-script:
-1. Instala dotnet-script globalmente:
-> dotnet tool install -g dotnet-script
-2. Ejecuta el archivo con:
-> dotnet script ./clases/04-array.cs
+### Entrega
+El programa debe implementarse completamente en 'ejercicio.cs' y debe funcionar sin crear un proyecto `dotnet script ./ejercicio.cs`
+> **Nota:** Para realizar el trabajo, se debe trabajar en la rama `Main` y hacer un refresh y luego `pull`.

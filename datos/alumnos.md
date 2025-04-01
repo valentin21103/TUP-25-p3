@@ -1,7 +1,7 @@
 # Listado de alumnos
 
 ## Comisión C3
-01.  61203  Acevedo Costello, Juan Ignacio            (381) 388-7804             
+01.  61203  Acevedo Costello, Juan Ignacio            (381) 388-7804            +
 02.  61667  Acosta, Maira                             (381) 562-8162            +
 03.  62055  Ahumada, Aiquén                           (381) 419-9202            +
 04.  61118  Barrios, Santiago Alexis                  (381) 526-8193            +
@@ -14,12 +14,12 @@
 11.  61221  Duclós, Marcelo Ezequiel                  (381) 551-4353            +
 12.  61720  Fernández, Luciano                        (381) 586-7891             
 13.  62093  Frías Silva, Juan Segundo                 (381) 415-8753            +
-14.  61139  Gallo, María Matilde                      (381) 333-4836             
-15.  61352  García Moya, José Ignacio                 (381) 638-9006             
+14.  61139  Gallo, María Matilde                      (381) 333-4836            +
+15.  61352  García Moya, José Ignacio                 (381) 638-9006            +
 16.  61200  Gauna Serrano, Martín Javier              (381) 389-2631            +
 17.  61624  Godoy, Alan                               (381) 574-4877            +
 18.  61595  González Patti, Valentín                  (381) 655-9195            +
-19.  61562  Helguera, Agustina Elizabeth              (381) 694-9619             
+19.  61562  Helguera, Agustina Elizabeth              (381) 694-9619            +
 20.  61318  Herrera, Dalma Luján                      (381) 341-4968             
 21.  62053  Herrera Palomino, Ivam Agustín            (381) 697-0643            +
 22.  61450  Jiménez Paz, Patricio Agustín             (381) 388-2674            +
@@ -64,7 +64,7 @@
 07.  61072  Casavalle Castillo, Bruno                 (381) 353-4422            +
 08.  61611  Coronel, Julieta Antonella                (381) 477-0368            +
 09.  61908  Costilla, Ignacio                         (381) 207-4525            +
-10.  61673  Delgado, Augusto Emanuel                  (383) 860-2063             
+10.  61673  Delgado, Augusto Emanuel                  (383) 860-2063            +
 11.  61051  Diaz, Agustin Emanuel                     (296) 663-5548            +
 12.  61050  Diaz Sánchez, Nelson Santiago             (381) 579-4665            +
 13.  61680  Dziewulski, Karen                         (381) 683-8080            +
@@ -95,7 +95,7 @@
 38.  61985  Orqueda, Francisco Nicolás                (381) 633-8522            +
 39.  61644  Ortega, Fernando Nicolas                  (381) 646-2643            +
 40.  61496  Parache, Ariana Agustina                  (381) 640-2374            +
-41.  61732  Paz, Mikael                               (381) 542-2918             
+41.  61732  Paz, Mikael                               (381) 542-2918            +
 42.  61422  Pedraza, Estaban Daniel                   (381) 449-6148            +
 43.  61858  Perez, Facundo Agustin                    (381) 661-8312             
 44.  61140  Perez, Fernando Alberto                   (381) 643-2069            +
@@ -107,7 +107,7 @@
 50.  61914  Robles, Leandro Gonzalo                   (381) 611-5577            +
 51.  61125  Rocha, Luca                               (381) 386-0020            +
 52.  62564  Sanchez, Santiago Sebastian                                          
-53.  61128  Satle Barreñera, Johana                   (381) 340-2187             
+53.  61128  Satle Barreñera, Johana                   (381) 340-2187            +
 54.  61340  Tognalli, Mateo Fabrizio                  (381) 506-6621            +
 55.  61227  Valdiglesias Martel, Federico             (381) 642-7386            +
 56.  61061  Velardez, Leandro Ivan                    (381) 397-5576            +

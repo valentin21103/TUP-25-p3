@@ -6,7 +6,7 @@
 echo "Starting cleanup of TP directory..."
 
 # Find and remove all bin and obj directories
-find ./TP -type d -name "obj" -o -name "bin" | while read dir; do
+find ../TP -type d -name "obj" -o -name "bin" | while read dir; do
   echo "Removing directory: $dir"
   rm -rf "$dir"
 done
