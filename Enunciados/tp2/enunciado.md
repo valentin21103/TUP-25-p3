@@ -102,7 +102,7 @@ tup.Informe();
 
 Debe producir la siguiente salida
 ```bash
-Banco : Banco Nac | Clientes: 2
+Banco: Banco Nac | Clientes: 2
 
   Cliente: Raul Perez | Saldo Total: $ 2.800,00 | Puntos Total: $ 8,00
 

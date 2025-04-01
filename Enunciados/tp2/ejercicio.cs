@@ -7,15 +7,15 @@ class Banco{}
 class Cliente{}
 
 abstract class Cuenta{}
-    class CuentaOro: Cuenta{}
-    class CuentaPlata: Cuenta{}
-    class CuentaBronce: Cuenta{}
+class CuentaOro: Cuenta{}
+class CuentaPlata: Cuenta{}
+class CuentaBronce: Cuenta{}
 
 abstract class Operacion{}
-    class Deposito: Operacion{}
-    class Retiro: Operacion{}
-    class Transferencia: Operacion{}
-    class Pago: Operacion{}
+class Deposito: Operacion{}
+class Retiro: Operacion{}
+class Transferencia: Operacion{}
+class Pago: Operacion{}
 
 
 /// EJEMPLO DE USO ///
