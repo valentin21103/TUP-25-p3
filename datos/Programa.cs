@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Text.RegularExpressions;
-using TUP;
+﻿using TUP;
 
-class Program {
+class Programa {
     static string MostrarMenu() {
         Console.Clear();
         Consola.Escribir("=== MENÚ DE OPCIONES ===", ConsoleColor.Cyan);
@@ -37,7 +35,7 @@ class Program {
                     break;
                 case "3":
                     Consola.Escribir("=== Normalizar carpetas ===", ConsoleColor.Cyan);
-                    clase.CrearCarpetas();
+                    clase.NormalizarCarpetas();
                     break;
                 case "4":
                     Consola.Escribir("=== Copiar trabajo práctico ===", ConsoleColor.Cyan);
@@ -48,9 +46,9 @@ class Program {
                     break;
                 case "5":
                     Consola.Escribir($"=== Verificar presentación de trabajo práctico ===", ConsoleColor.Cyan);
-                    clase.CrearCarpetas(); // Normaliza el nombre de las carpetas 
+                    clase.NormalizarCarpetas(); 
                     clase.VerificaPresentacionPractico(practico);
-                    clase = Clase.Cargar(); // Recarga la lista de alumnos
+                    clase = Clase.Cargar();
                     break;
                 case "6":
                     Consola.Escribir("=== Listar trabajos prácticos no presentados ===", ConsoleColor.Cyan);

@@ -16,7 +16,7 @@ class Clase : IEnumerable<Alumno> {
     }
     public static Clase Cargar(string origen="./alumnos.md") {
         string comision = "C0";
-        Clase clase = new Clase();
+        Clase clase = new();
 
         foreach (var linea in File.ReadLines(origen)) {
             var texto = linea.PadRight(100,' '); 
@@ -71,7 +71,7 @@ class Clase : IEnumerable<Alumno> {
     }
 
     public void Guardar(string destino="./alumnos.md") {
-        using (StreamWriter writer = new StreamWriter(destino)) {
+        using (StreamWriter writer = new(destino)) {
             writer.WriteLine("# Listado de alumnos");
             foreach(var comision in Comisiones) {
                 var orden = 0;
@@ -87,7 +87,7 @@ class Clase : IEnumerable<Alumno> {
 
     public void GuardarVCards(string destino) {
         Consola.Escribir($"- Exportando vCards a {destino}");
-        using (StreamWriter writer = new StreamWriter(destino)) {
+        using (StreamWriter writer = new(destino)) {
             foreach(var alumno in ConTelefono(true).OrdenandoPorNombre()) {
                 var linea = $"""
                 BEGIN:VCARD\nVERSION:3.0
@@ -103,7 +103,7 @@ class Clase : IEnumerable<Alumno> {
         }
     }
     
-    public void CrearCarpetas() {
+    public void NormalizarCarpetas() {
         const string Base = "../TP";
         Directory.CreateDirectory(Base);
 
