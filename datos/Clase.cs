@@ -79,7 +79,7 @@ class Clase : IEnumerable<Alumno> {
                 foreach(var alumno in EnComision(comision).OrdenandoPorNombre()) {
                     alumno.orden = ++orden;
                     string lineaBase = $"{alumno.orden:D2}.  {alumno.legajo}  {alumno.NombreCompleto,-40}  {alumno.telefono,-15}";
-                    writer.WriteLine($"{lineaBase,-78}  {alumno.practicos}");
+                    writer.WriteLine($"{lineaBase,-78}  {alumno.PracticosToString()}");
                 }
             }
         }
@@ -215,7 +215,8 @@ class Clase : IEnumerable<Alumno> {
         foreach(var comision in Comisiones){
             Consola.Escribir($"\n=== Comisión {comision} ===", ConsoleColor.Blue);            
             foreach (var alumno in EnComision(comision).OrdenandoPorNombre()) {
-                string asistencia = alumno.practicos.Trim().Select( c => EstadoPractico.FromChar(c).emoji()).Aggregate("", (a, b) => a + b);
+                var emojis = alumno.practicos.Select(p => p.Emoji).ToList();
+                var asistencia = string.Join("", emojis);
                 string linea = $"{alumno.legajo} - {alumno.NombreCompleto, -40} {alumno.telefono, -20}";
                 Consola.Escribir($" {linea,-78}  {asistencia}");
             }
@@ -232,12 +233,13 @@ class Clase : IEnumerable<Alumno> {
                 Consola.Escribir($"No hay alumnos ausentes en la comisión {comision}", ConsoleColor.Green);
                 continue;
             }
+            Consola.Escribir($"\n=== Comisión {comision} ===", ConsoleColor.Blue);
             foreach (var alumno in alumnos) {
                 Consola.Escribir($" {alumno.legajo} - {alumno.NombreCompleto}", ConsoleColor.Red);
             }
-            Consola.Escribir($"Total ausentes en comisión {comision}: {alumnos}", ConsoleColor.Yellow);
-        }        
-        Consola.Escribir($"\nTotal general de ausentes: {ConPractico(practico, EstadoPractico.NoPresentado).Count()} de {alumnos.Count} alumnos", ConsoleColor.Yellow);
+            Consola.Escribir($"Total ausentes {alumnos.Count()}", ConsoleColor.Yellow);
+        }
+        Consola.Escribir($"\nTOTAL: {ConPractico(practico, EstadoPractico.NoPresentado).Count()} de {alumnos.Count()} alumnos", ConsoleColor.Yellow);
     }
 
     public IEnumerator<Alumno> GetEnumerator() => alumnos.GetEnumerator();

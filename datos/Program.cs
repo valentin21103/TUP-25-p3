@@ -21,6 +21,9 @@ class Program {
         var clase = Clase.Cargar();
         var practico = 1;
 
+        Consola.Escribir("=== Bienvenido al sistema de gestión de alumnos ===", ConsoleColor.Cyan);
+        Consola.Escribir($" Aprobados: {clase.ConPractico(1,EstadoPractico.Aprobado).Count()}\n - Desaprobados: {clase.ConPractico(1,EstadoPractico.Desaprobado).Count()}\n - No Presentados: {clase.ConPractico(1,EstadoPractico.NoPresentado).Count()}", ConsoleColor.Cyan);
+        Consola.EsperarTecla();
         while (true) {
             string opcion = MostrarMenu();
             if (opcion == "0") return;
