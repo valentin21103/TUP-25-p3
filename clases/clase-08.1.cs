@@ -3,8 +3,7 @@ var b = 10;
 var c = 8;
 var d = 2;
 
-
-// if(condicion) SentenciaSI [ else SentenciaSINO ]
+// if(condición) SentenciaSI [ else SentenciaSINO ]
 if(a > b) { // Else no es necesario
     Console.WriteLine("a es mayor que b");
 }
@@ -45,7 +44,7 @@ mayor = d > mayor ? d : mayor;
 
 // WHILE
 
-// while(condicion) { Sentencia }
+// while(condición) { Sentencia }
 var i = 0;
 while(i < 10){
     Console.WriteLine(i);
@@ -77,7 +76,7 @@ do {
 } while(i < 10);
 
 // FOR
-// for(inicializacion; condicion; incremento) { Sentencia }
+// for(inicialización; condición; incremento) { Sentencia }
 for(var j = 0; j < 10; j++){
     Console.WriteLine(j);
 }
@@ -110,7 +109,7 @@ for(int i=0, j = 10; i < 10; i++, j--){
 }
 
 // foreach
-// foreach(tipo variable in coleccion) { Sentencia }
+// foreach(tipo variable in colección) { Sentencia }
 var lista = new List<int>{1,2,3,4,5};
 foreach(var item in lista){
     Console.WriteLine(item);

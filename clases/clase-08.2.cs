@@ -100,8 +100,7 @@ abstract class Operacion{
 }
 
 class Depositar : Operacion{
-    public Depositar(string numero, decimal monto) : base(numero, monto)
-    {}
+    public Depositar(string numero, decimal monto) : base(numero, monto){}
 
     public override bool Ejecutar(){
         return Origen.Depositar(Monto)
@@ -125,7 +124,8 @@ class Transferencia: Operacion {
     Cuenta Destino {get;set;}
 
     public Transferencia(string origen, string destino, decimal monto) : 
-        base(origen, monto){
+        base(origen, monto)
+    {
         Destino = Banco.Buscar(destino);
     }
 
@@ -134,18 +134,18 @@ class Transferencia: Operacion {
         if(!Destino.Depositar(Monto)){
             Origen.Depositar(Monto);
             return false;
-        };
+        }
         return true;
     }
 
     public override string Descripcion {
         get {
-            return $"Transfiero {Monto,C} de {Origen.Numero} a {Destino.Numero}"
+            return $"Transfiero {Monto,C} de {Origen.Numero} a {Destino.Numero}";
         }
     }
 }
 
-var bcoUTN = new Banco("UTN");
+var utn = new Banco("UTN");
 
 var juan = new Cliente("Juan Diaz");
 juan.Agregar(new Cuenta("10002", 1000));
@@ -154,9 +154,11 @@ juan.Agregar(new Cuenta("10003", 2000));
 var maria = new Cliente("Maria Gomez");
 maria.Agregar(new Cuenta("20000", 100));
 
-bcoUTN.Agregar(juan);
-bcoUTN.Agregar(maria);
+utn.Agregar(juan);
+utn.Agregar(maria);
 
 
-bcoUTN.Registrar(new Depositar("10002", 200));
-bcoUTN.Registrar(new Transferencia("10002", "20000", 50));
+utn.Registrar(new Depositar("10002", 200));
+utn.Registrar(new Transferencia("10002", "20000", 50));
+
+utn.Informe();
