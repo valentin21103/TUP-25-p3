@@ -142,11 +142,80 @@ class CuentaBronce: Cuenta{
     }
 }
 
-abstract class Operacion{}
-class Deposito: Operacion{}
-class Retiro: Operacion{}
-class Transferencia: Operacion{}
-class Pago: Operacion{}
+abstract class Operacion{
+    public Cuenta Origen { get; private set; }
+    public decimal Monto { get; private set; }
+    public DateTime Fecha { get; set; } = DateTime.Now;
+    public Operacion(string numero, decimal monto) { 
+        Origen = Banco.Buscar(numero);
+        Monto = monto;
+    }
+
+    public abstract virtual void Ejecutar(){
+        Origen.RegistrarOperacion(this);
+    };
+
+    public virtual string Descripcion() => string.Empty;
+}
+class Deposito: Operacion{ 
+    public Deposito(string numero, decimal monto) : base(numero, monto) { }
+
+    public override void Ejecutar() { 
+         Origen.Poner(Monto);
+            base.Ejecutar();
+    }
+
+    public override string Descripcion()
+    {
+        return  $" {Fecha}: Deposito de ${Monto} en la cuenta {Origen.Numero}";
+}
+class Retiro: Operacion{
+    public Retiro(string numero, decimal monto) : base(numero, monto) { }
+
+    public override void Ejecutar() { 
+         Origen.Quitar(Monto);
+            base.Ejecutar();
+    }
+
+    public override string Descripcion()
+    {
+        return  $" {Fecha}: Retiro de ${Monto} de la cuenta {Origen.Numero}";
+    }
+}
+class Transferencia: Operacion{
+    public Cuenta Destino { get; set; }
+
+    public Transferencia(string origen, string destino, decimal monto) : base(origen, monto) { 
+        Destino = Banco.Buscar(destino);
+    }
+
+    public override void Ejecutar() { 
+        if (!Origen.Quitar(Monto))
+        if (!Destino.Poner(Monto)) {
+            Origen.Poner(Monto); // Devolver el monto a la cuenta de origen
+        else {
+            base.Ejecutar();
+        }
+    }
+
+    public override string Descripcion()
+    {
+        return  $" {Fecha}: Transferencia de ${Monto} de la cuenta {Origen.Numero} a la cuenta {Destino.Numero}";
+    }
+}
+class Pago: Operacion{
+    public Pago(string numero, decimal monto) : base(numero, monto) { }
+
+    public override void Ejecutar() { 
+         Origen.Pagar(Monto);
+            base.Ejecutar();
+    }
+
+    public override string Descripcion()
+    {
+        return  $" {Fecha}: Pago de ${Monto} de la cuenta {Origen.Numero}";
+    }
+}
 
 
 /// EJEMPLO DE USO ///
