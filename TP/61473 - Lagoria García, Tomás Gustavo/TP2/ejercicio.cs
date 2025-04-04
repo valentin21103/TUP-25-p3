@@ -2,8 +2,52 @@
 //
 
 // Implementar un sistema de cuentas bancarias que permita realizar operaciones como depósitos, retiros, transferencias y pagos.
+using System;
+using System.Collections.Generic;
 
-class Banco{}
+public class Banco{
+    public string Nombre { get; private set; }
+    public List<Cliente> Clientes { get; private set; }
+    public List<Operacion> Operaciones { get; private set; }
+
+    public Banco(string nombre) { 
+        Nombre = nombre;
+        Clientes = new List<Cliente>();
+        Operaciones = new List<Operacion>();
+    }
+
+    public void Agregar(Cliente cliente) { 
+        Clientes.Add(cliente);
+    }
+
+    public void Registrar(Operacion operacion) { 
+        if (operacion.Ejecutar()) {
+            Operaciones.Add(operacion);
+            operacion.Origen.Registrar(operacion);
+        }
+    }
+
+    public void Informe() { 
+        foreach (var c in Clientes) {
+            c.Informe();
+        }
+    }
+    public static Dictionary<string, Cuenta> Cuentas = new Dictionary<string, Cuenta>();
+    public static void Registrar(Cuenta cuenta) { 
+        if (Cuentas.ContainsKey(cuenta.Numero)) {
+            Console.WriteLine($"La cuenta {cuenta.Numero} ya existe");
+        } else {
+            Cuentas.Add(cuenta.Numero, cuenta);
+        }
+    }
+    public static Cuenta Buscar(string numero) { 
+        if (Cuentas.ContainsKey(numero)) {
+            return Cuentas[numero];
+        } else {
+            return null;
+        }
+    }
+}
 class Cliente{}
 
 abstract class Cuenta{}
