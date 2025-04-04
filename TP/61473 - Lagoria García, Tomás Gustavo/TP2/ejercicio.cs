@@ -161,9 +161,9 @@ public abstract class Operacion{
     }
 
     public virtual bool Ejecutar(){
-        return Origen.RegistrarOperacion(this);
-
-    };
+         Origen.RegistrarOperacion(this);
+        return true;
+    }
 
     public virtual string Descripcion() => string.Empty;
 }
@@ -175,10 +175,14 @@ public class Deposito: Operacion{
           base.Ejecutar();
             return true;
     }
+    else {
+        return false;
+    }
     }
     public override string Descripcion()
     {
         return  $" {Fecha}: Deposito de ${Monto} en la cuenta {Origen.Numero}";
+}
 }
 public class Retiro: Operacion{
     public Retiro(string numero, decimal monto) : base(numero, monto) { }
@@ -187,6 +191,9 @@ public class Retiro: Operacion{
         if(Origen.Quitar(Monto)) {
             base.Ejecutar();
             return true;    
+    }
+    else {
+        return false;
     }
     }
 
@@ -231,6 +238,9 @@ public class Pago: Operacion{
             base.Ejecutar();
             return true;
          }
+            else {
+            return false;
+            }
     }
 
     public override string Descripcion()
@@ -238,6 +248,7 @@ public class Pago: Operacion{
         return  $" {Fecha}: Pago de ${Monto} de la cuenta {Origen.Numero}";
     }
 }
+
 
 
 /// EJEMPLO DE USO ///
