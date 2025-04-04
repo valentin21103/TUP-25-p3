@@ -48,9 +48,80 @@ public class Banco{
         }
     }
 }
-class Cliente{}
+public class Cliente{
+    public string Nombre { get; private set; }
+    public List<Cuenta> Cuentas { get; private set; }
 
-abstract class Cuenta{}
+    public Cliente(string nombre) { 
+        Nombre = nombre;
+        Cuentas = new List<Cuenta>();
+    }
+
+    public void Agregar(Cuenta cuenta) { 
+        Cuentas.Add(cuenta);
+        Banco.Registrar(cuenta);
+    }
+    
+    public void Informe() { 
+        Console.WriteLine($"Informe de {Nombre}: Saldo Total: {Cuentas.Sum(c => c.Saldo):C0}");
+        foreach (var cuenta in Cuentas) {
+            cuenta.Informe();
+        }
+    }   
+}
+
+abstract class Cuenta{
+ public string Numero { get; private set; }
+ public decimal Saldo { get; set; } 
+    public decimal Creditos { get; set; }
+    public List<Operacion> Historia { get; set; } = new List<Operacion>();
+ public Cliente Cliente { get; set; }
+
+    public Cuenta(string numero, decimal saldo) {
+        Numero = numero;
+        Saldo = saldo;
+    }
+    public bool Poner(decimal cantidad) {
+        if (cantidad <= 0) {
+            return false;
+        }
+        Saldo += cantidad;
+        return true;
+    }
+    public bool Quitar(decimal cantidad) {
+        if (cantidad > Saldo || cantidad <= 0) {
+            return false;
+        }
+        Saldo -= cantidad;
+        return true;
+    }
+
+    
+    public bool Pagar(decimal cantidad) {
+        if (!Quitar(cantidad)) {
+            return false;
+        }
+        AcumularCreditos(cantidad);
+        return true;
+    }
+
+    public abstract void AcumularCreditos(decimal cantidad);
+
+    public void RegistrarOperacion(Operacion operacion) {
+        Historia.Add(operacion);
+    }
+
+    public void Informe() { 
+        Console.WriteLine($"  N° de Cuenta: {Numero}");
+        Console.WriteLine($"  Total de Saldo: {Saldo}");
+        Console.WriteLine($"  Total de Creditos: {Creditos}");
+        Console.WriteLine($"  Total de operaciones: {Historia.Count}");
+     Console.WriteLine($"  Historial de operaciones: ");
+        foreach (var operacion in Historia) {
+            Console.WriteLine($"   - {operacion.Descripcion()}");
+        }
+    }
+}
 class CuentaOro: Cuenta{}
 class CuentaPlata: Cuenta{}
 class CuentaBronce: Cuenta{}
