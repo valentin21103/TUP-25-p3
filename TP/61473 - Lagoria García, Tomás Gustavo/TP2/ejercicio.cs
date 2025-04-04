@@ -122,9 +122,25 @@ abstract class Cuenta{
         }
     }
 }
-class CuentaOro: Cuenta{}
-class CuentaPlata: Cuenta{}
-class CuentaBronce: Cuenta{}
+class CuentaOro: Cuenta{
+    public override void AcumularCreditos(decimal cantidad) {
+        if(cantidad>1000)
+        {
+            Creditos += cantidad * 0.05m; 
+        }
+        Creditos += cantidad * 0.03m;
+    }
+}
+class CuentaPlata: Cuenta{
+    public override void AcumularCreditos(decimal cantidad) {
+        Creditos += cantidad * 0.02m;
+    }
+}
+class CuentaBronce: Cuenta{
+    public override void AcumularCreditos(decimal cantidad) {
+        Creditos += cantidad * 0.01m;
+    }
+}
 
 abstract class Operacion{}
 class Deposito: Operacion{}
