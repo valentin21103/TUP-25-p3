@@ -113,7 +113,10 @@ public abstract class Cuenta{
     }
 
     public void Informe() { 
+        Console.WriteLine($"------------------");
+        Console.WriteLine($"Informe de cuenta: ");
         Console.WriteLine($"  N° de Cuenta: {Numero}");
+        Console.WriteLine($"  Tipo de Cuenta: {this.GetType().Name}");
         Console.WriteLine($"  Total de Saldo: {Saldo}");
         Console.WriteLine($"  Total de Creditos: {Creditos}");
         Console.WriteLine($"  Total de operaciones: {Historia.Count}");
@@ -121,6 +124,7 @@ public abstract class Cuenta{
         foreach (var operacion in Historia) {
             Console.WriteLine($"   - {operacion.Descripcion()}");
         }
+        Console.WriteLine($"------------------");
     }
 }
 public class CuentaOro: Cuenta{
@@ -255,39 +259,39 @@ public class Pago: Operacion{
 
 // Definiciones 
 
-// var raul = new Cliente("Raul Perez");
-//     raul.Agregar(new CuentaOro("10001", 1000));
-//     raul.Agregar(new CuentaPlata("10002", 2000));
+var raul = new Cliente("Raul Perez");
+    raul.Agregar(new CuentaOro("10001", 1000));
+    raul.Agregar(new CuentaPlata("10002", 2000));
 
-// var sara = new Cliente("Sara Lopez");
-//     sara.Agregar(new CuentaPlata("10003", 3000));
-//     sara.Agregar(new CuentaPlata("10004", 4000));
+var sara = new Cliente("Sara Lopez");
+    sara.Agregar(new CuentaPlata("10003", 3000));
+    sara.Agregar(new CuentaPlata("10004", 4000));
 
-// var luis = new Cliente("Luis Gomez");
-//     luis.Agregar(new CuentaBronce("10005", 5000));
+var luis = new Cliente("Luis Gomez");
+    luis.Agregar(new CuentaBronce("10005", 5000));
 
-// var nac = new Banco("Banco Nac");
-// nac.Agregar(raul);
-// nac.Agregar(sara);
+var nac = new Banco("Banco Nac");
+nac.Agregar(raul);
+nac.Agregar(sara);
 
-// var tup = new Banco("Banco TUP");
-// tup.Agregar(luis);
-
-
-// // Registrar Operaciones
-// nac.Registrar(new Deposito("10001", 100));
-// nac.Registrar(new Retiro("10002", 200));
-// nac.Registrar(new Transferencia("10001", "10002", 300));
-// nac.Registrar(new Transferencia("10003", "10004", 500));
-// nac.Registrar(new Pago("10002", 400));
-
-// tup.Registrar(new Deposito("10005", 100));
-// tup.Registrar(new Retiro("10005", 200));
-// tup.Registrar(new Transferencia("10005", "10002", 300));
-// tup.Registrar(new Pago("10005", 400));
+var tup = new Banco("Banco TUP");
+tup.Agregar(luis);
 
 
-// // Informe final
-// nac.Informe();
-// tup.Informe();
+// Registrar Operaciones
+nac.Registrar(new Deposito("10001", 100));
+nac.Registrar(new Retiro("10002", 200));
+nac.Registrar(new Transferencia("10001", "10002", 300));
+nac.Registrar(new Transferencia("10003", "10004", 500));
+nac.Registrar(new Pago("10002", 400));
+
+tup.Registrar(new Deposito("10005", 100));
+tup.Registrar(new Retiro("10005", 200));
+tup.Registrar(new Transferencia("10005", "10002", 300));
+tup.Registrar(new Pago("10005", 400));
+
+
+// Informe final
+nac.Informe();
+tup.Informe();
 
