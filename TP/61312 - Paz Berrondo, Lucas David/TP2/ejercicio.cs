@@ -128,7 +128,7 @@ abstract class Cuenta
         Saldo = saldoInicial;
         Puntos = 0;
         Operaciones = new List<Operacion>();
-        Banco.RegistrarCuentaGlobal(this); 
+        Banco.RegistrarCuentaGlobal(this);
     }
 
     // Calcular puntos al realizar un pago.
