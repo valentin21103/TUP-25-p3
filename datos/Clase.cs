@@ -151,17 +151,25 @@ class Clase : IEnumerable<Alumno> {
         const string Base = "../TP";
         Consola.Escribir($"=== Verificación de presentación del trabajo práctico TP{practico} ===", ConsoleColor.Cyan);
         foreach(var comision in Comisiones) {
+            var presentados = 0;
+            var ausentes = 0;
             foreach(var alumno in EnComision(comision)){
                 var archivo = Path.Combine(Base, alumno.Carpeta, $"TP{practico}", "ejercicio.cs");
                 EstadoPractico estado = EstadoPractico.Error;
                 if (File.Exists(archivo)) {
                     int lineasEfectivas = ContarLineasEfectivas(archivo);
                     estado = lineasEfectivas >= 40 ? EstadoPractico.Aprobado : EstadoPractico.NoPresentado;
+                    if (estado == EstadoPractico.Aprobado) {
+                        presentados++;
+                    }
+                    if (estado == EstadoPractico.NoPresentado) {
+                        ausentes++;
+                    }
                     alumno.PonerPractico(practico, estado);
                     Consola.Escribir($"{alumno.legajo}. {alumno.NombreCompleto, -60} {lineasEfectivas, 3} {estado}", estado.Color);
                 }
             }
-            Consola.Escribir($"Comisión {comision}", ConsoleColor.Cyan);
+            Consola.Escribir($"Comisión {comision} \n Presentados: {presentados,3}\n Ausentes   : {ausentes,3}", ConsoleColor.Cyan);
         }
         Guardar();
     }
