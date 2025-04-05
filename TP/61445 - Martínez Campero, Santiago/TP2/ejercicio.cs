@@ -111,7 +111,6 @@ abstract class Operacion {
         Origen = origen;
         Monto = monto;
     }
-
     public abstract bool Ejecutar();
     public abstract string Descripcion();
 }
@@ -197,13 +196,11 @@ nac.Registrar(new Deposito(raul.Cuentas[0], 100));
 nac.Registrar(new Retiro(raul.Cuentas[1], 200));
 nac.Registrar(new Transferencia(raul.Cuentas[0], raul.Cuentas[1], 300));
 nac.Registrar(new Transferencia(sara.Cuentas[0], sara.Cuentas[1], 500));
-nac.Registrar(new Pago(raul.Cuentas[1], 400));
-
+nac.Registrar(new Pago(raul.Cuentas[1], 400))
 tup.Registrar(new Deposito(luis.Cuentas[0], 100));
 tup.Registrar(new Retiro(luis.Cuentas[0], 200));
 tup.Registrar(new Transferencia(luis.Cuentas[0], raul.Cuentas[1], 300));
 tup.Registrar(new Pago(luis.Cuentas[0], 400));
-
 nac.Informe();
 tup.Informe();
 
