@@ -1,5 +1,4 @@
 // TP2: Sistema de Cuentas Bancarias
-//
 
 // Implementar un sistema de cuentas bancarias que permita realizar operaciones como depósitos, retiros, transferencias y pagos.
 
@@ -129,7 +128,7 @@ public class Pago : Operacion
         }
         else
         {
-            datos.Add("PuntosAcumulados", "0"); // Valor por defecto si no hay cuenta asociada
+            datos.Add("PuntosAcumulados", "0");
         }
         return datos;
     }
@@ -429,7 +428,6 @@ public class Banco : IDisposable
         // Buscar cuenta destino en este banco primero
         if (_cuentas.TryGetValue(transferencia.NumeroCuentaDestino, out var cuentaDestino))
         {
-            // Transferencia interna
             using (var transaction = new TransactionScope())
             {
                 cuentaOrigen.RegistrarOperacion(transferencia);
@@ -442,7 +440,6 @@ public class Banco : IDisposable
         }
         else
         {
-            // Transferencia externa - solo debitar de la cuenta origen
             cuentaOrigen.RegistrarOperacion(transferencia);
         }
     }
@@ -599,10 +596,8 @@ catch (SaldoInsuficienteException)
     Console.WriteLine("Operación fallida (esperado): Saldo insuficiente");
 }
 
-// Generar reportes completos
 bancoNac.GenerarReporteCompleto();
 bancoTup.GenerarReporteCompleto();
 
-// Limpieza
 bancoNac.Dispose();
 bancoTup.Dispose();
