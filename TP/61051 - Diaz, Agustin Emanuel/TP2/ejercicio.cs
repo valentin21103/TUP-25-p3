@@ -227,7 +227,7 @@ public abstract class Cuenta
             Titular?.RegistrarOperacion(operacion);
             Banco?.RegistrarOperacionGlobal(operacion);
         }
-        catch (OperacionBancariaException ex)
+        catch (OperacionBancariaException)
         {
             Historial.Add(operacion);
             Titular?.RegistrarOperacion(operacion);
