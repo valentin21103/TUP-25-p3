@@ -76,7 +76,7 @@ class Banco
                 Console.WriteLine();
             }
         }
-    }
+    }  
 }
 
 static class RegistroBancos
