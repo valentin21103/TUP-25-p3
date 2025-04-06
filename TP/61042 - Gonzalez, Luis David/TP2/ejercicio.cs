@@ -7,7 +7,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 // =========================
 // Clases base y jerarquía
@@ -107,8 +106,31 @@ class Cliente
 
     public IEnumerable<Cuenta> Cuentas => cuentas;
 
-    public decimal SaldoTotal => cuentas.Sum(c => c.Saldo);
-    public decimal PuntosTotal => cuentas.Sum(c => c.Puntos);
+    public decimal SaldoTotal
+    {
+        get
+        {
+            decimal total = 0;
+            foreach (var cuenta in cuentas)
+            {
+                total += cuenta.Saldo;
+            }
+            return total;
+        }
+    }
+
+    public decimal PuntosTotal
+    {
+        get
+        {
+            decimal total = 0;
+            foreach (var cuenta in cuentas)
+            {
+                total += cuenta.Puntos;
+            }
+            return total;
+        }
+    }
 }
 
 // =========================
@@ -257,7 +279,17 @@ class Banco
 
     public Cuenta ObtenerCuenta(string numero)
     {
-        return clientes.SelectMany(c => c.Cuentas).FirstOrDefault(cta => cta.Numero == numero);
+        foreach (var cliente in clientes)
+        {
+            foreach (var cuenta in cliente.Cuentas)
+            {
+                if (cuenta.Numero == numero)
+                {
+                    return cuenta;
+                }
+            }
+        }
+        return null;
     }
 
     public string ObtenerTitular(string numeroCuenta)
@@ -266,8 +298,13 @@ class Banco
         {
             foreach (var cliente in banco.clientes)
             {
-                if (cliente.Cuentas.Any(c => c.Numero == numeroCuenta))
-                    return cliente.Nombre;
+                foreach (var cuenta in cliente.Cuentas)
+                {
+                    if (cuenta.Numero == numeroCuenta)
+                    {
+                        return cliente.Nombre;
+                    }
+                }
             }
         }
         return "Desconocido";
@@ -305,39 +342,39 @@ class Banco
 // Ejecución del programa
 // =========================
 
-var raul = new Cliente("Raul Perez");
-raul.Agregar(new CuentaOro("10001", 1000));
-raul.Agregar(new CuentaPlata("10002", 2000));
+        var raul = new Cliente("Raul Perez");
+        raul.Agregar(new CuentaOro("10001", 1000));
+        raul.Agregar(new CuentaPlata("10002", 2000));
 
-var sara = new Cliente("Sara Lopez");
-sara.Agregar(new CuentaPlata("10003", 3000));
-sara.Agregar(new CuentaPlata("10004", 4000));
+        var sara = new Cliente("Sara Lopez");
+        sara.Agregar(new CuentaPlata("10003", 3000));
+        sara.Agregar(new CuentaPlata("10004", 4000));
 
-var luis = new Cliente("Luis Gomez");
-luis.Agregar(new CuentaBronce("10005", 5000));
+        var luis = new Cliente("Luis Gomez");
+        luis.Agregar(new CuentaBronce("10005", 5000));
 
-var nac = new Banco("Banco Nac");
-nac.Agregar(raul);
-nac.Agregar(sara);
-Banco.RegistrarBanco(nac);
+        var nac = new Banco("Banco Nac");
+        nac.Agregar(raul);
+        nac.Agregar(sara);
+        Banco.RegistrarBanco(nac);
 
-var tup = new Banco("Banco TUP");
-tup.Agregar(luis);
-Banco.RegistrarBanco(tup);
+        var tup = new Banco("Banco TUP");
+        tup.Agregar(luis);
+        Banco.RegistrarBanco(tup);
 
-// Operaciones en Banco Nac
-nac.Registrar(new Deposito("10001", 100));
-nac.Registrar(new Retiro("10002", 200));
-nac.Registrar(new Transferencia("10001", "10002", 300));
-nac.Registrar(new Transferencia("10003", "10004", 500));
-nac.Registrar(new Pago("10002", 400));
+        // Operaciones en Banco Nac
+        nac.Registrar(new Deposito("10001", 100));
+        nac.Registrar(new Retiro("10002", 200));
+        nac.Registrar(new Transferencia("10001", "10002", 300));
+        nac.Registrar(new Transferencia("10003", "10004", 500));
+        nac.Registrar(new Pago("10002", 400));
 
-// Operaciones en Banco TUP
-tup.Registrar(new Deposito("10005", 100));
-tup.Registrar(new Retiro("10005", 200));
-tup.Registrar(new Transferencia("10005", "10002", 300));
-tup.Registrar(new Pago("10005", 400));
+        // Operaciones en Banco TUP
+        tup.Registrar(new Deposito("10005", 100));
+        tup.Registrar(new Retiro("10005", 200));
+        tup.Registrar(new Transferencia("10005", "10002", 300));
+        tup.Registrar(new Pago("10005", 400));
 
-// Informe final
-nac.Informe();
-tup.Informe();
+        // Informe final
+        nac.Informe();
+        tup.Informe();
