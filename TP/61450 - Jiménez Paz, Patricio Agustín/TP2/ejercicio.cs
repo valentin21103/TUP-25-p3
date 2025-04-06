@@ -17,12 +17,12 @@ class Banco
         Operaciones = new List<Operacion>();
     }
 
-    public void AgregarCliente(Cliente cliente)
+    public void Agregar(Cliente cliente)
     {
         Clientes.Add(cliente);
     }
 
-    public void RegistrarOperacion(Operacion operacion)
+    public void Registrar(Operacion operacion)
     {
         operacion.EjecutarOperacion();
         Operaciones.Add(operacion);
@@ -30,9 +30,7 @@ class Banco
 
     public void Informe()
     {
-        Console.WriteLine("===================================");
-        Console.WriteLine($"Banco {Nombre} - Clientes: {Clientes.Count}");
-        Console.WriteLine("===================================\n");
+        Console.WriteLine($"Banco {Nombre} | Clientes: {Clientes.Count}\n");
         foreach (var cliente in Clientes)
         {
             cliente.Informe();
@@ -74,7 +72,7 @@ class Cliente
         Cuentas = new List<Cuenta>();
     }
 
-    public void AgregarCuenta(Cuenta cuenta)
+    public void Agregar(Cuenta cuenta)
     {
         cuenta.AsignarPropietario(this);
         Cuentas.Add(cuenta);
@@ -83,9 +81,7 @@ class Cliente
 
     public void Informe()
     {
-        Console.WriteLine("  ------------------------------------------------------------");
-        Console.WriteLine($"  Cliente: {Nombre} | Saldo Total: {Cuentas.Sum(c => c.Saldo):C0} | Puntos Total: {Cuentas.Sum(c => c.Puntos)}");
-        Console.WriteLine("  ------------------------------------------------------------");
+        Console.WriteLine($"  Cliente: {Nombre} | Saldo Total: {Cuentas.Sum(c => c.Saldo):C0} | Puntos Total: {Cuentas.Sum(c => c.Puntos):C}\n");
         foreach (var cuenta in Cuentas)
         {
             cuenta.Informe();
@@ -133,11 +129,10 @@ abstract class Cuenta
 
     public void Informe()
     {
-        Console.WriteLine($"   * Cuenta: {Numero} | Saldo: {Saldo:C} | Puntos: {Puntos}");
-        //Console.WriteLine($"   --- Historial de transacciones de la cuenta {Numero} ---");
+        Console.WriteLine($"    Cuenta: {Numero} | Saldo: {Saldo:C} | Puntos: {Puntos:C}");
         foreach (Operacion operacion in Historial)
         {
-            Console.WriteLine($"    - {operacion.Descripcion}");
+            Console.WriteLine($"     - {operacion.Descripcion}");
         }
         Console.WriteLine("");
     }
@@ -208,7 +203,7 @@ class Deposito : Operacion
         Origen.RegistrarOperacion(this);
     }
 
-    public override string Descripcion => $"Depósito | {Monto:C}";
+    public override string Descripcion => $"Depósito {Monto:C} a [{Origen.Numero}/{Origen.Propietario.Nombre}]";
 }
 class Retiro : Operacion
 {
@@ -225,7 +220,7 @@ class Retiro : Operacion
         Origen.RegistrarOperacion(this);
     }
 
-    public override string Descripcion => $"Extracción | {Monto:C}";
+    public override string Descripcion => $"Retiro {Monto:C} de [{Origen.Numero}/{Origen.Propietario.Nombre}]";
 }
 class Transferencia : Operacion
 {
@@ -249,7 +244,7 @@ class Transferencia : Operacion
         Destino.RegistrarOperacion(this);
     }
 
-    public override string Descripcion => $"Transferencia de [{Origen.Numero}/{Origen.Propietario.Nombre}] a [{Destino.Numero}/{Destino.Propietario.Nombre}] | {Monto:C}";
+    public override string Descripcion => $"Transferencia {Monto:C} de [{Origen.Numero}/{Origen.Propietario.Nombre}] a [{Destino.Numero}/{Destino.Propietario.Nombre}]";
 
     public override string ToString()
     {
@@ -271,7 +266,7 @@ class Pago : Operacion
         Origen.RegistrarOperacion(this);
     }
 
-    public override string Descripcion => $"Pago de Servicio | {Monto:C}";
+    public override string Descripcion => $"Pago {Monto:C} con [{Origen.Numero}/{Origen.Propietario.Nombre}]";
 
     public override string ToString()
     {
@@ -283,42 +278,35 @@ class Pago : Operacion
 // Definiciones 
 
 Cliente raul = new Cliente("Raul Perez");
-raul.AgregarCuenta(new CuentaOro("10001", 1000));
-raul.AgregarCuenta(new CuentaPlata("10002", 2000));
+raul.Agregar(new CuentaOro("10001", 1000));
+raul.Agregar(new CuentaPlata("10002", 2000));
 
 Cliente sara = new Cliente("Sara Lopez");
-sara.AgregarCuenta(new CuentaPlata("10003", 3000));
-sara.AgregarCuenta(new CuentaPlata("10004", 4000));
+sara.Agregar(new CuentaPlata("10003", 3000));
+sara.Agregar(new CuentaPlata("10004", 4000));
 
 Cliente luis = new Cliente("Luis Gomez");
-luis.AgregarCuenta(new CuentaBronce("10005", 5000));
+luis.Agregar(new CuentaBronce("10005", 5000));
 
 Banco nac = new Banco("Banco Nac");
-nac.AgregarCliente(raul);
-nac.AgregarCliente(sara);
+nac.Agregar(raul);
+nac.Agregar(sara);
 
 Banco tup = new Banco("Banco TUP");
-tup.AgregarCliente(luis);
+tup.Agregar(luis);
 
-nac.Informe();
-tup.Informe();
-
-Console.WriteLine("\n\nAhora se realizarán operaciones entre las cuentas");
-Console.WriteLine("Presione una tecla para continuar...");
-Console.ReadKey();
-Console.Clear();
 
 // Registrar Operaciones
-nac.RegistrarOperacion(new Deposito("10001", 100));
-nac.RegistrarOperacion(new Retiro("10002", 200));
-nac.RegistrarOperacion(new Transferencia("10001", "10002", 300));
-nac.RegistrarOperacion(new Transferencia("10003", "10004", 500));
-nac.RegistrarOperacion(new Pago("10002", 400));
+nac.Registrar(new Deposito("10001", 100));
+nac.Registrar(new Retiro("10002", 200));
+nac.Registrar(new Transferencia("10001", "10002", 300));
+nac.Registrar(new Transferencia("10003", "10004", 500));
+nac.Registrar(new Pago("10002", 400));
 
-tup.RegistrarOperacion(new Deposito("10005", 100));
-tup.RegistrarOperacion(new Retiro("10005", 200));
-tup.RegistrarOperacion(new Transferencia("10005", "10002", 300));
-tup.RegistrarOperacion(new Pago("10005", 400));
+tup.Registrar(new Deposito("10005", 100));
+tup.Registrar(new Retiro("10005", 200));
+tup.Registrar(new Transferencia("10005", "10002", 300));
+tup.Registrar(new Pago("10005", 400));
 
 
 // Informe final
