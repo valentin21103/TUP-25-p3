@@ -250,6 +250,22 @@ class Clase : IEnumerable<Alumno> {
         Consola.Escribir($"\nTOTAL: {ConPractico(practico, EstadoPractico.NoPresentado).Count()} de {alumnos.Count()} alumnos", ConsoleColor.Yellow);
     }
 
+    public void RenombrarTP2() {
+        const string Base = "../TP";
+        if (!Directory.Exists(Base)) {
+            Consola.Escribir("La carpeta base no existe.", ConsoleColor.Red);
+            return;
+        }
+
+        foreach (var dir in Directory.GetDirectories(Base, "TP2", SearchOption.AllDirectories)) {
+            var newDir = Path.Combine(Path.GetDirectoryName(dir)!, "tp2");
+            Directory.Move(dir, newDir);
+            Consola.Escribir($"Renombrado: {dir} -> {newDir}", ConsoleColor.Green);
+        }
+
+        Consola.Escribir("Renombrado completo.", ConsoleColor.Green);
+    }
+
     public IEnumerator<Alumno> GetEnumerator() => alumnos.GetEnumerator();
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }

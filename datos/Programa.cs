@@ -1,6 +1,6 @@
 ﻿using TUP;
 
-class Programa {
+class Program {
     static string MostrarMenu() {
         Console.Clear();
         Consola.Escribir("=== MENÚ DE OPCIONES ===", ConsoleColor.Cyan);
@@ -17,7 +17,6 @@ class Programa {
     static void Main(string[] args) {
         var clase = Clase.Cargar();
         var practico = 2;
-
         Consola.Escribir("=== Bienvenido al sistema de gestión de alumnos ===", ConsoleColor.Cyan);
         while (true) {
             string opcion = MostrarMenu();
