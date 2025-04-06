@@ -1,60 +1,69 @@
-// TP2: Sistema de Cuentas Bancarias
-//
+﻿using System;
 
-// Implementar un sistema de cuentas bancarias que permita realizar operaciones como depósitos, retiros, transferencias y pagos.
+class CuentaBancaria
+{
+    public string NumeroCuenta { get; private set; }
+    public string Titular { get; private set; }
+    public decimal Saldo { get; private set; }
 
-class Banco{}
-class Cliente{}
+    public CuentaBancaria(string numeroCuenta, string titular, decimal saldoInicial = 0)
+    {
+        NumeroCuenta = numeroCuenta;
+        Titular = titular;
+        Saldo = saldoInicial;
+    }
 
-abstract class Cuenta{}
-class CuentaOro: Cuenta{}
-class CuentaPlata: Cuenta{}
-class CuentaBronce: Cuenta{}
+    public void Depositar(decimal monto)
+    {
+        if (monto <= 0)
+            throw new ArgumentException("Monto inválido.");
+        Saldo += monto;
+        Console.WriteLine($"[{Titular}] Depósito: {monto:C}. Nuevo saldo: {Saldo:C}");
+    }
 
-abstract class Operacion{}
-class Deposito: Operacion{}
-class Retiro: Operacion{}
-class Transferencia: Operacion{}
-class Pago: Operacion{}
+    public void Retirar(decimal monto)
+    {
+        if (monto <= 0)
+            throw new ArgumentException("Monto inválido.");
+        if (monto > Saldo)
+            throw new InvalidOperationException("Saldo insuficiente.");
+        Saldo -= monto;
+        Console.WriteLine($"[{Titular}] Retiro: {monto:C}. Nuevo saldo: {Saldo:C}");
+    }
 
+    public void Transferir(CuentaBancaria destino, decimal monto)
+    {
+        Retirar(monto);
+        destino.Depositar(monto);
+        Console.WriteLine($"[{Titular}] transfirió {monto:C} a [{destino.Titular}]");
+    }
 
-/// EJEMPLO DE USO ///
+    public void Pagar(decimal monto, string concepto)
+    {
+        Retirar(monto);
+        Console.WriteLine($"[{Titular}] pagó {monto:C} por {concepto}. Saldo restante: {Saldo:C}");
+    }
 
-// Definiciones 
+    public void Mostrar()
+    {
+        Console.WriteLine($"Cuenta: {NumeroCuenta}, Titular: {Titular}, Saldo: {Saldo:C}");
+    }
+}
 
-var raul = new Cliente("Raul Perez");
-    raul.Agregar(new CuentaOro("10001", 1000));
-    raul.Agregar(new CuentaPlata("10002", 2000));
+class Programa
+{
+    static void Main()
+    {
+        var cuenta1 = new CuentaBancaria("2001", "María Torres", 2000);
+        var cuenta2 = new CuentaBancaria("2002", "Luis Ramírez", 1200);
 
-var sara = new Cliente("Sara Lopez");
-    sara.Agregar(new CuentaPlata("10003", 3000));
-    sara.Agregar(new CuentaPlata("10004", 4000));
+        cuenta1.Retirar(500);                 
+        cuenta2.Depositar(300);                
+        cuenta2.Transferir(cuenta1, 400);     
+        cuenta1.Pagar(250, "Gimnasio");        
 
-var luis = new Cliente("Luis Gomez");
-    luis.Agregar(new CuentaBronce("10005", 5000));
-
-var nac = new Banco("Banco Nac");
-nac.Agregar(raul);
-nac.Agregar(sara);
-
-var tup = new Banco("Banco TUP");
-tup.Agregar(luis);
-
-
-// Registrar Operaciones
-nac.Registrar(new Deposito("10001", 100));
-nac.Registrar(new Retiro("10002", 200));
-nac.Registrar(new Transferencia("10001", "10002", 300));
-nac.Registrar(new Transferencia("10003", "10004", 500));
-nac.Registrar(new Pago("10002", 400));
-
-tup.Registrar(new Deposito("10005", 100));
-tup.Registrar(new Retiro("10005", 200));
-tup.Registrar(new Transferencia("10005", "10002", 300));
-tup.Registrar(new Pago("10005", 400));
-
-
-// Informe final
-nac.Informe();
-tup.Informe();
-
+        Console.WriteLine("\nResumen de cuentas:");
+        cuenta1.Mostrar();
+        cuenta2.Mostrar();
+    }
+}
