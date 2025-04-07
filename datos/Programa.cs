@@ -10,18 +10,23 @@ class Program {
         Consola.Escribir("4. Copiar trabajo práctico");
         Consola.Escribir("5. Verificar presentación de trabajo práctico");
         Consola.Escribir("6. Listar trabajos prácticos no presentados");
+        Consola.Escribir("7. Listar alumnos que no presentaron nada");
+        Consola.Escribir("8. Cargar asistencias");
         Consola.Escribir("0. Salir");
-        return Consola.ElegirOpcion("\nElija una opción (0-6): ", "0123456");
+        return Consola.ElegirOpcion("\nElija una opción (0-8): ", "012345678");
     }
 
     static void Main(string[] args) {
         var clase = Clase.Cargar();
+
         var practico = 2;
+
         Consola.Escribir("=== Bienvenido al sistema de gestión de alumnos ===", ConsoleColor.Cyan);
         while (true) {
             string opcion = MostrarMenu();
             if (opcion == "0") return;
             Console.Clear();
+            Asistencias.Cargar();
 
             switch (opcion) {
                 case "1":
@@ -45,14 +50,27 @@ class Program {
                     break;
                 case "5":
                     Consola.Escribir($"=== Verificar presentación de trabajo práctico ===", ConsoleColor.Cyan);
-                    clase.NormalizarCarpetas(); 
-                    clase.VerificaPresentacionPractico(practico);
+                    clase.NormalizarCarpetas();
+                    for(var p = 1; p <= practico; p++) {
+                        clase.VerificaPresentacionPractico(p);
+                    }
+                    var asistencias = Asistencias.Cargar(false);
+                    clase.CargarAsistencia(asistencias);
+                    clase.Guardar();
                     clase = Clase.Cargar();
                     break;
                 case "6":
                     Consola.Escribir("=== Listar trabajos prácticos no presentados ===", ConsoleColor.Cyan);
                     Consola.Escribir($"Resumen:\n  - Aprobados: {clase.ConPractico(1,EstadoPractico.Aprobado).Count()}\n  - Desaprobados: {clase.ConPractico(1,EstadoPractico.Desaprobado).Count()}\n  - No presentados: {clase.ConPractico(1,EstadoPractico.NoPresentado).Count()}", ConsoleColor.Cyan);
-                    clase.ListarAusentes(practico);
+                    clase.ListarNoPresentaron(practico);
+                    break;
+                case "7":
+                    Consola.Escribir("=== Listar alumnos que no presentaron nada ===", ConsoleColor.Cyan);
+                    clase.ListarNoPresentaron(practico);
+                    break;
+                case "8":
+                    Consola.Escribir("=== Listar alumnos que no presentaron nada ===", ConsoleColor.Cyan);
+                    Asistencias.Cargar(true);
                     break;
             }
             Consola.EsperarTecla();
