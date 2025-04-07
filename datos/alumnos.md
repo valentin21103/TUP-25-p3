@@ -58,7 +58,7 @@
 01.  61491  Acuña, Alejo Gabriel                      (381) 636-2211         6 ++
 02.  61252  Aguirre Rojas, Lourdes Valentina          (381) 500-1078         6   
 03.  61290  Azubel, Tomas                             (381) 680-5666         6 ++
-04.  61189  Buzza, Juliana                            (381) 524              0 ++
+04.  61189  Buzza, Juliana                            (381) 524-7391         3 ++
 05.  62612  Campos, Julieta Antonella                 (381) 605-0864         2 + 
 06.  61345  Caro, Tobias                              (297) 500-3076         5 ++
 07.  61072  Casavalle Castillo, Bruno                 (381) 353-4422         4 ++
@@ -93,7 +93,7 @@
 36.  61588  Mussa, Agustín                            (381) 394-9538         6 ++
 37.  61912  Nuñez, Arturo Valentin                    (381) 367-1656         3   
 38.  61985  Orqueda, Francisco Nicolás                (381) 633-8522         6 ++
-39.  61644  Ortega, Fernando Nicolas                  (381) 646-2643         6 + 
+39.  61644  Ortega, Fernando Nicolas                  (381) 646-2643         6 ++
 40.  61496  Parache, Ariana Agustina                  (381) 640-2374         6 ++
 41.  61732  Paz, Mikael                               (381) 542-2918         6 ++
 42.  61422  Pedraza, Estaban Daniel                   (381) 449-6148         6 ++
@@ -102,7 +102,7 @@
 45.  61671  Quinteros, Gabriel                        (381) 664-1854         6 + 
 46.  61064  Racedo, Francisco Nicolas                 (381) 301-3850         6 ++
 47.  61052  Reynoso, Braian Nicolás                   (381) 654-0412         6 ++
-48.  62104  Robledo, Juan Gerardo                                            0 + 
+48.  62104  Robledo, Juan Gerardo                     (381) 468-4269         6 + 
 49.  61962  Robledo, Rocio Micaela                    (381) 475-8990         5 ++
 50.  61914  Robles, Leandro Gonzalo                   (381) 611-5577         5 ++
 51.  61125  Rocha, Luca                               (381) 386-0020         6 ++

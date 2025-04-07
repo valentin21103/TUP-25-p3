@@ -61,7 +61,7 @@ class Program {
                     break;
                 case "6":
                     Consola.Escribir("=== Listar trabajos prácticos no presentados ===", ConsoleColor.Cyan);
-                    Consola.Escribir($"Resumen:\n  - Aprobados: {clase.ConPractico(1,EstadoPractico.Aprobado).Count()}\n  - Desaprobados: {clase.ConPractico(1,EstadoPractico.Desaprobado).Count()}\n  - No presentados: {clase.ConPractico(1,EstadoPractico.NoPresentado).Count()}", ConsoleColor.Cyan);
+                    Consola.Escribir($"Resumen:\n  - Aprobados: {clase.ConPractico(1, EstadoPractico.Aprobado).Count()}\n  - Desaprobados: {clase.ConPractico(1,EstadoPractico.Desaprobado).Count()}\n  - No presentados: {clase.ConPractico(1,EstadoPractico.NoPresentado).Count()}", ConsoleColor.Cyan);
                     clase.ListarNoPresentaron(practico);
                     break;
                 case "7":

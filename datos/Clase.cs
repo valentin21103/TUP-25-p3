@@ -233,7 +233,7 @@ class Clase : IEnumerable<Alumno> {
     public void ListarAlumnos(){
         Consola.Escribir("\nListado de alumnos:", ConsoleColor.Blue);
         foreach(var comision in Comisiones){
-            Consola.Escribir($"\n=== Comisión {comision} ===", ConsoleColor.Blue);            
+            Consola.Escribir($"\n=== Comisión {comision} ===", ConsoleColor.Blue);    
             foreach (var alumno in EnComision(comision).OrdenandoPorNombre()) {
                 var emojis = alumno.Practicos.Select(p => p.Emoji).ToList();
                 var asistencia = string.Join("", emojis);
@@ -251,9 +251,11 @@ class Clase : IEnumerable<Alumno> {
             Consola.Escribir($"No hay {mensaje} en la comisión {comision}", ConsoleColor.Green); }
         else {
             Consola.Escribir($"\n=== Comisión {comision} ===", ConsoleColor.Blue);
+            Consola.Escribir("```");        
             foreach (var alumno in listado) { 
-                Consola.Escribir($" {alumno.Legajo} - {alumno.NombreCompleto,-40} {alumno.Asistencias} {alumno.CantidadPresentados,2}", ConsoleColor.Red); 
+                Consola.Escribir($"{alumno.Legajo} {alumno.NombreCompleto,-32} {alumno.Asistencias} {alumno.CantidadPresentados,2}", ConsoleColor.Red); 
             }
+            Consola.Escribir("```");        
             Consola.Escribir($"Total {mensaje}: {listado.Count()}", ConsoleColor.Yellow);
         }
     }
