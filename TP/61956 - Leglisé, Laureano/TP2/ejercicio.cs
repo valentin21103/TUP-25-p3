@@ -1,19 +1,28 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
-// Cuenta base
-abstract class CuentaBase
+abstract class Cuenta
 {
-    public string Numero { get; }
+    public string Numero { get; private set; }
     public double Saldo { get; protected set; }
     public double Puntos { get; protected set; }
+    public Cliente Titular { get; set; }
+    public List<Operacion> Historial { get; private set; }
 
-    public CuentaBase(string numero) => Numero = numero;
+    public Cuenta(string numero, double saldo)
+    {
+        Numero = numero;
+        Saldo = saldo;
+        Puntos = 0;
+        Historial = new List<Operacion>();
+    }
 
-    public virtual void Depositar(double monto) => Saldo += monto;
+    public void Depositar(double monto)
+    {
+        Saldo += monto;
+    }
 
-    public virtual bool Extraer(double monto)
+    public bool Extraer(double monto)
     {
         if (Saldo >= monto)
         {
@@ -23,146 +32,288 @@ abstract class CuentaBase
         return false;
     }
 
-    public bool Pagar(double monto)
+    public void AgregarOperacion(Operacion op)
+    {
+        Historial.Add(op);
+    }
+
+    public abstract void AplicarPago(double monto);
+}
+
+class CuentaOro : Cuenta
+{
+    public CuentaOro(string numero, double saldo) : base(numero, saldo) { }
+
+    public override void AplicarPago(double monto)
     {
         if (Extraer(monto))
         {
-            AcumularPuntos(monto);
-            return true;
+            if (monto > 1000)
+                Puntos += monto * 0.05;
+            else
+                Puntos += monto * 0.03;
         }
-        return false;
     }
-
-    protected abstract void AcumularPuntos(double monto);
 }
 
-class CuentaOro : CuentaBase
+class CuentaPlata : Cuenta
 {
-    public CuentaOro(string numero) : base(numero) { }
+    public CuentaPlata(string numero, double saldo) : base(numero, saldo) { }
 
-    protected override void AcumularPuntos(double monto)
-        => Puntos += monto > 1000 ? monto * 0.05 : monto * 0.03;
+    public override void AplicarPago(double monto)
+    {
+        if (Extraer(monto))
+        {
+            Puntos += monto * 0.02;
+        }
+    }
 }
 
-class CuentaPlata : CuentaBase
+class CuentaBronce : Cuenta
 {
-    public CuentaPlata(string numero) : base(numero) { }
+    public CuentaBronce(string numero, double saldo) : base(numero, saldo) { }
 
-    protected override void AcumularPuntos(double monto)
-        => Puntos += monto * 0.02;
-}
-
-class CuentaBronce : CuentaBase
-{
-    public CuentaBronce(string numero) : base(numero) { }
-
-    protected override void AcumularPuntos(double monto)
-        => Puntos += monto * 0.01;
+    public override void AplicarPago(double monto)
+    {
+        if (Extraer(monto))
+        {
+            Puntos += monto * 0.01;
+        }
+    }
 }
 
 class Cliente
 {
-    public string Nombre { get; }
-    public List<CuentaBase> Cuentas { get; } = new();
-    public List<string> Historial { get; } = new();
+    public string Nombre { get; private set; }
+    public List<Cuenta> Cuentas { get; private set; }
 
-    public Cliente(string nombre) => Nombre = nombre;
+    public Cliente(string nombre)
+    {
+        Nombre = nombre;
+        Cuentas = new List<Cuenta>();
+    }
 
-    public void AgregarCuenta(CuentaBase cuenta) => Cuentas.Add(cuenta);
-    public void RegistrarOperacion(string detalle) => Historial.Add(detalle);
+    public void Agregar(Cuenta cuenta)
+    {
+        cuenta.Titular = this;
+        Cuentas.Add(cuenta);
+    }
+
+    public double TotalSaldo()
+    {
+        double total = 0;
+        foreach (var cuenta in Cuentas)
+            total += cuenta.Saldo;
+        return total;
+    }
+
+    public double TotalPuntos()
+    {
+        double total = 0;
+        foreach (var cuenta in Cuentas)
+            total += cuenta.Puntos;
+        return total;
+    }
+}
+
+abstract class Operacion
+{
+    public double Monto { get; protected set; }
+    public abstract void Ejecutar(Banco banco);
+    public abstract string Descripcion();
+}
+
+class Deposito : Operacion
+{
+    private string numero;
+
+    public Deposito(string numero, double monto)
+    {
+        this.numero = numero;
+        this.Monto = monto;
+    }
+
+    public override void Ejecutar(Banco banco)
+    {
+        var cuenta = banco.BuscarCuenta(numero);
+        cuenta?.Depositar(Monto);
+        cuenta?.AgregarOperacion(this);
+    }
+
+    public override string Descripcion()
+    {
+        return $"Deposito $ {Monto:0.00} a [{numero}/{(Banco.NombreTitular(numero))}]";
+    }
+}
+
+class Retiro : Operacion
+{
+    private string numero;
+
+    public Retiro(string numero, double monto)
+    {
+        this.numero = numero;
+        this.Monto = monto;
+    }
+
+    public override void Ejecutar(Banco banco)
+    {
+        var cuenta = banco.BuscarCuenta(numero);
+        if (cuenta != null && cuenta.Extraer(Monto))
+            cuenta.AgregarOperacion(this);
+    }
+
+    public override string Descripcion()
+    {
+        return $"Retiro $ {Monto:0.00} de [{numero}/{(Banco.NombreTitular(numero))}]";
+    }
+}
+
+class Pago : Operacion
+{
+    private string numero;
+
+    public Pago(string numero, double monto)
+    {
+        this.numero = numero;
+        this.Monto = monto;
+    }
+
+    public override void Ejecutar(Banco banco)
+    {
+        var cuenta = banco.BuscarCuenta(numero);
+        cuenta?.AplicarPago(Monto);
+        cuenta?.AgregarOperacion(this);
+    }
+
+    public override string Descripcion()
+    {
+        return $"Pago $ {Monto:0.00} con [{numero}/{(Banco.NombreTitular(numero))}]";
+    }
+}
+
+class Transferencia : Operacion
+{
+    private string origen;
+    private string destino;
+
+    public Transferencia(string origen, string destino, double monto)
+    {
+        this.origen = origen;
+        this.destino = destino;
+        this.Monto = monto;
+    }
+
+    public override void Ejecutar(Banco banco)
+    {
+        var cuentaOrigen = banco.BuscarCuenta(origen);
+        var cuentaDestino = banco.BuscarCuenta(destino);
+        if (cuentaOrigen != null && cuentaDestino != null && cuentaOrigen.Extraer(Monto))
+        {
+            cuentaDestino.Depositar(Monto);
+            cuentaOrigen.AgregarOperacion(this);
+            cuentaDestino.AgregarOperacion(this);
+        }
+    }
+
+    public override string Descripcion()
+    {
+        return $"Transferencia $ {Monto:0.00} de [{origen}/{(Banco.NombreTitular(origen))}] a [{destino}/{(Banco.NombreTitular(destino))}]";
+    }
 }
 
 class Banco
 {
-    private List<Cliente> clientes = new();
-    private List<string> operaciones = new();
+    public string Nombre { get; private set; }
+    public List<Cliente> Clientes { get; private set; }
+    public List<Operacion> Operaciones { get; private set; }
+    public static Dictionary<string, string> Titulares = new Dictionary<string, string>();
 
-    public void AgregarCliente(Cliente cliente) => clientes.Add(cliente);
-
-    private CuentaBase? BuscarCuenta(string numero) =>
-        clientes.SelectMany(c => c.Cuentas).FirstOrDefault(c => c.Numero == numero);
-
-    private Cliente? BuscarClientePorCuenta(string numero) =>
-        clientes.FirstOrDefault(c => c.Cuentas.Any(cuenta => cuenta.Numero == numero));
-
-    private void Registrar(string detalle, string nroCuenta)
+    public Banco(string nombre)
     {
-        operaciones.Add(detalle);
-        var cliente = BuscarClientePorCuenta(nroCuenta);
-        if (cliente != null) cliente.RegistrarOperacion(detalle);
+        Nombre = nombre;
+        Clientes = new List<Cliente>();
+        Operaciones = new List<Operacion>();
     }
 
-    public void Depositar(string nroCuenta, double monto)
+    public void Agregar(Cliente cliente)
     {
-        var cuenta = BuscarCuenta(nroCuenta);
-        if (cuenta != null)
+        Clientes.Add(cliente);
+        foreach (var cuenta in cliente.Cuentas)
+            Titulares[cuenta.Numero] = cliente.Nombre;
+    }
+
+    public Cuenta BuscarCuenta(string numero)
+    {
+        foreach (var cliente in Clientes)
+            foreach (var cuenta in cliente.Cuentas)
+                if (cuenta.Numero == numero)
+                    return cuenta;
+        return null;
+    }
+
+    public void Registrar(Operacion operacion)
+    {
+        operacion.Ejecutar(this);
+        Operaciones.Add(operacion);
+    }
+
+    public static string NombreTitular(string numero)
+    {
+        return Titulares.ContainsKey(numero) ? Titulares[numero] : "Desconocido";
+    }
+
+    public void Informe()
+    {
+        Console.WriteLine($"\nBanco: {Nombre} | Clientes: {Clientes.Count}\n");
+        foreach (var cliente in Clientes)
         {
-            cuenta.Depositar(monto);
-            Registrar($"DEPÓSITO de ${monto} en {nroCuenta}", nroCuenta);
-        }
-    }
-
-    public void Extraer(string nroCuenta, double monto)
-    {
-        var cuenta = BuscarCuenta(nroCuenta);
-        if (cuenta != null && cuenta.Extraer(monto))
-            Registrar($"RETIRO de ${monto} en {nroCuenta}", nroCuenta);
-    }
-
-    public void Pagar(string nroCuenta, double monto)
-    {
-        var cuenta = BuscarCuenta(nroCuenta);
-        if (cuenta != null && cuenta.Pagar(monto))
-            Registrar($"PAGO de ${monto} en {nroCuenta} (Puntos: {cuenta.Puntos})", nroCuenta);
-    }
-
-    public void Transferir(string origen, string destino, double monto)
-    {
-        var ctaOrigen = BuscarCuenta(origen);
-        var ctaDestino = BuscarCuenta(destino);
-        if (ctaOrigen != null && ctaDestino != null && ctaOrigen.Extraer(monto))
-        {
-            ctaDestino.Depositar(monto);
-            Registrar($"TRANSFERENCIA de ${monto} de {origen} a {destino}", origen);
-            Registrar($"TRANSFERENCIA recibida de ${monto} desde {origen}", destino);
-        }
-    }
-
-    public void Reporte()
-    {
-        Console.WriteLine("---- Operaciones Globales ----");
-        operaciones.ForEach(Console.WriteLine);
-
-        foreach (var cli in clientes)
-        {
-            Console.WriteLine($"\nCliente: {cli.Nombre}");
-            foreach (var c in cli.Cuentas)
-                Console.WriteLine($"Cuenta {c.Numero} | Saldo: ${c.Saldo} | Puntos: {c.Puntos}");
-            Console.WriteLine("Historial:");
-            cli.Historial.ForEach(op => Console.WriteLine(" - " + op));
+            Console.WriteLine($"  Cliente: {cliente.Nombre} | Saldo Total: $ {cliente.TotalSaldo():0.00} | Puntos Total: $ {cliente.TotalPuntos():0.00}\n");
+            foreach (var cuenta in cliente.Cuentas)
+            {
+                Console.WriteLine($"    Cuenta: {cuenta.Numero} | Saldo: $ {cuenta.Saldo:0.00} | Puntos: $ {cuenta.Puntos:0.00}");
+                foreach (var op in cuenta.Historial)
+                    Console.WriteLine($"     -  {op.Descripcion()}");
+                Console.WriteLine();
+            }
         }
     }
 }
 
 class Program
 {
-    static void Main()
+    static void Main(string[] args)
     {
-        Banco banco = new();
+        var raul = new Cliente("Raul Perez");
+        raul.Agregar(new CuentaOro("10001", 1000));
+        raul.Agregar(new CuentaPlata("10002", 2000));
 
-        var juan = new Cliente("Juan");
-        juan.AgregarCuenta(new CuentaOro("00001"));
-        banco.AgregarCliente(juan);
+        var sara = new Cliente("Sara Lopez");
+        sara.Agregar(new CuentaPlata("10003", 3000));
+        sara.Agregar(new CuentaPlata("10004", 4000));
 
-        var ana = new Cliente("Ana");
-        ana.AgregarCuenta(new CuentaPlata("00002"));
-        banco.AgregarCliente(ana);
+        var luis = new Cliente("Luis Gomez");
+        luis.Agregar(new CuentaBronce("10005", 5000));
 
-        banco.Depositar("00001", 2000);
-        banco.Pagar("00001", 1500);
-        banco.Transferir("00001", "00002", 300);
-        banco.Extraer("00002", 100);
+        var nac = new Banco("Banco Nac");
+        nac.Agregar(raul);
+        nac.Agregar(sara);
 
-        banco.Reporte();
+        var tup = new Banco("Banco TUP");
+        tup.Agregar(luis);
+
+        nac.Registrar(new Deposito("10001", 100));
+        nac.Registrar(new Retiro("10002", 200));
+        nac.Registrar(new Transferencia("10001", "10002", 300));
+        nac.Registrar(new Transferencia("10003", "10004", 500));
+        nac.Registrar(new Pago("10002", 400));
+
+        tup.Registrar(new Deposito("10005", 100));
+        tup.Registrar(new Retiro("10005", 200));
+        tup.Registrar(new Transferencia("10005", "10002", 300));
+        tup.Registrar(new Pago("10005", 400));
+
+        nac.Informe();
+        tup.Informe();
     }
 }
