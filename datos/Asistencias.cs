@@ -23,18 +23,36 @@ public class Asistencia {
 }
 
 public static class Asistencias {
+    static bool ContieneEmoji(string texto){
+        bool IsEmoji(Rune rune){
+        int value = rune.Value;
+        return (value >= 0x1F600 && value <= 0x1F64F) ||  // emoticonos
+               (value >= 0x1F300 && value <= 0x1F5FF) ||  // pictogramas
+               (value >= 0x1F680 && value <= 0x1F6FF) ||  // transporte
+               (value >= 0x2600 && value <= 0x26FF)   ||  // varios
+               (value >= 0x1F900 && value <= 0x1F9FF) ||  // gestos
+               (value >= 0x1FA70 && value <= 0x1FAFF);    // más emojis
+        }
+        foreach (var rune in texto.EnumerateRunes()){
+            if (IsEmoji(rune))
+                return true;
+        }
+        return false;
+    }
+
+    
     // Se agregó (?:\ud83c[\udffb-\udfff])? como grupo opcional para detectar modificadores de tono de piel.
-    private static readonly Regex EmojiRegex = new Regex(
-        @"(?:" +
-            @"[\u00A9\u00AE\u203C\u2049\u2122\u2139\u2194-\u2199\u21A9-\u21AA\u231A-\u231B\u2328\u23CF\u23E9-\u23F3\u23F8-\u23FA\u24C2\u25AA-\u25AB\u25B6\u25C0\u25FB-\u25FE\u2600-\u2604\u260E\u2611\u2614-\u2615\u2618\u261D\u2620\u2622-\u2623\u2626\u262A\u262E-\u262F\u2638-\u263A\u2640\u2642\u2648-\u2653\u265F-\u2660\u2663\u2665-\u2666\u2668\u267B\u267E-\u267F\u2692-\u2697\u2699\u269B-\u269C\u26A0-\u26A1\u26AA-\u26AB\u26B0-\u26B1\u26BD-\u26BE\u26C4-\u26C5\u26C8\u26CE-\u26CF\u26D1\u26D3-\u26D4\u26E9-\u26EA\u26F0-\u26F5\u26F7-\u26FA\u26FD\u2702\u2705\u2708-\u270D\u270F\u2712\u2714\u2716\u271D\u2721\u2728\u2733-\u2734\u2744\u2747\u274C\u274E\u2753-\u2755\u2757\u2763-\u2764\u2795-\u2797\u27A1\u27B0\u27BF\u2934-\u2935\u2B05-\u2B07\u2B1B-\u2B1C\u2B50\u2B55\u3030\u303D\u3297\u3299" +
-            @"|" +
-            @"\ud83c[\udc00-\udfff]" +
-            @"|" +
-            @"\ud83d[\udc00-\udfff]" +
-            @"|" +
-            @"\ud83e[\udd10-\uddff]" +
-        @")(?:(?:\ud83c[\udffb-\udfff]))?"
-    );
+    // private static readonly Regex EmojiRegex = new Regex(
+    //     @"(?:" +
+    //         @"[\u00A9\u00AE\u203C\u2049\u2122\u2139\u2194-\u2199\u21A9-\u21AA\u231A-\u231B\u2328\u23CF\u23E9-\u23F3\u23F8-\u23FA\u24C2\u25AA-\u25AB\u25B6\u25C0\u25FB-\u25FE\u2600-\u2604\u260E\u2611\u2614-\u2615\u2618\u261D\u2620\u2622-\u2623\u2626\u262A\u262E-\u262F\u2638-\u263A\u2640\u2642\u2648-\u2653\u265F-\u2660\u2663\u2665-\u2666\u2668\u267B\u267E-\u267F\u2692-\u2697\u2699\u269B-\u269C\u26A0-\u26A1\u26AA-\u26AB\u26B0-\u26B1\u26BD-\u26BE\u26C4-\u26C5\u26C8\u26CE-\u26CF\u26D1\u26D3-\u26D4\u26E9-\u26EA\u26F0-\u26F5\u26F7-\u26FA\u26FD\u2702\u2705\u2708-\u270D\u270F\u2712\u2714\u2716\u271D\u2721\u2728\u2733-\u2734\u2744\u2747\u274C\u274E\u2753-\u2755\u2757\u2763-\u2764\u2795-\u2797\u27A1\u27B0\u27BF\u2934-\u2935\u2B05-\u2B07\u2B1B-\u2B1C\u2B50\u2B55\u3030\u303D\u3297\u3299" +
+    //         @"|" +
+    //         @"\ud83c[\udc00-\udfff]" +
+    //         @"|" +
+    //         @"\ud83d[\udc00-\udfff]" +
+    //         @"|" +
+    //         @"\ud83e[\udd10-\uddff]" +
+    //     @")(?:(?:\ud83c[\udffb-\udfff]))?"
+    // );
 
     public static List<Asistencia> CargarAsistencias(string origen, TimeSpan startTime, TimeSpan endTime) {
         var camino = $"/Users/adibattista/Documents/GitHub/tup-25-p3/datos/{origen}";
@@ -71,8 +89,12 @@ public static class Asistencias {
                     continue;
 
                 var messageTime = new TimeSpan(horas, minutos, 0);
-                if (messageTime >= startTime && messageTime <= endTime) {
-                    if (EmojiRegex.IsMatch(mensaje)) {
+                // if(telefono.Contains("4353")){
+                //     Console.WriteLine($"Mensaje de {telefono} a las {messageTime} el {fechaActual:dd/MM/yyyy}");
+                //     Console.WriteLine($"{mensaje} emoji:{ContieneEmoji(mensaje)}"  );
+                // }
+                // if (messageTime >= startTime && messageTime <= endTime) {
+                    if (ContieneEmoji(mensaje)) {
                         if (!estudiantes.ContainsKey(telefono)) {
                             estudiantes[telefono] = new Asistencia(telefono);
                         }
@@ -81,7 +103,7 @@ public static class Asistencias {
                             estudiantes[telefono].Fechas.Add(fechaActual);
                         }
                     }
-                }
+                // }
             }
         }
 
@@ -115,10 +137,17 @@ public static class Asistencias {
             }
         }
         // Filtra las fechas que tienen más de 30 asistencias
-        foreach (var (telefono, fechas) in salida){
-            salida[telefono] = fechas.Where(f => contador[f.Date] > 30).ToList();
-            despues += fechas.Count;
+        Consola.Escribir("=== Fechas y cantidad de asistencias ===", ConsoleColor.Green);
+        foreach (var entrada in contador.OrderBy(c => c.Key))
+        {
+            Consola.Escribir($"{entrada.Key:dd/MM/yyyy}: {entrada.Value} veces");
         }
+        Consola.Escribir("===\n");
+        // Elimina fechas poco frecuentes
+        // foreach (var (telefono, fechas) in salida){
+        //     salida[telefono] = fechas.Where(f => contador[f.Date] > 20).ToList();
+        //     despues += fechas.Count;
+        // }
 
         Consola.Escribir($"Hay {salida.Count} alumnos con {despues} asistencias (de {antes}) ");
 

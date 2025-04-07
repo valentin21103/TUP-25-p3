@@ -70,7 +70,7 @@ class Program {
                     break;
                 case "8":
                     Consola.Escribir("=== Listar alumnos que no presentaron nada ===", ConsoleColor.Cyan);
-                    Asistencias.Cargar(true);
+                    Asistencias.Cargar(false);
                     break;
             }
             Consola.EsperarTecla();

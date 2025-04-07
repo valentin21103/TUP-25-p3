@@ -31,14 +31,12 @@
   08:38 De: 3815514353 - Mensaje: 
   08:38 De: 3816466685 - Mensaje: Martínez campero Santiago, 61445
   08:38 De: 3816376461 - Mensaje: 61037 Rodrigo Federico Paz
-  08:39 De: 3814158753 - Mensaje: 
   08:39 De: 3815268193 - Mensaje: 61118 Santiago Alexis Barrios
   08:39 De: 3813882674 - Mensaje: 61450 Jimenez Paz, Patricio Agustín
   08:39 De: 3813414321 - Mensaje: 61312 Lucas David Paz Berrondo
   08:39 De: 3816488513 - Mensaje: 61197 Alfredo Nicolás Romano
   08:39 De: 3816479914 - Mensaje: 61627 Juarez Fernandez Lourdes
   08:39 De: 3815690318 - Mensaje: 61028 Rodrigo Ponce
-  08:40 De: 3814158753 - Mensaje: 62093 Frias Silva juan segundo
   08:40 De: 3813887804 - Mensaje: 61203 Acevedo costello Juan Ignacio
   08:40 De: 3816389006 - Mensaje: 61352  García Moya, José Ignacio
   08:41 De: 3816666103 - Mensaje: 61059 fabricio gaston palavecino
@@ -92,7 +90,6 @@
   08:20 De: 3816559195 - Mensaje: 
   08:21 De: 3813926461 - Mensaje: 
   08:21 De: 3815906461 - Mensaje: 61794 Lobo Campero, Hernán Ignacio
-  08:21 De: 3814158753 - Mensaje: 62093 Frias Silva, Juan Segundo
   08:21 De: 3875170010 - Mensaje: 61478 Soto Antonella
   08:21 De: 3816488513 - Mensaje: 61197 Alfredo Nicolás Romano
   08:21 De: 3813577724 - Mensaje: Legajo:61473 Apellido y nombre: Lagoria Garcia Tomás Gustavo
