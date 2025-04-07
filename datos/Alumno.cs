@@ -41,7 +41,8 @@ public class Alumno {
     public bool TieneTelefono => Telefono != "";
     public string NombreCompleto => $"{Apellido}, {Nombre}".Replace("-", "").Replace("*", "").Trim();
     public string Carpeta => $"{Legajo} - {NombreCompleto}";
-
+    public int CantidadPresentados => Practicos.Count(p => p == EstadoPractico.Aprobado);
+    public bool Abandono => Asistencias == 0 && CantidadPresentados == 0;
     public EstadoPractico ObtenerPractico(int practico) {
         if (practico <= 0 || practico > MaxPracticos) return EstadoPractico.NoPresentado;
         if (practico > Practicos.Count) return EstadoPractico.NoPresentado;

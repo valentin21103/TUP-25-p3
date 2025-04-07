@@ -61,6 +61,7 @@ class Clase : IEnumerable<Alumno> {
     // Métodos de filtrado
     public Clase EnComision(string comision) => new (alumnos.Where(a => a.Comision == comision));
     public Clase ConTelefono(bool incluirTelefono=true) => new (alumnos.Where(a => incluirTelefono == a.TieneTelefono ));
+    public Clase ConAbandono(bool abandono) => new (alumnos.Where(a => a.Abandono == abandono));
     public Clase ConNombre(string nombre) => new (alumnos.Where(a => a.NombreCompleto.Contains(nombre, StringComparison.OrdinalIgnoreCase)));
     public Clase ConPractico(int numero, EstadoPractico estado) => new (alumnos.Where(a => a.ObtenerPractico(numero) == estado));
     public Clase ConAusentes(int cantidad) => new(Alumnos.Where(a => a.Practicos.Count(p => p == EstadoPractico.NoPresentado) >= cantidad));
@@ -251,7 +252,7 @@ class Clase : IEnumerable<Alumno> {
         else {
             Consola.Escribir($"\n=== Comisión {comision} ===", ConsoleColor.Blue);
             foreach (var alumno in listado) { 
-                Consola.Escribir($" {alumno.Legajo} - {alumno.NombreCompleto,-40} {alumno.Asistencias}", ConsoleColor.Red); 
+                Consola.Escribir($" {alumno.Legajo} - {alumno.NombreCompleto,-40} {alumno.Asistencias} {alumno.CantidadPresentados,2}", ConsoleColor.Red); 
             }
             Consola.Escribir($"Total {mensaje}: {listado.Count()}", ConsoleColor.Yellow);
         }
@@ -260,7 +261,7 @@ class Clase : IEnumerable<Alumno> {
     public void ListarNoPresentaron(int practico = 1) {
         Consola.Escribir($"\nListado de alumnos ausentes en el TP{practico}:", ConsoleColor.Yellow);
         foreach (var comision in Comisiones) {
-            var listado = EnComision(comision).ConPractico(practico, EstadoPractico.NoPresentado);
+            var listado = EnComision(comision).ConPractico(practico, EstadoPractico.NoPresentado).ConAbandono(false);
             ListarPorComision(listado, comision, "alumnos ausentes");
         }
         var totalAusentes = ConPractico(practico, EstadoPractico.NoPresentado).alumnos.Count;

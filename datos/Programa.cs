@@ -66,7 +66,7 @@ class Program {
                     break;
                 case "7":
                     Consola.Escribir("=== Listar alumnos que no presentaron nada ===", ConsoleColor.Cyan);
-                    clase.ListarNoPresentaron(practico);
+                    clase.ListarNoPresentaron(1);
                     break;
                 case "8":
                     Consola.Escribir("=== Listar alumnos que no presentaron nada ===", ConsoleColor.Cyan);
