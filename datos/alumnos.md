@@ -3,7 +3,7 @@
 ## Comisión C3
 01.  61203  Acevedo Costello, Juan Ignacio            (381) 388-7804         6 + 
 02.  61667  Acosta, Maira                             (381) 562-8162         8 ++
-03.  62055  Ahumada, Aiquén                           (381) 419-9202         8 + 
+03.  62055  Ahumada, Aiquén                           (381) 419-9202         8 ++
 04.  61118  Barrios, Santiago Alexis                  (381) 526-8193         8 ++
 05.  61319  Carabajal, José Gabriel                   (381) 319-2680         6 ++
 06.  61214  Collazos Cortez, Máximo Alberto           (381) 350-5275         8 + 
@@ -31,7 +31,7 @@
 28.  61818  Lopez Tisera, Gaston                      (381) 523-5887         7 ++
 29.  61579  Marti, Gonzalo                            (381) 418-6882         8 + 
 30.  61445  Martínez Campero, Santiago                (381) 646-6685         8 ++
-31.  61676  Massey, Maximiliano                       (381) 359-9941         8   
+31.  61676  Massey, Maximiliano                       (381) 359-9941         8  +
 32.  61668  Molina, Santiago Nicolas                  (381) 582-0324         4   
 33.  61032  Moya, Mariano                             (381) 670-1164         8 ++
 34.  62263  Orellana, José Augusto                    (386) 534-2925         7 ++
