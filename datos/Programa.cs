@@ -16,10 +16,22 @@ class Program {
         return Consola.ElegirOpcion("\nElija una opción (0-8): ", "012345678");
     }
 
+    static void RenameTP3Directories(string path="../TP") {
+        foreach (var dir in Directory.GetDirectories(path)) {
+            string folderName = Path.GetFileName(dir);
+            if (folderName.Equals("TP3", StringComparison.Ordinal)) {
+                string newDir = Path.Combine(Path.GetDirectoryName(dir)!, "tp3");
+                Console.WriteLine($"Renombrando: {dir} -> {newDir}");
+                Directory.Move(dir, newDir);
+            }
+        }
+    }
+
     static void Main(string[] args) {
+        RenameTP3Directories();
         var clase = Clase.Cargar();
 
-        var practico = 3;
+        var practico = 2;
 
         Consola.Escribir("=== Bienvenido al sistema de gestión de alumnos ===", ConsoleColor.Cyan);
         while (true) {
