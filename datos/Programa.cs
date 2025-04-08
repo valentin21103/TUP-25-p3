@@ -19,7 +19,7 @@ class Program {
     static void Main(string[] args) {
         var clase = Clase.Cargar();
 
-        var practico = 2;
+        var practico = 3;
 
         Consola.Escribir("=== Bienvenido al sistema de gestión de alumnos ===", ConsoleColor.Cyan);
         while (true) {
