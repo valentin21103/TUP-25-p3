@@ -5,3 +5,6 @@
 
 # Exclude the 'fechas' folder from GitHub
 fechas/
+/datos/obj
+/datos/obj
+/datos/obj

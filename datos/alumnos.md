@@ -4,7 +4,7 @@
 01.  61203  Acevedo Costello, Juan Ignacio            (381) 388-7804         6 + 
 02.  61667  Acosta, Maira                             (381) 562-8162         8 ++
 03.  62055  Ahumada, Aiquén                           (381) 419-9202         8 + 
-04.  61118  Barrios, Santiago Alexis                  (381) 526-8193         8 + 
+04.  61118  Barrios, Santiago Alexis                  (381) 526-8193         8 ++
 05.  61319  Carabajal, José Gabriel                   (381) 319-2680         6 ++
 06.  61214  Collazos Cortez, Máximo Alberto           (381) 350-5275         8 + 
 07.  61141  Di Clemente, María Antonela               (381) 398-3935         6   
@@ -25,7 +25,7 @@
 22.  61450  Jiménez Paz, Patricio Agustín             (381) 388-2674         6 ++
 23.  61627  Juárez Fernández, Lourdes Abril           (381) 647-9914         8 ++
 24.  61473  Lagoria García, Tomás Gustavo             (381) 357-7724         7 ++
-25.  61956  Leglisé, Laureano                         (261) 468-9809         8 + 
+25.  61956  Leglisé, Laureano                         (261) 468-9809         8 ++
 26.  61679  Lobo Barrera, Mia de los Angeles          (381) 677-0639         8 ++
 27.  61794  Lobo Campero, Hernán Ignacio              (381) 590-6461         5 ++
 28.  61818  Lopez Tisera, Gaston                      (381) 523-5887         7 ++
@@ -37,7 +37,7 @@
 34.  62263  Orellana, José Augusto                    (386) 534-2925         7 ++
 35.  61113  Oriz Caballero, Juan José                 (381) 631-7223         7 ++
 36.  61059  Palavecino, Fabricio Gaston               (381) 666-6103         5 + 
-37.  61248  Palma Collado, Nahuel                     (381) 674-7012         8 + 
+37.  61248  Palma Collado, Nahuel                     (381) 674-7012         8 ++
 38.  61572  Parrado Navarrete, Alex Daniel            (381) 409-5039         6 + 
 39.  61581  Paz, Naim Federico                        (381) 353-0060         0   
 40.  61037  Paz, Rodrigo Federico                     (381) 637-6461         7 ++
@@ -98,7 +98,7 @@
 41.  61732  Paz, Mikael                               (381) 542-2918         6 ++
 42.  61422  Pedraza, Estaban Daniel                   (381) 449-6148         6 ++
 43.  61858  Perez, Facundo Agustin                    (381) 661-8312         5   
-44.  61140  Perez, Fernando Alberto                   (381) 643-2069         4 + 
+44.  61140  Perez, Fernando Alberto                   (381) 643-2069         4 ++
 45.  61671  Quinteros, Gabriel                        (381) 664-1854         6 ++
 46.  61064  Racedo, Francisco Nicolas                 (381) 301-3850         6 ++
 47.  61052  Reynoso, Braian Nicolás                   (381) 654-0412         6 ++
