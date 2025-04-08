@@ -1,7 +1,7 @@
 ﻿using TUP;
 
 class Program {
-    static string MostrarMenu() {
+    static string ElegirOpcionMenu() {
         Console.Clear();
         Consola.Escribir("=== MENÚ DE OPCIONES ===", ConsoleColor.Cyan);
         Consola.Escribir("1. Listar alumnos");
@@ -23,7 +23,7 @@ class Program {
 
         Consola.Escribir("=== Bienvenido al sistema de gestión de alumnos ===", ConsoleColor.Cyan);
         while (true) {
-            string opcion = MostrarMenu();
+            string opcion = ElegirOpcionMenu();
             if (opcion == "0") return;
             Console.Clear();
             Asistencias.Cargar();
@@ -70,7 +70,7 @@ class Program {
                     break;
                 case "8":
                     Consola.Escribir("=== Listar alumnos que no presentaron nada ===", ConsoleColor.Cyan);
-                    Asistencias.Cargar(false);
+                    Asistencias.Cargar(true);
                     break;
             }
             Consola.EsperarTecla();
