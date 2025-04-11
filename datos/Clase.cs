@@ -148,7 +148,8 @@ class Clase : IEnumerable<Alumno> {
 
 
     public static int ContarLineasEfectivas(string archivo) {
-        var lineas = File.ReadAllLines(archivo);
+        var lineas = File.ReadAllLines(archivo)
+                         .TakeWhile(linea => !linea.Contains("PRUEBAS AUTOMATIZADAS"));
         return lineas.Count(linea =>
             !linea.Trim().Equals("") &&                     // No es una línea vacía
             !linea.TrimStart().StartsWith("Console.") &&    // No es un mensaje de consola
@@ -167,7 +168,7 @@ class Clase : IEnumerable<Alumno> {
             var presentados = 0;
             var ausentes = 0;
             foreach(var alumno in EnComision(comision)){
-                var archivo = Path.Combine(Base, alumno.Carpeta, $"TP{practico}", "ejercicio.cs");
+                var archivo = Path.Combine(Base, alumno.Carpeta, $"tp{practico}", "ejercicio.cs");
                 EstadoPractico estado = EstadoPractico.Error;
                 if (File.Exists(archivo)) {
                     int lineasEfectivas = ContarLineasEfectivas(archivo);
@@ -251,7 +252,7 @@ class Clase : IEnumerable<Alumno> {
             Consola.Escribir($"\n=== Comisión {comision} ===", ConsoleColor.Blue);
             Consola.Escribir("```");        
             foreach (var alumno in listado) { 
-                Consola.Escribir($"{alumno.Legajo} {alumno.NombreCompleto,-32} {alumno.Asistencias} {alumno.CantidadPresentados,2}", ConsoleColor.Red); 
+                Consola.Escribir($"{alumno.Legajo} {alumno.NombreCompleto,-32} {alumno.Asistencias,2} {alumno.CantidadPresentados,2}", ConsoleColor.Red); 
             }
             Consola.Escribir("```");        
             Consola.Escribir($"Total {mensaje}: {listado.Count()}", ConsoleColor.Yellow);
