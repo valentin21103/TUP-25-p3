@@ -3,7 +3,8 @@ name: Auto Merge PRs
 on:
   pull_request:
     types: [opened, synchronize]
-
+  workflow_dispatch:
+    
 jobs:
   auto-merge:
     runs-on: ubuntu-latest
