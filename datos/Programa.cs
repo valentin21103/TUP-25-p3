@@ -30,7 +30,6 @@ class Program {
     static void Main(string[] args) {
         RenameTP3Directories();
         var clase = Clase.Cargar();
-
         var practico = 2;
 
         Consola.Escribir("=== Bienvenido al sistema de gestión de alumnos ===", ConsoleColor.Cyan);
@@ -63,6 +62,7 @@ class Program {
                 case "5":
                     Consola.Escribir($"=== Verificar presentación de trabajo práctico ===", ConsoleColor.Cyan);
                     clase.NormalizarCarpetas();
+                    clase.Reiniciar();
                     for(var p = 1; p <= practico; p++) {
                         clase.VerificaPresentacionPractico(p);
                     }

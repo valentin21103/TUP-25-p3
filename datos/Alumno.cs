@@ -38,6 +38,11 @@ public class Alumno {
         return string.Join("", Practicos.Select(p => p.ToString()));
     }
 
+    public void Reiniciar(){
+        Practicos.Clear();
+        Asistencias = 0;
+    }
+
     public bool TieneTelefono => Telefono != "";
     public string NombreCompleto => $"{Apellido}, {Nombre}".Replace("-", "").Replace("*", "").Trim();
     public string Carpeta => $"{Legajo} - {NombreCompleto}";
@@ -61,7 +66,6 @@ public class Alumno {
     } 
 
     public bool EsTelefono(string telefono) {
-        // var limpio = new string(telefono.Where(char.IsDigit).ToArray());
         var limpio = telefono.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "").Trim();
         if (limpio.Length < 7) return false;
         return telefono.CompareTo(limpio) == 0;
@@ -71,5 +75,13 @@ public class Alumno {
         return $"{Legajo} - {NombreCompleto} - {Telefono} - {Comision} - {PracticosToString()}";
     }
 
+    public override int GetHashCode() {
+        return Legajo.GetHashCode();
+    }
+
+    public bool Equals(Alumno? otro) {
+        if (otro == null) return false;
+        return Legajo == otro.Legajo;
+    }
     public static Alumno Yo => new (0, 0, "Di Battista", "Alejandro", "(381) 534-3458", "", "++");
 }

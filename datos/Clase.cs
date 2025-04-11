@@ -192,7 +192,6 @@ class Clase : IEnumerable<Alumno> {
         Consola.Escribir($" ▶︎ Copiando trabajo práctico de TP{practico}", ConsoleColor.Cyan);
         var carpetaOrigen = Path.Combine(Enunciados, $"TP{practico}");
         
-        // Verificar que exista el enunciado
         if (!Directory.Exists(carpetaOrigen)) {
             Consola.Escribir($"Error: No se encontró el enunciado del trabajo práctico '{practico}' en {carpetaOrigen}", ConsoleColor.Red);
             return;
@@ -245,7 +244,6 @@ class Clase : IEnumerable<Alumno> {
         Consola.Escribir($"\nTotal general de alumnos: {alumnos.Count}", ConsoleColor.Green);
     }
 
-    // Función auxiliar para listar alumnos por comisión con un mensaje personalizado
     private void ListarPorComision(IEnumerable<Alumno> listado, string comision, string mensaje) {
         if (!listado.Any()) { 
             Consola.Escribir($"No hay {mensaje} en la comisión {comision}", ConsoleColor.Green); }
@@ -278,6 +276,12 @@ class Clase : IEnumerable<Alumno> {
         }
         var totalAusentes = ConAusentes(cantidad).alumnos.Count;
         Consola.Escribir($"\nTOTAL: {totalAusentes} de {alumnos.Count} alumnos", ConsoleColor.Yellow);
+    }
+
+    public void Reiniciar(){
+        foreach(var alumno in alumnos) {
+            alumno.Reiniciar();
+        }
     }
 
     public void CargarAsistencia(List<Asistencia> asistencias){
