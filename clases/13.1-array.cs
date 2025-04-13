@@ -1,86 +1,134 @@
 using System;
 using System.Collections.Generic;
 
-class ListaOrdenada<T> where T : IComparable<T>
-{
-    private List<T> elementos = new List<T>();
+class ListaOrdenada<T> where T : IComparable<T> {
+    private T[] elementos;
+    private int contador;
 
-    public ListaOrdenada() { }
+    public ListaOrdenada() {
+        elementos = new T[10];
+        contador = 0;
+    }
 
-    public ListaOrdenada(IEnumerable<T> coleccion)
-    {
-        foreach (var item in coleccion)
-        {
+    public ListaOrdenada(IEnumerable<T> coleccion) {
+        elementos = new T[10];
+        contador = 0;
+
+        foreach (var item in coleccion) {
             Agregar(item);
         }
     }
 
-    public void Agregar(T elemento)
-    {
-        if (Contiene(elemento)) return;
+    public int Cantidad => contador;
 
-        int index = elementos.BinarySearch(elemento);
-        if (index < 0) index = ~index;
-
-        elementos.Insert(index, elemento);
+    public T this[int index] {
+        get {
+            if (index < 0 || index >= contador) throw new IndexOutOfRangeException();
+            return elementos[index];
+        }
     }
 
-    public void Eliminar(T elemento)
-    {
-        elementos.Remove(elemento);
+    public void Agregar(T elemento) {
+        int posicion = BuscarPosicion(elemento);
+
+        // Si el elemento ya existe, no lo agregamos
+        if (posicion >= 0) return;
+
+        // Convertir la posición negativa a la posición de inserción
+        posicion = ~posicion;
+
+        if (contador == elementos.Length) {
+            T[] nuevo = new T[elementos.Length * 2];
+            for (int i = 0; i < elementos.Length; i++) {
+                nuevo[i] = elementos[i];
+            }
+            elementos = nuevo;
+        }
+
+        for (int i = contador; i > posicion; i--) {
+            elementos[i] = elementos[i - 1];
+        }
+
+        elementos[posicion] = elemento;
+        contador++;
     }
 
-    public bool Contiene(T elemento)
-    {
-        return elementos.Contains(elemento);
+    public bool Contiene(T elemento) {
+        return BuscarPosicion(elemento) >= 0;
     }
 
-    public int Cantidad => elementos.Count;
+    public void Eliminar(T elemento) {
+        int posicion = BuscarPosicion(elemento);
 
-    public T this[int indice] => elementos[indice];
+        // Si el elemento no existe, no hacemos nada
+        if (posicion < 0) return;
 
-    public ListaOrdenada<T> Filtrar(Predicate<T> condicion)
-    {
+        for (int i = posicion; i < contador - 1; i++) {
+            elementos[i] = elementos[i + 1];
+        }
+
+        contador--;
+        elementos[contador] = default;
+    }
+
+    public ListaOrdenada<T> Filtrar(Func<T, bool> predicado) {
         var resultado = new ListaOrdenada<T>();
-        foreach (var item in elementos)
-        {
-            if (condicion(item))
-                resultado.Agregar(item);
+        for (int i = 0; i < contador; i++) {
+            if (predicado(elementos[i])) {
+                resultado.Agregar(elementos[i]);
+            }
         }
         return resultado;
     }
+
+    private int BuscarPosicion(T elemento) {
+        // Implementación de búsqueda binaria para encontrar la posición
+        int inicio = 0;
+        int fin = contador - 1;
+
+        while (inicio <= fin) {
+            int medio = (inicio + fin) / 2;
+            int comparacion = elemento.CompareTo(elementos[medio]);
+
+            if (comparacion == 0) {
+                return medio; // Elemento encontrado
+            } else if (comparacion < 0) {
+                fin = medio - 1; // Buscar en la mitad izquierda
+            } else {
+                inicio = medio + 1; // Buscar en la mitad derecha
+            }
+        }
+
+        // Si no se encuentra, devolver la posición donde debería insertarse como complemento (~)
+        return ~inicio;
+    }
 }
 
-class Contacto : IComparable<Contacto>
-{
+class Contacto : IComparable<Contacto> {
     public string Nombre { get; set; }
     public string Telefono { get; set; }
 
-    public Contacto(string nombre, string telefono)
-    {
+    public Contacto(string nombre, string telefono) {
         Nombre = nombre;
         Telefono = telefono;
     }
 
-    public int CompareTo(Contacto otro)
-    {
-        return this.Nombre.CompareTo(otro.Nombre);
+    public int CompareTo(Contacto otro) {
+        return string.Compare(Nombre, otro.Nombre, StringComparison.Ordinal);
     }
 
-    public override bool Equals(object obj)
-    {
-        if (obj is Contacto otro)
-        {
-            return this.Nombre == otro.Nombre && this.Telefono == otro.Telefono;
+    public override bool Equals(object obj) {
+        if (obj is Contacto otro) {
+            return Nombre == otro.Nombre && Telefono == otro.Telefono;
         }
         return false;
     }
 
-    public override int GetHashCode()
-    {
+    public override int GetHashCode() {
         return HashCode.Combine(Nombre, Telefono);
     }
 }
+
 
 /// --------------------------------------------------------///
 ///   Desde aca para abajo no se puede modificar el código  ///
@@ -91,12 +139,11 @@ class Contacto : IComparable<Contacto>
 ///
 
 // Funcion auxiliar para las pruebas
-
-
 public static void Assert<T>(T real, T esperado, string mensaje){
     if (!Equals(esperado, real)) throw new Exception($"[ASSERT FALLÓ] {mensaje} → Esperado: {esperado}, Real: {real}");
     Console.WriteLine($"[OK] {mensaje}");
 }
+
 
 /// Pruebas de lista ordenada (con enteros)
 
@@ -136,7 +183,7 @@ Assert(lista.Cantidad, 3, "Cantidad de elementos tras eliminar elemento inexiste
 
 
 /// Pruebas de lista ordenada (con cadenas)
-
+/// 
 var nombres = new ListaOrdenada<string>(new string[] { "Juan", "Pedro", "Ana" });
 Assert(nombres.Cantidad, 3, "Cantidad de nombres");
 

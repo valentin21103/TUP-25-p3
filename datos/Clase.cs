@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 using TUP;
 
@@ -146,10 +147,8 @@ class Clase : IEnumerable<Alumno> {
         Consola.Escribir($"● {cambios} carpetas cambiadas", ConsoleColor.Green);
     }
 
-
     public static int ContarLineasEfectivas(string archivo) {
-        var lineas = File.ReadAllLines(archivo)
-                         .TakeWhile(linea => !linea.Contains("PRUEBAS AUTOMATIZADAS"));
+        var lineas = File.ReadAllLines(archivo).TakeWhile(linea => !linea.Contains("PRUEBAS AUTOMATIZADAS"));
         return lineas.Count(linea =>
             !linea.Trim().Equals("") &&                     // No es una línea vacía
             !linea.TrimStart().StartsWith("Console.") &&    // No es un mensaje de consola
@@ -164,6 +163,9 @@ class Clase : IEnumerable<Alumno> {
     public void VerificaPresentacionPractico(int practico) {
         const string Base = "../TP";
         Consola.Escribir($"=== Verificación de presentación del trabajo práctico TP{practico} ===", ConsoleColor.Cyan);
+        var enunciadoPath = Path.Combine("../enunciados", $"tp{practico}", "ejercicio.cs");
+        int lineasEnunciado = ContarLineasEfectivas(enunciadoPath);
+        Consola.Escribir($" - Enunciado tiene {lineasEnunciado} líneas efectivas", ConsoleColor.Cyan);
         foreach(var comision in Comisiones) {
             var presentados = 0;
             var ausentes = 0;
@@ -171,8 +173,20 @@ class Clase : IEnumerable<Alumno> {
                 var archivo = Path.Combine(Base, alumno.Carpeta, $"tp{practico}", "ejercicio.cs");
                 EstadoPractico estado = EstadoPractico.Error;
                 if (File.Exists(archivo)) {
-                    int lineasEfectivas = ContarLineasEfectivas(archivo);
-                    estado = lineasEfectivas >= 40 ? EstadoPractico.Aprobado : EstadoPractico.NoPresentado;
+                    int lineasEfectivas = ContarLineasEfectivas(archivo) - lineasEnunciado;
+                    if(practico == 3 && lineasEfectivas > 20) {
+                        alumno.ResultadoEjecutar = ResultadoEjecutar(archivo);
+                        if(alumno.ResultadoEjecutar != 0){
+                            Consola.Escribir($"=== Ejecutando {archivo} ===");                        
+                            if(alumno.ResultadoEjecutar < 0) {
+                                estado = EstadoPractico.Error;
+                                Consola.Escribir($" - Error en la ejecución del archivo: {archivo}", ConsoleColor.Red);
+                            } else {
+                                Consola.Escribir($" - Ejecución exitosa {alumno.ResultadoEjecutar}", ConsoleColor.Cyan);
+                            }
+                        }
+                    }
+                    estado = lineasEfectivas >= 20  ? EstadoPractico.Aprobado : EstadoPractico.NoPresentado;
                     if (estado == EstadoPractico.Aprobado) {
                         presentados++;
                     }
@@ -186,10 +200,34 @@ class Clase : IEnumerable<Alumno> {
             Consola.Escribir($"Comisión {comision} \n Presentados: {presentados,3}\n Ausentes   : {ausentes,3}", ConsoleColor.Cyan);
         }
     }
+    
+    public static string EjecutarCSharp(string origen){
+        var runInfo = new ProcessStartInfo{
+            FileName = "dotnet", Arguments = $"script \"{origen}\"",
+            RedirectStandardOutput = true, RedirectStandardError = true,
+            UseShellExecute = false,       CreateNoWindow = true
+        };
+
+        using (var runProcess = Process.Start(runInfo) ?? throw new InvalidOperationException("Failed to start process")){
+            string salida = runProcess.StandardOutput.ReadToEnd();
+            string error  = runProcess.StandardError.ReadToEnd();
+            runProcess.WaitForExit();
+            return salida + error;
+        }
+    }
+
+    public static int ResultadoEjecutar(string origen){
+        var salida = EjecutarCSharp(origen);
+        if(salida.Contains("error")) {
+            return -1;
+        } else {
+            return salida.Split("\n").Count(line => line.Contains("[Ok]"));
+        }
+    }
 
     public void CopiarPractico(int practico, bool forzar=false) {
         const string Base = "../TP";
-        const string Enunciados = "../Enunciados";
+        const string Enunciados = "../enunciados";
         Consola.Escribir($" ▶︎ Copiando trabajo práctico de TP{practico}", ConsoleColor.Cyan);
         var carpetaOrigen = Path.Combine(Enunciados, $"TP{practico}");
         
@@ -268,6 +306,17 @@ class Clase : IEnumerable<Alumno> {
         var totalAusentes = ConPractico(practico, EstadoPractico.NoPresentado).alumnos.Count;
         Consola.Escribir($"\nTOTAL: {totalAusentes} de {alumnos.Count} alumnos", ConsoleColor.Yellow);
     }
+
+      public void ListarEjecucion(int practico = 1) {
+        Consola.Escribir($"\nListado de alumnos ausentes en el TP{practico}:", ConsoleColor.Yellow);
+        foreach (var comision in Comisiones) {
+            var listado = EnComision(comision).ConPractico(practico, EstadoPractico.NoPresentado).ConAbandono(false);
+            ListarPorComision(listado, comision, "alumnos ausentes");
+        }
+        var totalAusentes = ConPractico(practico, EstadoPractico.NoPresentado).alumnos.Count;
+        Consola.Escribir($"\nTOTAL: {totalAusentes} de {alumnos.Count} alumnos", ConsoleColor.Yellow);
+    }
+
 
     public void ListarAusentes(int cantidad) {
         Consola.Escribir($"\nListado de alumnos con {cantidad} o más ausencias:", ConsoleColor.Yellow);

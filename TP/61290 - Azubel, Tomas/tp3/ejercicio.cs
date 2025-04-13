@@ -90,10 +90,6 @@ class Contacto : IComparable<Contacto>
 /// 
 /// PRUEBAS AUTOMATIZADAS
 ///
-class Program
-{
-    static void Main()
-    {
         // Funcion auxiliar para las pruebas
         void Assert<T>(T real, T esperado, string mensaje)
         {
@@ -208,5 +204,4 @@ class Program
         Assert(contactos[0].Nombre, "Ana", "Primer contacto tras eliminar Otro");
         Assert(contactos[1].Nombre, "Juan", "Segundo contacto tras eliminar Otro");
         Assert(contactos[2].Nombre, "Pedro", "Tercer contacto tras eliminar Otro");
-    }
-}
+    

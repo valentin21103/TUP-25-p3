@@ -11,6 +11,7 @@ public class Alumno {
     public string Comision { get; private set; }    
     public int Orden { get; set; }
     public int Asistencias { get; set; } = 0;
+    public int ResultadoEjecutar { get; set; } = 0; 
     public List<EstadoPractico> Practicos { get; set; } = new(); // Almacena el estado de los trabajos prácticos como una lista
 
     public Alumno(int orden, int legajo, string apellido, string nombre, string telefono, string comision, string practicos, int asistencias = 0) {
@@ -47,7 +48,8 @@ public class Alumno {
     public string NombreCompleto => $"{Apellido}, {Nombre}".Replace("-", "").Replace("*", "").Trim();
     public string Carpeta => $"{Legajo} - {NombreCompleto}";
     public int CantidadPresentados => Practicos.Count(p => p == EstadoPractico.Aprobado);
-    public bool Abandono => Asistencias == 0 && CantidadPresentados == 0;
+    public bool Abandono => Asistencias < 2 && CantidadPresentados == 0;
+
     public EstadoPractico ObtenerPractico(int practico) {
         if (practico <= 0 || practico > MaxPracticos) return EstadoPractico.NoPresentado;
         if (practico > Practicos.Count) return EstadoPractico.NoPresentado;

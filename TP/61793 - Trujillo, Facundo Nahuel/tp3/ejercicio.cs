@@ -96,16 +96,14 @@ public class Contacto : IComparable<Contacto>
 ///
 
 // Funcion auxiliar para las pruebas
-public class Pruebas{
-public static void Assert<T>(T real, T esperado, string mensaje){
+ public static void Assert<T>(T real, T esperado, string mensaje){
     if (!Equals(esperado, real)) throw new Exception($"[ASSERT FALLÓ] {mensaje} → Esperado: {esperado}, Real: {real}");
     Console.WriteLine($"[OK] {mensaje}");
 }
 
 
 /// Pruebas de lista ordenada (con enteros)
-    static void Main(){
-        var lista = new ListaOrdenada<int>();
+         var lista = new ListaOrdenada<int>();
         lista.Agregar(5);
         lista.Agregar(1);
         lista.Agregar(3);
@@ -216,5 +214,3 @@ public static void Assert<T>(T real, T esperado, string mensaje){
         Assert(contactos[0].Nombre, "Ana", "Primer contacto tras eliminar Otro");
         Assert(contactos[1].Nombre, "Juan", "Segundo contacto tras eliminar Otro");
         Assert(contactos[2].Nombre, "Pedro", "Tercer contacto tras eliminar Otro"); 
-    }
-}

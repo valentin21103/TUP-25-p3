@@ -1,86 +1,131 @@
 using System;
 using System.Collections.Generic;
 
-class ListaOrdenada<T> where T : IComparable<T>
-{
-    private List<T> elementos = new List<T>();
+class ListaOrdenada<T> where T : IComparable<T> {
+    class Nodo {
+        public T Elemento;
+        public Nodo Siguiente;
 
-    public ListaOrdenada() { }
-
-    public ListaOrdenada(IEnumerable<T> coleccion)
-    {
-        foreach (var item in coleccion)
-        {
-            Agregar(item);
+        public Nodo(T elemento) {
+            Elemento = elemento;
+            Siguiente = null;
         }
     }
 
-    public void Agregar(T elemento)
-    {
+    private Nodo cabeza;
+    private int cantidad;
+
+    public int Cantidad => cantidad;
+
+    public ListaOrdenada() {
+        cabeza = null;
+        cantidad = 0;
+    }
+
+    public ListaOrdenada(IEnumerable<T> elementos) : this() {
+        foreach (var elemento in elementos) {
+            Agregar(elemento);
+        }
+    }
+
+    public void Agregar(T elemento) {
+        // Verificar si el elemento ya existe en la lista
         if (Contiene(elemento)) return;
 
-        int index = elementos.BinarySearch(elemento);
-        if (index < 0) index = ~index;
+        var nuevoNodo = new Nodo(elemento);
 
-        elementos.Insert(index, elemento);
-    }
-
-    public void Eliminar(T elemento)
-    {
-        elementos.Remove(elemento);
-    }
-
-    public bool Contiene(T elemento)
-    {
-        return elementos.Contains(elemento);
-    }
-
-    public int Cantidad => elementos.Count;
-
-    public T this[int indice] => elementos[indice];
-
-    public ListaOrdenada<T> Filtrar(Predicate<T> condicion)
-    {
-        var resultado = new ListaOrdenada<T>();
-        foreach (var item in elementos)
-        {
-            if (condicion(item))
-                resultado.Agregar(item);
+        if (cabeza == null || cabeza.Elemento.CompareTo(elemento) > 0) {
+            nuevoNodo.Siguiente = cabeza;
+            cabeza = nuevoNodo;
+        } else {
+            var actual = cabeza;
+            while (actual.Siguiente != null && actual.Siguiente.Elemento.CompareTo(elemento) < 0) {
+                actual = actual.Siguiente;
+            }
+            nuevoNodo.Siguiente = actual.Siguiente;
+            actual.Siguiente = nuevoNodo;
         }
-        return resultado;
-    }
-}
-
-class Contacto : IComparable<Contacto>
-{
-    public string Nombre { get; set; }
-    public string Telefono { get; set; }
-
-    public Contacto(string nombre, string telefono)
-    {
-        Nombre = nombre;
-        Telefono = telefono;
+        cantidad++;
     }
 
-    public int CompareTo(Contacto otro)
-    {
-        return this.Nombre.CompareTo(otro.Nombre);
+    public void Eliminar(T elemento) {
+        if (cabeza == null) return;
+
+        if (cabeza.Elemento.Equals(elemento)) {
+            cabeza = cabeza.Siguiente;
+            cantidad--;
+            return;
+        }
+
+        var actual = cabeza;
+        while (actual.Siguiente != null && !actual.Siguiente.Elemento.Equals(elemento)) {
+            actual = actual.Siguiente;
+        }
+
+        if (actual.Siguiente != null) {
+            actual.Siguiente = actual.Siguiente.Siguiente;
+            cantidad--;
+        }
     }
 
-    public override bool Equals(object obj)
-    {
-        if (obj is Contacto otro)
-        {
-            return this.Nombre == otro.Nombre && this.Telefono == otro.Telefono;
+    public bool Contiene(T elemento) {
+        var actual = cabeza;
+        while (actual != null) {
+            if (actual.Elemento.Equals(elemento)) return true;
+            actual = actual.Siguiente;
         }
         return false;
     }
 
-    public override int GetHashCode()
-    {
+    public ListaOrdenada<T> Filtrar(Predicate<T> predicado) {
+        var resultado = new ListaOrdenada<T>();
+        var actual = cabeza;
+        while (actual != null) {
+            if (predicado(actual.Elemento)) {
+                resultado.Agregar(actual.Elemento);
+            }
+            actual = actual.Siguiente;
+        }
+        return resultado;
+    }
+
+    public T this[int indice] {
+        get {
+            if (indice < 0 || indice >= cantidad) throw new IndexOutOfRangeException();
+            var actual = cabeza;
+            for (int i = 0; i < indice; i++) {
+                actual = actual.Siguiente;
+            }
+            return actual.Elemento;
+        }
+    }
+}
+
+class Contacto : IComparable<Contacto> {
+    public string Nombre { get; set; }
+    public string Telefono { get; set; }
+
+    public Contacto(string nombre, string telefono) {
+        Nombre = nombre;
+        Telefono = telefono;
+    }
+
+    public int CompareTo(Contacto otro) {
+        return string.Compare(Nombre, otro.Nombre, StringComparison.Ordinal);
+    }
+
+    public override bool Equals(object obj) {
+        if (obj is Contacto otro) {
+            return Nombre == otro.Nombre && Telefono == otro.Telefono;
+        }
+        return false;
+    }
+
+    public override int GetHashCode() {
         return HashCode.Combine(Nombre, Telefono);
     }
 }
+
 
 /// --------------------------------------------------------///
 ///   Desde aca para abajo no se puede modificar el código  ///
@@ -91,12 +136,11 @@ class Contacto : IComparable<Contacto>
 ///
 
 // Funcion auxiliar para las pruebas
-
-
 public static void Assert<T>(T real, T esperado, string mensaje){
     if (!Equals(esperado, real)) throw new Exception($"[ASSERT FALLÓ] {mensaje} → Esperado: {esperado}, Real: {real}");
     Console.WriteLine($"[OK] {mensaje}");
 }
+
 
 /// Pruebas de lista ordenada (con enteros)
 
@@ -136,7 +180,7 @@ Assert(lista.Cantidad, 3, "Cantidad de elementos tras eliminar elemento inexiste
 
 
 /// Pruebas de lista ordenada (con cadenas)
-
+/// 
 var nombres = new ListaOrdenada<string>(new string[] { "Juan", "Pedro", "Ana" });
 Assert(nombres.Cantidad, 3, "Cantidad de nombres");
 

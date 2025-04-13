@@ -73,10 +73,6 @@ class Contacto : IComparable<Contacto>
     }
 }
 
-class Programa
-{
-    public static void Main()
-    {
         void Assert<T>(T real, T esperado, string mensaje)
         {
             if (!Equals(esperado, real))
@@ -188,5 +184,4 @@ class Programa
         Assert(contactos[0].Nombre, "Ana", "Primer contacto tras eliminar Otro");
         Assert(contactos[1].Nombre, "Juan", "Segundo contacto tras eliminar Otro");
         Assert(contactos[2].Nombre, "Pedro", "Tercer contacto tras eliminar Otro");
-    }
-}
+  

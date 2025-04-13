@@ -12,5 +12,7 @@ datos/obj/
 .DS_Store
 Thumbs.db
 
-# Carpetas del proyecto que no querés subir
+# Carpetas del proyecto que no querï¿½s subir
 fechas/
+clases/tempCodeRunnerFile.cs
+/datos/Soluciones

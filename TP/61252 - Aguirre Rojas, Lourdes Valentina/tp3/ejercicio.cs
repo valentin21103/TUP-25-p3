@@ -77,16 +77,12 @@ class Contacto : IComparable<Contacto>
     }
 }
 
-public static class Program
-{
     public static void Assert<T>(T real, T esperado, string mensaje)
     {
         if (!Equals(esperado, real)) throw new Exception($"[ASSERT FALLÓ] {mensaje} → Esperado: {esperado}, Real: {real}");
         Console.WriteLine($"[OK] {mensaje}");
     }
 
-    public static void Main()
-    {
         /// --------------------------------------------------------///
         ///   Desde aca para abajo no se puede modificar el código  ///
         /// --------------------------------------------------------///
@@ -202,5 +198,4 @@ public static class Program
         Assert(contactos[0].Nombre, "Ana", "Primer contacto tras eliminar Otro");
         Assert(contactos[1].Nombre, "Juan", "Segundo contacto tras eliminar Otro");
         Assert(contactos[2].Nombre, "Pedro", "Tercer contacto tras eliminar Otro");
-    }
-}
+   

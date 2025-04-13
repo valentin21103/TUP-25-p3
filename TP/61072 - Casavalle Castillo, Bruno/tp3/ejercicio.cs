@@ -84,8 +84,6 @@ public class Contacto : IComparable<Contacto>
     }
 }
 
-class Program
-{
     // Funcion auxiliar para pruebas
     static void Assert<T>(T real, T esperado, string mensaje)
     {
@@ -93,8 +91,6 @@ class Program
         Console.WriteLine($"[OK] {mensaje}");
     }
 
-    static void Main()
-    {
         // Pruebas con enteros
         var lista = new ListaOrdenada<int>();
         lista.Agregar(5);
@@ -188,5 +184,4 @@ class Program
 
         contactos.Eliminar(otro);
         Assert(contactos.Cantidad, 3, "Cantidad tras eliminar Otro de nuevo");
-    }
-}
+   

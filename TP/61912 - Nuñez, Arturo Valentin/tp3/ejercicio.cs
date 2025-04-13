@@ -1,34 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        // Crear una lista ordenada de contactos
-        var listaContactos = new ListaOrdenada<Contacto>();
 
-        // Agregar algunos contactos de ejemplo
-        listaContactos.Agregar(new Contacto("Juan Perez", "123-456-789"));
-        listaContactos.Agregar(new Contacto("Ana Garcia", "987-654-321"));
-        listaContactos.Agregar(new Contacto("Carlos Lopez", "555-555-555"));
-
-        // Mostrar todos los contactos
-        Console.WriteLine("Lista de contactos:");
-        for (int i = 0; i < listaContactos.Cantidad; i++)
-        {
-            Console.WriteLine($"Nombre: {listaContactos[i].Nombre}, Teléfono: {listaContactos[i].Telefono}");
-        }
-
-        // Ejemplo de filtrado (contactos que empiezan con 'A')
-        var contactosConA = listaContactos.Filtrar(c => c.Nombre.StartsWith("A"));
-        Console.WriteLine("\nContactos que empiezan con 'A':");
-        for (int i = 0; i < contactosConA.Cantidad; i++)
-        {
-            Console.WriteLine($"Nombre: {contactosConA[i].Nombre}, Teléfono: {contactosConA[i].Telefono}");
-        }
-    }
-}
 
 class ListaOrdenada<T> where T : IComparable<T>
 {

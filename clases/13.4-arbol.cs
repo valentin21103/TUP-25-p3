@@ -1,43 +1,163 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
-class ListaOrdenada<T> where T : IComparable<T> {
-    private List<T> elementos = new List<T>();
+class ListaOrdenada<T> : IEnumerable<T> where T : IComparable<T> {
+    class Nodo {
+        T Elemento;
+        Nodo Menor;
+        Nodo Mayor;
+        int Cantidad; // Cantidad total de elementos en este subárbol
 
-    public ListaOrdenada() {}
-
-    public ListaOrdenada(IEnumerable<T> coleccion) {
-        foreach (var item in coleccion) {
-            Agregar(item);
+        public Nodo(T elemento) {
+            Elemento = elemento;
+            Cantidad = 1; // Este nodo contiene 1 elemento
         }
-    }
 
-    public int Cantidad => elementos.Count;
+        // Obtiene la cantidad de elementos en un subárbol (evitando NullReferenceException)
+        int CantidadEn(Nodo nodo) => nodo?.Cantidad ?? 0;
 
-    public T this[int indice] => elementos[indice];
+        public Nodo Agregar(T nuevo) {
+            if (nuevo.CompareTo(Elemento) < 0) {
+                Menor = Menor?.Agregar(nuevo) ?? new Nodo(nuevo);
+            } else {
+                Mayor = Mayor?.Agregar(nuevo) ?? new Nodo(nuevo);
+            }
+            // Actualizar el contador de elementos
+            Cantidad = 1 + CantidadEn(Menor) + CantidadEn(Mayor);
+            return this;
+        }
 
-    public void Agregar(T elemento) {
-        if (Contiene(elemento)) return;
-        elementos.Add(elemento);
-        elementos.Sort();
-    }
-
-    public void Eliminar(T elemento) {
-        elementos.Remove(elemento);
-    }
-
-    public ListaOrdenada<T> Filtrar(Predicate<T> condicion) {
-        var nuevaLista = new ListaOrdenada<T>();
-        foreach (var item in elementos) {
-            if (condicion(item)) {
-                nuevaLista.Agregar(item);
+        public bool Contiene(T elemento) {
+            if (elemento.Equals(Elemento)) return true;
+            if (elemento.CompareTo(Elemento) < 0) {
+                return Menor?.Contiene(elemento) ?? false;
+            } else {
+                return Mayor?.Contiene(elemento) ?? false;
             }
         }
-        return nuevaLista;
+
+        public Nodo Eliminar(T elemento) {
+            if (elemento.CompareTo(Elemento) < 0) {
+                Menor = Menor?.Eliminar(elemento);
+            } else if (elemento.CompareTo(Elemento) > 0) {
+                Mayor = Mayor?.Eliminar(elemento);
+            } else {
+                if (Menor == null) return Mayor;
+                if (Mayor == null) return Menor;
+
+                var menorMayor = Mayor;
+                while (menorMayor.Menor != null) {
+                    menorMayor = menorMayor.Menor;
+                }
+                Elemento = menorMayor.Elemento;
+                Mayor = Mayor?.Eliminar(menorMayor.Elemento);
+            }
+            // Actualizar el contador de elementos después de eliminar
+            Cantidad = 1 + CantidadEn(Menor) + CantidadEn(Mayor);
+            return this;
+        }
+
+        public void InOrden(List<T> elementos) {
+            Menor?.InOrden(elementos);
+            elementos.Add(Elemento);
+            Mayor?.InOrden(elementos);
+        }
+
+        // Método para obtener elemento por índice de manera optimizada
+        public T ObtenerPorIndice(int indice) {
+            int cantidadIzquierda = CantidadEn(Menor);
+            
+            if (indice < cantidadIzquierda) {
+                // El elemento está en el subárbol izquierdo
+                return Menor.ObtenerPorIndice(indice);
+            } else if (indice == cantidadIzquierda) {
+                // El elemento es este nodo
+                return Elemento;
+            } else {
+                // El elemento está en el subárbol derecho
+                return Mayor.ObtenerPorIndice(indice - cantidadIzquierda - 1);
+            }
+        }
+
+        // Recorrido in-order utilizando yield return
+        public IEnumerable<T> EnumerarInOrden() {
+            // Primero recorremos el subárbol izquierdo
+            if (Menor != null) {
+                foreach (var elemento in Menor.EnumerarInOrden()) {
+                    yield return elemento;
+                }
+            }
+            
+            // Luego devolvemos el elemento actual
+            yield return Elemento;
+            
+            // Finalmente recorremos el subárbol derecho
+            if (Mayor != null) {
+                foreach (var elemento in Mayor.EnumerarInOrden()) {
+                    yield return elemento;
+                }
+            }
+        }
+    }
+
+    Nodo raiz;
+    int cantidad;
+    public int Cantidad => cantidad;
+
+    public ListaOrdenada() {
+        raiz = null;
+        cantidad = 0;
+    }
+
+    public ListaOrdenada(IEnumerable<T> elementos) : this() {
+        foreach (var elemento in elementos) {
+            Agregar(elemento);
+        }
     }
 
     public bool Contiene(T elemento) {
-        return elementos.Contains(elemento);
+        return raiz?.Contiene(elemento) ?? false;
+    }
+
+    public void Agregar(T elemento) {
+        if (Contiene(elemento)) return;
+
+        raiz = raiz?.Agregar(elemento) ?? new Nodo(elemento);
+        cantidad++;
+    }
+
+    public void Eliminar(T elemento) {
+        if (!Contiene(elemento)) return;
+        raiz = raiz?.Eliminar(elemento);
+        cantidad--;
+    }
+
+    public T this[int index] {
+        get {
+            if (index < 0 || index >= cantidad) throw new IndexOutOfRangeException();
+            return raiz.ObtenerPorIndice(index);
+        }
+    }
+
+    public ListaOrdenada<T> Filtrar(Func<T, bool> predicado) {
+        var elementos = new List<T>();
+        raiz?.InOrden(elementos);
+        return new ListaOrdenada<T>(elementos.Where(predicado));
+    }
+
+    // Implementación de IEnumerable<T>
+    public IEnumerator<T> GetEnumerator() {
+        if (raiz == null) yield break;
+        foreach (var elemento in raiz.EnumerarInOrden()) {
+            yield return elemento;
+        }
+    }
+
+    // Implementación requerida de IEnumerable (no genérica)
+    IEnumerator IEnumerable.GetEnumerator() {
+        return GetEnumerator();
     }
 }
 
@@ -51,8 +171,7 @@ class Contacto : IComparable<Contacto> {
     }
 
     public int CompareTo(Contacto otro) {
-        if (otro == null) return 1;
-        return Nombre.CompareTo(otro.Nombre);
+        return string.Compare(Nombre, otro.Nombre, StringComparison.Ordinal);
     }
 
     public override bool Equals(object obj) {
@@ -67,15 +186,21 @@ class Contacto : IComparable<Contacto> {
     }
 }
 
+
 /// --------------------------------------------------------///
 ///   Desde aca para abajo no se puede modificar el código  ///
 /// --------------------------------------------------------///
+
+/// 
+/// PRUEBAS AUTOMATIZADAS
+///
 
 // Funcion auxiliar para las pruebas
 public static void Assert<T>(T real, T esperado, string mensaje){
     if (!Equals(esperado, real)) throw new Exception($"[ASSERT FALLÓ] {mensaje} → Esperado: {esperado}, Real: {real}");
     Console.WriteLine($"[OK] {mensaje}");
 }
+
 
 /// Pruebas de lista ordenada (con enteros)
 
@@ -112,8 +237,23 @@ Assert(lista[1], 3, "Segundo elemento tras eliminar 2");
 lista.Eliminar(100);
 Assert(lista.Cantidad, 3, "Cantidad de elementos tras eliminar elemento inexistente");
 
-/// Pruebas de lista ordenada (con cadenas)
+// Cambiamos el nombre de la variable lista a lista2 para evitar conflictos
+var lista2 = new ListaOrdenada<int>();
+lista2.Agregar(5);
+lista2.Agregar(3);
+lista2.Agregar(7);
 
+// Uso directo en foreach
+foreach (var elemento in lista2) {
+    Console.WriteLine(elemento);
+}
+
+// Uso con LINQ
+var mayoresQueCinco = lista2.Where(x => x > 5);
+
+
+/// Pruebas de lista ordenada (con cadenas)
+/// 
 var nombres = new ListaOrdenada<string>(new string[] { "Juan", "Pedro", "Ana" });
 Assert(nombres.Cantidad, 3, "Cantidad de nombres");
 
@@ -147,6 +287,7 @@ Assert(nombres.Cantidad, 3, "Cantidad de nombres tras eliminar un elemento inexi
 
 Assert(nombres[0], "Ana", "Primer nombre tras eliminar Domingo");
 Assert(nombres[1], "Juan", "Segundo nombre tras eliminar Domingo");
+
 
 /// Pruebas de lista ordenada (con contactos) 
 

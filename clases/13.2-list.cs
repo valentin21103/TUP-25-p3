@@ -1,83 +1,80 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
-class ListaOrdenada<T> where T : IComparable<T>
-{
-    private List<T> elementos = new List<T>();
+class ListaOrdenada<T> where T : IComparable<T> {
+    private List<T> elementos;
 
-    public ListaOrdenada() { }
-
-    public ListaOrdenada(IEnumerable<T> coleccion)
-    {
-        foreach (var item in coleccion)
-        {
-            Agregar(item);
-        }
+    public ListaOrdenada() {
+        elementos = new List<T>();
     }
 
-    public void Agregar(T elemento)
-    {
-        if (Contiene(elemento)) return;
-
-        int index = elementos.BinarySearch(elemento);
-        if (index < 0) index = ~index;
-
-        elementos.Insert(index, elemento);
-    }
-
-    public void Eliminar(T elemento)
-    {
-        elementos.Remove(elemento);
-    }
-
-    public bool Contiene(T elemento)
-    {
-        return elementos.Contains(elemento);
+    public ListaOrdenada(IEnumerable<T> coleccion) {
+        elementos = new List<T>(coleccion);
+        elementos.Sort(); // Ordenar al inicializar
     }
 
     public int Cantidad => elementos.Count;
 
-    public T this[int indice] => elementos[indice];
-
-    public ListaOrdenada<T> Filtrar(Predicate<T> condicion)
-    {
-        var resultado = new ListaOrdenada<T>();
-        foreach (var item in elementos)
-        {
-            if (condicion(item))
-                resultado.Agregar(item);
+    public T this[int index] {
+        get {
+            if (index < 0 || index >= elementos.Count) throw new IndexOutOfRangeException();
+            return elementos[index];
         }
+    }
+
+    public void Agregar(T elemento) {
+        int posicion = elementos.BinarySearch(elemento);
+
+        // Si el elemento ya existe, no lo agregamos
+        if (posicion >= 0) return;
+
+        // Convertir la posición negativa a la posición de inserción
+        posicion = ~posicion;
+
+        elementos.Insert(posicion, elemento);
+    }
+
+    public bool Contiene(T elemento) {
+        return elementos.BinarySearch(elemento) >= 0;
+    }
+
+    public void Eliminar(T elemento) {
+        int posicion = elementos.BinarySearch(elemento);
+
+        // Si el elemento no existe, no hacemos nada
+        if (posicion < 0) return;
+
+        elementos.RemoveAt(posicion);
+    }
+
+    public ListaOrdenada<T> Filtrar(Func<T, bool> predicado) {
+        var resultado = new ListaOrdenada<T>(elementos.Where(predicado));
         return resultado;
     }
 }
 
-class Contacto : IComparable<Contacto>
-{
+class Contacto : IComparable<Contacto> {
     public string Nombre { get; set; }
     public string Telefono { get; set; }
 
-    public Contacto(string nombre, string telefono)
-    {
+    public Contacto(string nombre, string telefono) {
         Nombre = nombre;
         Telefono = telefono;
     }
 
-    public int CompareTo(Contacto otro)
-    {
-        return this.Nombre.CompareTo(otro.Nombre);
+    public int CompareTo(Contacto otro) {
+        return string.Compare(Nombre, otro.Nombre, StringComparison.Ordinal);
     }
 
-    public override bool Equals(object obj)
-    {
-        if (obj is Contacto otro)
-        {
-            return this.Nombre == otro.Nombre && this.Telefono == otro.Telefono;
+    public override bool Equals(object obj) {
+        if (obj is Contacto otro) {
+            return Nombre == otro.Nombre && Telefono == otro.Telefono;
         }
         return false;
     }
 
-    public override int GetHashCode()
-    {
+    public override int GetHashCode() {
         return HashCode.Combine(Nombre, Telefono);
     }
 }
@@ -91,12 +88,11 @@ class Contacto : IComparable<Contacto>
 ///
 
 // Funcion auxiliar para las pruebas
-
-
 public static void Assert<T>(T real, T esperado, string mensaje){
     if (!Equals(esperado, real)) throw new Exception($"[ASSERT FALLÓ] {mensaje} → Esperado: {esperado}, Real: {real}");
     Console.WriteLine($"[OK] {mensaje}");
 }
+
 
 /// Pruebas de lista ordenada (con enteros)
 
@@ -136,7 +132,7 @@ Assert(lista.Cantidad, 3, "Cantidad de elementos tras eliminar elemento inexiste
 
 
 /// Pruebas de lista ordenada (con cadenas)
-
+/// 
 var nombres = new ListaOrdenada<string>(new string[] { "Juan", "Pedro", "Ana" });
 Assert(nombres.Cantidad, 3, "Cantidad de nombres");
 
