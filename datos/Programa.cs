@@ -73,7 +73,6 @@ class Program {
                     var asistencias = Asistencias.Cargar(false);
                     clase.CargarAsistencia(asistencias);
                     clase.Guardar();
-                    clase = Clase.Cargar();
                     break;
                 case "4":
                     Consola.Escribir($"=== Alumnos que no presentaron práctico {practico} ===", ConsoleColor.Cyan);

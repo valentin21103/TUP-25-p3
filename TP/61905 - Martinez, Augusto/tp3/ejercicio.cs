@@ -2,8 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-class ListaOrdenada<T>
-{
+class ListaOrdenada<T>{
     private List<T> elementos;
     private IComparer<T> comparador;
 
@@ -61,8 +60,7 @@ class ListaOrdenada<T>
     }
 }
 
-class Contacto : IEquatable<Contacto>
-{
+class Contacto : IEquatable<Contacto>{
     public string Nombre { get; set; }
     public string Telefono { get; set; }
 
@@ -90,23 +88,6 @@ class Contacto : IEquatable<Contacto>
     }
 }
 
-/// --------------------------------------------------------///
-///   Desde aca para abajo no se puede modificar el código   ///
-/// --------------------------------------------------------///
-
-///
-=======
-
-
-class ListaOrdenada{
-    // Implementar acá la clase ListaOrdenada
-}
-
-class Contacto {
-    public string Nombre { get; set; }
-    public string Telefono { get; set; }
-    // Implementar acá la clase Contacto
-}
 
 /// --------------------------------------------------------///
 ///   Desde aca para abajo no se puede modificar el código  ///

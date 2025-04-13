@@ -66,7 +66,7 @@ class Contacto : IComparable<Contacto> {
     public override int GetHashCode() {
         return Nombre.GetHashCode() ^ Telefono.GetHashCode();
     }
-    
+}
     // Implementar acá la clase Contacto
 
 

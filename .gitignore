@@ -5,8 +5,8 @@
 *.suo
 
 # Binarios y objetos compilados
-datos/bin/
-datos/obj/
+**/bin/
+**/obj/
 
 # Archivos del sistema
 .DS_Store
@@ -14,5 +14,5 @@ Thumbs.db
 
 # Carpetas del proyecto que no quer�s subir
 fechas/
-clases/tempCodeRunnerFile.cs
+**/tempCodeRunnerFile.cs
 /datos/Soluciones

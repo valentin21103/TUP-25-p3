@@ -71,13 +71,13 @@ public class Contacto : IComparable<Contacto>
         Telefono = telefono;
     }
 
-    public int CompareTo(Contacto? otro)
+    public int CompareTo(Contacto otro)
     {
         if (otro == null) return 1; 
         return Nombre.CompareTo(otro.Nombre);
     }
 
-    public override bool Equals(object? obj)
+    public override bool Equals(object obj)
     {
         return obj is Contacto contacto && Nombre == contacto.Nombre;
     }
@@ -172,7 +172,6 @@ Assert(nombres[0], "Ana", "Primer nombre tras eliminar Domingo");
 Assert(nombres[1], "Juan", "Segundo nombre tras eliminar Domingo");
 
 
-/
 
 var juan  = new Contacto("Juan",  "123456");
 var pedro = new Contacto("Pedro", "654321");

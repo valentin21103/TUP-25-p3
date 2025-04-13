@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 
 
-class ListaOrdenada{
-    // Implementar acá la clase ListaOrdenada
 class ListaOrdenada<T> where T : IComparable<T>
 {
     private List<T> elementos = new List<T>();
@@ -55,7 +53,6 @@ class ListaOrdenada<T> where T : IComparable<T>
     }
 }
 
-class Contacto {
 class Contacto : IComparable<Contacto>
 {
     public string Nombre { get; set; }

@@ -2,9 +2,6 @@ using System;
 using System.Collections.Generic;
 
 
-using System;
-using System.Collections.Generic;
-
 class ListaOrdenada<T> where T : IComparable<T>
 {
     private List<T> elementos = new List<T>();

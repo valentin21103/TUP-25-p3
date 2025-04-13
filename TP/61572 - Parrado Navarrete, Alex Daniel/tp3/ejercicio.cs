@@ -84,6 +84,17 @@ class Contacto : IComparable<Contacto>
     }
 }
 
+/// --------------------------------------------------------///
+///   Desde aca para abajo no se puede modificar el código  ///
+/// --------------------------------------------------------///
+
+/// 
+// Funcion auxiliar para las pruebas
+public static void Assert<T>(T real, T esperado, string mensaje){
+    if (!Equals(esperado, real)) throw new Exception($"[ASSERT FALLÓ] {mensaje} → Esperado: {esperado}, Real: {real}");
+    Console.WriteLine($"[OK] {mensaje}");
+}
+
 
 /// Pruebas de lista ordenada (con enteros)
 
@@ -159,14 +170,7 @@ Assert(nombres[0], "Ana", "Primer nombre tras eliminar Domingo");
 Assert(nombres[1], "Juan", "Segundo nombre tras eliminar Domingo");
 
 
-/// Pruebas de lista ordenada (con contactos) 
-
-var juan  = new Contacto("Juan",  "123456");
-var pedro = new Contacto("Pedro", "654321");
-var ana   = new Contacto("Ana",   "789012");
-var otro  = new Contacto("Otro",  "345678");
-
-var contactos = new ListaOrdenada<Contacto>(new Contacto[] { juan, pedro, ana });
+var contactos = new ListaOrdenada<Contacto>(new Contacto[] { juan, pedro, ana }, Comparer<Contacto>.Create((c1, c2) => c1.Nombre.CompareTo(c2.Nombre)));
 Assert(contactos.Cantidad, 3, "Cantidad de contactos");
 Assert(contactos[0].Nombre, "Ana", "Primer contacto");
 Assert(contactos[1].Nombre, "Juan", "Segundo contacto");
@@ -197,4 +201,5 @@ contactos.Eliminar(otro);
 Assert(contactos.Cantidad, 3, "Cantidad de contactos tras eliminar un elemento inexistente");
 Assert(contactos[0].Nombre, "Ana", "Primer contacto tras eliminar Otro");
 Assert(contactos[1].Nombre, "Juan", "Segundo contacto tras eliminar Otro");
+
 Assert(contactos[2].Nombre, "Pedro", "Tercer contacto tras eliminar Otro");

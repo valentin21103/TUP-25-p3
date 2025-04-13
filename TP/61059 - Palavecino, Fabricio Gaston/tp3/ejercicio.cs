@@ -5,6 +5,7 @@ using System.Linq;
 class ListaOrdenada<T> where T : IComparable<T>
 {
     private List<T> elementos = new List<T>();
+    public ListaOrdenada(){}
     public ListaOrdenada(IEnumerable<T> items)
     {
         foreach (var item in items)

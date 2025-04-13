@@ -72,13 +72,13 @@ public class Contacto : IComparable<Contacto>
         Telefono = telefono;
     }
 
-    public int CompareTo(Contacto? otro)
+    public int CompareTo(Contacto otro)
     {
         if (otro == null) return 1; 
         return Nombre.CompareTo(otro.Nombre);
     }
 
-    public override bool Equals(object? obj)
+    public override bool Equals(object obj)
     {
         return obj is Contacto contacto && Nombre == contacto.Nombre;
     }
