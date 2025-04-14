@@ -40,7 +40,6 @@ class Clase : IEnumerable<Alumno> {
                 if(practicos.Length > 1 && practicos.Contains(" ")) {
                     asistencias = int.Parse(practicos.Split(" ")[0].Trim());
                     practicos = practicos.Split(" ")[1];
-
                 } else {
                     practicos = practicos.Trim();
                 }
@@ -78,7 +77,8 @@ class Clase : IEnumerable<Alumno> {
     public Clase ConAprobados(int cantidad) => new(Alumnos.Where(a => a.Practicos.Count(p => p == EstadoPractico.Aprobado) >= cantidad));
     public Clase OrdenandoPorNombre() => new (alumnos.OrderBy(a => a.Apellido).ThenBy(a => a.Nombre));
     public Clase OrdenandoPorLegajo() => new (alumnos.OrderBy(a => a.Legajo));
-
+    public Clase DebenRecuperar() => new (alumnos.Where(a => !a.Abandono && ( a.CantidadPresentados < 3 || a.Resultado <0 )));
+    
     // Métodos de modificación
     public void Agregar(Alumno alumno) {
         if (alumno != null) {
@@ -321,16 +321,29 @@ class Clase : IEnumerable<Alumno> {
         Consola.Escribir($"\nTOTAL: {totalAusentes} de {alumnos.Count} alumnos", ConsoleColor.Yellow);
     }
 
-      public void ListarEjecucion(int practico = 1) {
-        Consola.Escribir($"\nListado de alumnos ausentes en el TP{practico}:", ConsoleColor.Yellow);
-        foreach (var comision in Comisiones) {
-            var listado = EnComision(comision).ConPractico(practico, EstadoPractico.NoPresentado).ConAbandono(false);
-            ListarPorComision(listado, comision, "alumnos ausentes");
-        }
-        var totalAusentes = ConPractico(practico, EstadoPractico.NoPresentado).alumnos.Count;
-        Consola.Escribir($"\nTOTAL: {totalAusentes} de {alumnos.Count} alumnos", ConsoleColor.Yellow);
-    }
+    public void GenerarReporteRecuperacion(string destino = "./recuperacion.md") {
+        Consola.Escribir($" ▶︎ Generando reporte de recuperación en {destino}", ConsoleColor.Cyan);
+        using (StreamWriter writer = new(destino)) {
+            writer.WriteLine("# Reporte de Recuperación");
+            writer.WriteLine($"*Generado el: {DateTime.Now}*");
 
+            var alumnosRecuperar = DebenRecuperar();
+
+            foreach (var comision in alumnosRecuperar.Comisiones) {
+                writer.WriteLine($"\n## Comisión {comision}");
+                writer.WriteLine("\n| Legajo | Nombre Completo                 | TP1       | TP2       | TP3       |");
+                writer.WriteLine(  "|--------|---------------------------------|-----------|-----------|-----------|");
+
+                var alumnosComision = alumnosRecuperar.EnComision(comision).OrdenandoPorNombre();
+                foreach (var alumno in alumnosComision) {
+                    writer.WriteLine($"| {alumno.Legajo} | {alumno.NombreCompleto,-31} | {alumno.EstadoRecuperacionTP(1),-9} | {alumno.EstadoRecuperacionTP(2),-9} | {alumno.EstadoRecuperacionTP(3),-9} |");
+                }
+                writer.WriteLine($"\nTotal en comisión {comision}: {alumnosComision.Count()}");
+            }
+            writer.WriteLine($"\n**Total general a recuperar: {alumnosRecuperar.Count()}**");
+        }
+        Consola.Escribir($" ● Reporte de recuperación generado.", ConsoleColor.Green);
+    }
 
     public void ListarAusentes(int cantidad) {
         Consola.Escribir($"\nListado de alumnos con {cantidad} o más ausencias:", ConsoleColor.Yellow);

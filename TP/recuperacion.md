@@ -1,4 +1,4 @@
-# Recuperación Trabajos Prácticos 1 al 3
+# Recuperación de Trabajos Prácticos 1 al 3
 
 > Plazo de entrega: Sabado 19 hasta las 23:59.
 
@@ -11,10 +11,6 @@ Los estudiantes que deban recuperar deberán realizar el trabajo y presentarlo d
 Estos tres trabajos prácticos sirvieron, en parte, para poner en funcionamiento el sistema de corrección, que ya está automatizado. Si no se siguen estrictamente las reglas de presentación, el trabajo presentado no será tomado en cuenta por el sistema.
 
 Cada trabajo práctico que deba recuperarse debe presentarse de forma independiente, asegurándose de subir únicamente el archivo `ejercicio.cs` con la solución funcionando como un `script`. Es decir, si deben recuperar dos trabajos prácticos, deberán realizar dos solicitudes de incorporación (`pull request`), una para cada TP.
-
-Recuerden que para poder presentar el trabajo deberan primero pasa a la rama principal y actualizar el repositorio asi tiene los ultimos cambios realizados. Luego crear una rama nueva para implementar la solución y finalmente hacer la solicitud de incorporacion. 
-
-Este proceso debe repetirse para cada uno de los practicos que se deben recuperar.
 
 En el caso del TP3, todos los tests deben estar incluidos en el código, y el programa debe ejecutarse sin errores.
 
@@ -67,6 +63,7 @@ En el caso del TP3, todos los tests deben estar incluidos en el código, y el pr
 ---
 
 # TP1 : Agenda de Contactos
+
 > El pull request se debe llamar "TP1 - Legajo - NombreCopleto"
 
 Diseña un programa de consola que administre una **agenda de contactos** cumpliendo los siguientes requisitos:
@@ -107,6 +104,7 @@ Diseña un programa de consola que administre una **agenda de contactos** cumpli
    - Al finalizar, se debe poder **agregar, modificar, borrar, listar y buscar** contactos de manera adecuada.  
    - El programa continúa ofreciendo el menú en un bucle hasta que el usuario elija la opción “Salir”.
 
+
 **Objetivo**  
 Consolidar el uso de:  
 - `struct` en C#  
@@ -118,6 +116,8 @@ Consolidar el uso de:
 **Entrega**  
 - Proporcionar el archivo .cs con todo el código de la aplicación.  
 - El programa debe poder compilarse y ejecutarse correctamente en la consola de C#.
+
+**Ejemplo de Ejecución**  
 
 ```
 ===== AGENDA DE CONTACTOS =====
@@ -267,6 +267,7 @@ Saliendo de la aplicación...
 ---
 
 # TP2: Sistema Bancario
+
 > El pull request se debe llamar "TP2 - Legajo- NombreCopleto"
 
 ## Objetivo:
@@ -408,6 +409,7 @@ Desarrolla y documenta el código en C#. El programa debe compilar y ejecutarse 
 ---
 
 # TP3: Crear Lista Ordenada Genérica
+
 > El pull request se debe llamar "TP3 - Legajo - NombreCopleto"
 
 ## Objetivo

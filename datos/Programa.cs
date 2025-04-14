@@ -9,11 +9,12 @@ class Program {
         Consola.Escribir("3. Verificar presentación de trabajos práctico");
         Consola.Escribir("4. Faltan presentar trabajo práctico");
         Consola.Escribir("5. Verificar asistencia");
+        Consola.Escribir("6. Mostrar recuperación");
         Consola.Escribir("0. Salir");
-        return Consola.ElegirOpcion("\nElija una opción (0-5): ", "012345");
+        return Consola.ElegirOpcion("\nElija una opción (0-6): ", "0123456");
     }
 
-    static void RenameTP3Directories(string path="../TP") {
+    static void RenameTP3Directories(string path = "../TP") {
         foreach (var dir in Directory.GetDirectories(path)) {
             string folderName = Path.GetFileName(dir);
             if (folderName.Equals("TP3", StringComparison.Ordinal)) {
@@ -24,7 +25,7 @@ class Program {
         }
     }
 
-    static void ListarLineasEfectivaPracticos(string path="../TP") {
+    static void ListarLineasEfectivaPracticos(string path = "../TP") {
         foreach (var dir in Directory.GetDirectories(path)) {
             string folderName = Path.GetFileName(dir);
             if (folderName.Equals("tp3", StringComparison.Ordinal)) {
@@ -36,53 +37,69 @@ class Program {
         }
     }
 
+    static void OpcionListarAlumnos(Clase clase) {
+        Consola.Escribir("=== Listado de alumnos ===", ConsoleColor.Cyan);
+        clase.ListarAlumnos();
+        clase.ExportarDatos();
+    }
+
+    static void OpcionCopiarPractico(Clase clase) {
+        Consola.Escribir("=== Copiar trabajo práctico ===", ConsoleColor.Cyan);
+        string tp   = Consola.LeerCadena("Ingrese el número del trabajo práctico a copiar (ej: 1): ", new[] { "1", "2", "3" });
+        bool forzar = Consola.Confirmar("¿Forzar copia incluso si ya existe?");
+
+        clase.NormalizarCarpetas();
+        clase.CopiarPractico(int.Parse(tp), forzar);
+    }
+
+    static void OpcionVerificarPresentacion(Clase clase, int practico) {
+        Consola.Escribir("=== Verificar presentación de trabajo práctico ===", ConsoleColor.Cyan);
+        clase.NormalizarCarpetas();
+        clase.Reiniciar();
+        for (var p = 1; p <= practico; p++) {
+            clase.VerificaPresentacionPractico(p);
+        }
+        var asistencias = Asistencias.Cargar(false);
+        clase.CargarAsistencia(asistencias);
+        clase.Guardar();
+    }
+
+    static void OpcionListarNoPresentaron(Clase clase, int practico) {
+        Consola.Escribir($"=== Alumnos que no presentaron práctico {practico} ===", ConsoleColor.Cyan);
+        clase.ListarNoPresentaron(practico);
+    }
+
+    static void OpcionVerificarAsistencia() {
+        Consola.Escribir("=== Verificar asistencia ===", ConsoleColor.Cyan);
+        Asistencias.Cargar(true);
+    }
+
+    static void OpcionMostrarRecuperacion(Clase clase) {
+        Consola.Escribir("=== Generando reporte de recuperación ===", ConsoleColor.Cyan);
+        clase.GenerarReporteRecuperacion();
+        Consola.Escribir("Reporte 'recuperacion.md' generado.", ConsoleColor.Green);
+    }
 
     static void Main(string[] args) {
         var clase = Clase.Cargar();
-        var practico = 3;
+        int practico = 3;
 
         Consola.Escribir("=== Bienvenido al sistema de gestión de alumnos ===", ConsoleColor.Cyan);
         while (true) {
             string opcion = ElegirOpcionMenu();
             if (opcion == "0") return;
             Console.Clear();
-            Asistencias.Cargar();
 
-            switch (opcion) {
-                case "1":
-                    Consola.Escribir("=== Listado de alumnos ===", ConsoleColor.Cyan);
-                    clase.ListarAlumnos();
-                    clase.ExportarDatos();
-
-                    break;
-                case "2":
-                    Consola.Escribir("=== Copiar trabajo práctico ===", ConsoleColor.Cyan);
-                    string tp   = Consola.LeerCadena("Ingrese el número del trabajo práctico a copiar (ej: 1): ", new[] { "1", "2", "3" });
-                    bool forzar = Consola.Confirmar("¿Forzar copia incluso si ya existe?");
-
-                    clase.NormalizarCarpetas();
-                    clase.CopiarPractico(int.Parse(tp), forzar);
-                    break;
-                case "3":
-                    Consola.Escribir($"=== Verificar presentación de trabajo práctico ===", ConsoleColor.Cyan);
-                    clase.NormalizarCarpetas();
-                    clase.Reiniciar();
-                    for(var p = 1; p <= practico; p++) {
-                        clase.VerificaPresentacionPractico(p);
-                    }
-                    var asistencias = Asistencias.Cargar(false);
-                    clase.CargarAsistencia(asistencias);
-                    clase.Guardar();
-                    break;
-                case "4":
-                    Consola.Escribir($"=== Alumnos que no presentaron práctico {practico} ===", ConsoleColor.Cyan);
-                    clase.ListarNoPresentaron(practico);
-                    break;
-                case "5":
-                    Consola.Escribir("=== Verificar asistencia ===", ConsoleColor.Cyan);
-                    Asistencias.Cargar(true);
-                    break;
-            }
+            Action action = opcion switch {
+                "1" => () => OpcionListarAlumnos(clase),
+                "2" => () => OpcionCopiarPractico(clase),
+                "3" => () => OpcionVerificarPresentacion(clase, practico),
+                "4" => () => OpcionListarNoPresentaron(clase, practico),
+                "5" => () => OpcionVerificarAsistencia(),
+                "6" => () => OpcionMostrarRecuperacion(clase),
+                _   => () => {}
+            };
+            action();
             Consola.EsperarTecla();
         }
     }

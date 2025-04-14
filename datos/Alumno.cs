@@ -12,6 +12,7 @@ public class Alumno {
     public int Orden { get; set; }
     public int Asistencias { get; set; } = 0;
     public int Resultado { get; set; } = 0; 
+
     public List<EstadoPractico> Practicos { get; set; } = new(); // Almacena el estado de los trabajos prácticos como una lista
 
     public Alumno(int orden, int legajo, string apellido, string nombre, string telefono, string comision, string practicos, int asistencias = 0, int resultado=0) {
@@ -49,7 +50,28 @@ public class Alumno {
     public string NombreCompleto => $"{Apellido}, {Nombre}".Replace("-", "").Replace("*", "").Trim();
     public string Carpeta => $"{Legajo} - {NombreCompleto}";
     public int CantidadPresentados => Practicos.Count(p => p == EstadoPractico.Aprobado);
-    public bool Abandono => Asistencias < 2 && CantidadPresentados == 0;
+    public bool Abandono => Asistencias < 4 && CantidadPresentados == 0;
+
+    public string Recuperacion() {
+        List<string> tp = new();
+        if(Practicos[0] != EstadoPractico.Aprobado ) tp.Add("Presentar TP1");
+        if(Practicos[1] != EstadoPractico.Aprobado ) tp.Add("Presentar TP2");
+        if(Practicos[2] != EstadoPractico.Aprobado ) tp.Add( Resultado < 0 ? "Corregir TP3" : "Presentar TP3");
+        return string.Join(" ", tp);
+    }
+
+    public string EstadoRecuperacionTP(int practico) {
+        if (practico < 1 || practico > 3) return ""; // Solo para TP1, TP2, TP3
+
+        var estado = ObtenerPractico(practico);
+
+        if (practico == 3) {
+            // TP3: Recupera si no está aprobado O si tiene errores (Resultado < 0)
+            return (estado != EstadoPractico.Aprobado) ? "Recuperar" : (Resultado < 0 ? "Corregir" : "");
+        } else {
+            return (estado != EstadoPractico.Aprobado) ? "Recuperar" : "";
+        }
+    }
 
     public EstadoPractico ObtenerPractico(int practico) {
         if (practico <= 0 || practico > MaxPracticos) return EstadoPractico.NoPresentado;
