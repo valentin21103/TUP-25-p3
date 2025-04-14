@@ -60,6 +60,7 @@ En el caso del TP3, todos los tests deben estar incluidos en el código, y el pr
 | 61061 | Velardez, Leandro Ivan          |           |           | Recuperar |
 
 > Nota: Si alguno de los estudiantes que deben recuperar ya ha presentado los trabajos, comuníquense conmigo para verificar la situación.
+
 > Nota 2: Les adjuntos los enunciados de los trabajos practicos a este documento
 
 ---
