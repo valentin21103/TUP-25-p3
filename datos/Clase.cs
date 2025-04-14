@@ -77,7 +77,7 @@ class Clase : IEnumerable<Alumno> {
     public Clase ConAprobados(int cantidad) => new(Alumnos.Where(a => a.Practicos.Count(p => p == EstadoPractico.Aprobado) >= cantidad));
     public Clase OrdenandoPorNombre() => new (alumnos.OrderBy(a => a.Apellido).ThenBy(a => a.Nombre));
     public Clase OrdenandoPorLegajo() => new (alumnos.OrderBy(a => a.Legajo));
-    public Clase DebenRecuperar() => new (alumnos.Where(a => !a.Abandono && ( a.CantidadPresentados < 3 || a.Resultado <0 )));
+    public Clase DebenRecuperar() => new (alumnos.Where(a => !a.Abandono && ( a.CantidadPresentados < 3 && a.CantidadPresentados > 0 || a.Resultado <0 )));
     
     // Métodos de modificación
     public void Agregar(Alumno alumno) {
@@ -230,8 +230,8 @@ class Clase : IEnumerable<Alumno> {
 
     public static int ResultadoEjecutar(string origen){
         var salida = EjecutarCSharp(origen);
-        if(salida.Contains("error")) {
-            return -1;
+        if (salida.Contains(": error")) {
+            return - salida.Split("\n").Count(line => line.Contains(": error"));
         } else {
             return salida.Split("\n").Count(line => line.Contains("[OK]"));
         }
